@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samuel Toyoshi Ishida - Senior Software Engineer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            background-color: #2d2d30;
+            color: #e0e0e0;
+            line-height: 1.6;
+            padding: 2rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1a5276 0%, #2874a6 100%);
+            padding: 2.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .header-left h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+            color: #ffffff;
+        }
+
+        .header-left .title {
+            font-size: 1.1rem;
+            color: #ffffff;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .header-left .location {
+            font-size: 0.95rem;
+            color: #aed6f1;
+            font-style: italic;
+        }
+
+        .header-right {
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .header-right a {
+            color: #aed6f1;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .header-right a:hover {
+            color: #ffffff;
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #64b5f6;
+            margin-bottom: 1rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid #1a5276;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 0.2rem;
+        }
+
+        .job-title {
+            color: #b3b3b3;
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .company {
+            font-weight: 600;
+            color: #64b5f6;
+        }
+
+        .period {
+            color: #888;
+            font-size: 0.85rem;
+            font-style: italic;
+            margin-bottom: 0.8rem;
+        }
+
+        /* Summary */
+        .summary-text {
+            color: #d4d4d4;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .skill-category h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #64b5f6;
+            margin-bottom: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background-color: #3a3a3a;
+            color: #b3b3b3;
+            padding: 0.4rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            border: 1px solid #4a4a4a;
+            transition: all 0.2s;
+        }
+
+        .skill-tag:hover {
+            background-color: #1a5276;
+            color: #aed6f1;
+            border-color: #2874a6;
+        }
+
+        /* Experience */
+        .experience-item {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #404040;
+        }
+
+        .experience-item:last-child {
+            border-bottom: none;
+        }
+
+        .experience-header {
+            margin-bottom: 0.8rem;
+        }
+
+        .experience-item ul {
+            margin-left: 1.5rem;
+            color: #d4d4d4;
+            font-size: 0.95rem;
+        }
+
+        .experience-item li {
+            margin-bottom: 0.6rem;
+            line-height: 1.6;
+        }
+
+        .badge-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-top: 0.8rem;
+        }
+
+        .badge {
+            background-color: #1a5276;
+            color: #aed6f1;
+            padding: 0.3rem 0.7rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* Education */
+        .education-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #404040;
+        }
+
+        .education-item:last-child {
+            border-bottom: none;
+        }
+
+        .degree {
+            font-weight: 600;
+            color: #ffffff;
+        }
+
+        .school {
+            color: #64b5f6;
+            font-weight: 500;
+        }
+
+        .dates {
+            color: #888;
+            font-size: 0.85rem;
+            font-style: italic;
+        }
+
+        /* Certifications */
+        .cert-list {
+            list-style: none;
+        }
+
+        .cert-list li {
+            margin-bottom: 0.6rem;
+            color: #d4d4d4;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .cert-list li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #64b5f6;
+            font-weight: bold;
+        }
+
+        /* Language Toggle */
+        .lang-toggle {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            background-color: #3a3a3a;
+            border: 1px solid #4a4a4a;
+            border-radius: 6px;
+            padding: 0.5rem;
+            display: flex;
+            gap: 0.5rem;
+            z-index: 100;
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            color: #888;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .lang-btn.active {
+            background-color: #1a5276;
+            color: #aed6f1;
+        }
+
+        .lang-btn:hover {
+            color: #d4d4d4;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .lang-toggle {
+                top: 1rem;
+                right: 1rem;
+            }
+            body {
+                padding: 1rem;
+            }
+
+            header {
+                padding: 1.5rem;
+            }
+
+            .header-top {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .header-right {
+                text-align: left;
+            }
+
+            .header-left h1 {
+                font-size: 1.8rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header-right {
+                text-align: right;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Language Toggle -->
+    <div class="lang-toggle">
+        <button class="lang-btn active" data-lang="en" onclick="setLanguage('en')">EN</button>
+        <button class="lang-btn" data-lang="pt" onclick="setLanguage('pt')">PT</button>
+    </div>
+
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="header-top">
+                <div class="header-left">
+                    <h1>Samuel Toyoshi Ishida</h1>
+                    <div class="title">Senior Software Engineer</div>
+                    <div class="location">Goldman Sachs · São Paulo, Brazil</div>
+                </div>
+                <div class="header-right">
+                    <a href="mailto:samuel.toyoshi@gmail.com">✉ samuel.toyoshi@gmail.com</a>
+                    <a href="https://linkedin.com/in/samuelishida">🔗 linkedin.com/in/samuelishida</a>
+                    <a href="#">📍 São Paulo, Brazil</a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Professional Summary -->
+        <section>
+            <h2 data-i18n="summary_title">Professional Summary</h2>
+            <p class="summary-text" data-i18n="summary_text">
+                Senior Software Engineer with 8+ years building resilient full-stack applications and leading infrastructure transformation across fintech, telecom, and logistics. Deep expertise in backend architecture, API design, and cloud-native systems combined with DevOps and SRE practices: migrated 200+ on-premise applications to AWS, architected infrastructure-as-code pipelines reducing provisioning from weeks to days, and managed large-scale incidents with sub-hour MTTR. Currently at Goldman Sachs designing and shipping AI-powered internal tools that automate workflows and accelerate engineering productivity for FICC trading platforms while driving reliability improvements and operational automation across production systems.
+            </p>
+        </section>
+
+        <!-- Technical Skills -->
+        <section>
+            <h2 data-i18n="skills_title">Technical Skills</h2>
+
+            <div class="skill-category">
+                <h4 data-i18n="languages">Languages & Technologies</h4>
+                <div class="skill-list">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">TypeScript</span>
+                    <span class="skill-tag">Java</span>
+                    <span class="skill-tag">C#</span>
+                    <span class="skill-tag">PHP</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h4 data-i18n="frameworks">Frameworks & Platforms</h4>
+                <div class="skill-list">
+                    <span class="skill-tag">Node.js</span>
+                    <span class="skill-tag">React.js</span>
+                    <span class="skill-tag">Django</span>
+                    <span class="skill-tag">Flask</span>
+                    <span class="skill-tag">Spring Boot</span>
+                    <span class="skill-tag">AngularJS</span>
+                    <span class="skill-tag">Slim Framework</span>
+                    <span class="skill-tag">Apache Struts 2</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h4 data-i18n="cloud">Cloud & Infrastructure</h4>
+                <div class="skill-list">
+                    <span class="skill-tag">AWS</span>
+                    <span class="skill-tag">Azure</span>
+                    <span class="skill-tag">Docker</span>
+                    <span class="skill-tag">Terraform</span>
+                    <span class="skill-tag">Git/GitHub</span>
+                    <span class="skill-tag">CI/CD</span>
+                    <span class="skill-tag">Linux</span>
+                    <span class="skill-tag">Windows Server</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h4 data-i18n="databases">Databases & APIs</h4>
+                <div class="skill-list">
+                    <span class="skill-tag">PostgreSQL</span>
+                    <span class="skill-tag">MongoDB</span>
+                    <span class="skill-tag">MySQL</span>
+                    <span class="skill-tag">Redis</span>
+                    <span class="skill-tag">REST APIs</span>
+                    <span class="skill-tag">GraphQL</span>
+                    <span class="skill-tag">WebSockets</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Professional Experience -->
+        <section>
+            <h2 data-i18n="experience_title">Professional Experience</h2>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <h3 data-i18n="sre_title">Site Reliability Engineer (SRE)</h3>
+                    <div class="job-title"><span class="company" data-i18n="goldman">Goldman Sachs</span> | <span data-i18n="sre_period">Oct 2024 – Present · São Paulo, Brazil</span></div>
+                </div>
+                <ul>
+                    <li data-i18n="sre_desc1">Designed and built an AI-assisted RAG documentation tool using Python (Quart) orchestrator for AI logic and internally-hosted LLM backend — enabling support engineers and business users to query internal documentation conversationally.</li>
+                    <li data-i18n="sre_desc2">Enhanced and fully integrated an existing LLM-based interview platform, repackaging it as a Java web application to streamline firm-wide distribution via executables with standard Helpdesk installation support.</li>
+                    <li data-i18n="sre_desc3">Deployed a web-based business reporting solution to replace email distribution, improving accessibility, auditability, and operational efficiency for stakeholders.</li>
+                    <li data-i18n="sre_desc4">Delivered training sessions on GitHub Copilot and AI-assisted workflows for production support engineers across multiple FICC clusters, accelerating adoption of developer productivity tooling.</li>
+                    <li data-i18n="sre_desc5">Executed migration of internal Apache infrastructure from RHEL 7 to RHEL 8 within cluster; authored migration documentation subsequently adopted by other clusters.</li>
+                    <li data-i18n="sre_desc6">Triaged and resolved L1–L3 incidents in real time, including full-scale outage management across proprietary trading platforms. Implemented proactive monitoring, alerting automation, failover mechanisms, and event streaming infrastructure (Kafka) for real-time FIX message processing to reduce MTTR and increase platform resilience.</li>
+                </ul>
+                <div class="badge-group">
+                    <span class="badge">Python/Quart</span>
+                    <span class="badge">Java</span>
+                    <span class="badge">LLM/RAG</span>
+                    <span class="badge">Incident Management</span>
+                    <span class="badge">RHEL/Linux</span>
+                    <span class="badge">Monitoring</span>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <h3 data-i18n="systems_analyst">Systems Analyst</h3>
+                    <div class="job-title"><span class="company" data-i18n="alctel">Alctel Telecom</span> | <span data-i18n="alctel_period">May 2023 – Mar 2024 · Belo Horizonte, Brazil (remote)</span></div>
+                </div>
+                <ul>
+                    <li data-i18n="alctel_desc1">Integrated chatbot solutions with WhatsApp using C#, WebSockets, and managed MySQL databases, including writing stored procedures and optimizing queries for production workloads.</li>
+                    <li data-i18n="alctel_desc2">Provided hands-on technical support for client systems, troubleshooting production issues across Windows Server environments and ensuring high client satisfaction.</li>
+                    <li data-i18n="alctel_desc3">Managed Windows Server infrastructure, performed database administration tasks, and ran operational procedures to maintain system health and availability. Conducted client meetings for project planning, requirements gathering, and solution design.</li>
+                </ul>
+                <div class="badge-group">
+                    <span class="badge">C#</span>
+                    <span class="badge">WebSockets</span>
+                    <span class="badge">MySQL</span>
+                    <span class="badge">Stored Procedures</span>
+                    <span class="badge">Windows Server</span>
+                    <span class="badge">Query Optimization</span>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <h3 data-i18n="systems_analyst">Systems Analyst</h3>
+                    <div class="job-title"><span class="company" data-i18n="gft">GFT Group</span> | <span data-i18n="gft_period">Jan 2022 – Mar 2023 · São Paulo, Brazil (remote)</span></div>
+                </div>
+                <ul>
+                    <li data-i18n="gft_desc1">Led the migration of 200 on-premise applications to AWS, architecting cloud-native solutions that resulted in more efficient processes and significant productivity gains.</li>
+                    <li data-i18n="gft_desc2">Implemented infrastructure and documentation automation using Terraform and CI/CD pipelines, reducing provisioning time from weeks to days. Collaborated with cross-functional teams to establish best practices for cloud security, cost optimization, and operational excellence.</li>
+                </ul>
+                <div class="badge-group">
+                    <span class="badge">AWS</span>
+                    <span class="badge">Terraform</span>
+                    <span class="badge">CI/CD</span>
+                    <span class="badge">Cloud Architecture</span>
+                    <span class="badge">Infrastructure Automation</span>
+                    <span class="badge">Cost Optimization</span>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <h3 data-i18n="web_developer">Web Developer</h3>
+                    <div class="job-title"><span class="company" data-i18n="suma">Suma – Consulting Group</span> | <span data-i18n="suma_period">Nov 2019 – Jan 2022 · Campinas, São Paulo</span></div>
+                </div>
+                <ul>
+                    <li data-i18n="suma_desc1">Developed a Django server to collect data from telemetry modules embedded in freight trucks, handling full backend architecture and API design.</li>
+                    <li data-i18n="suma_desc2">Managed Linux server infrastructure to deploy and maintain the application in production, including configuration, monitoring, and troubleshooting. Integrated a Data Warehouse with Azure Cloud infrastructure for data processing, analysis, and reporting.</li>
+                    <li data-i18n="suma_desc3">Collaborated on the development of an Android application for data transmission and real-time tracking.</li>
+                </ul>
+                <div class="badge-group">
+                    <span class="badge">Django</span>
+                    <span class="badge">React.js</span>
+                    <span class="badge">Node.js</span>
+                    <span class="badge">Linux</span>
+                    <span class="badge">Azure</span>
+                    <span class="badge">Data Warehouse</span>
+                    <span class="badge">API Design</span>
+                    <span class="badge">Android</span>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <h3 data-i18n="junior_dev">Junior Software Developer</h3>
+                    <div class="job-title"><span class="company" data-i18n="bit">Bit Capital</span> | <span data-i18n="bit_period">Jul 2019 – Oct 2019 · Campinas, Brazil</span></div>
+                </div>
+                <ul>
+                    <li data-i18n="bit_desc">Developed an API layer in TypeScript and Node.js to streamline transactions on a blockchain-based digital banking platform, integrating with multiple payment providers and cryptocurrency exchanges.</li>
+                </ul>
+                <div class="badge-group">
+                    <span class="badge">TypeScript</span>
+                    <span class="badge">Node.js</span>
+                    <span class="badge">Blockchain</span>
+                    <span class="badge">Payment Integration</span>
+                    <span class="badge">REST APIs</span>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <h3 data-i18n="junior_dev">Junior Software Developer</h3>
+                    <div class="job-title"><span class="company" data-i18n="boilesen">Boilesen Associates</span> | <span data-i18n="boilesen_period">Mar 2019 – Jul 2019 · Campinas, Brazil</span></div>
+                </div>
+                <ul>
+                    <li data-i18n="boilesen_desc">Built a digital marketing tool for lead generation and tracking using PHP and the Slim framework, integrating with CRM systems and analytics dashboards to measure campaign performance.</li>
+                </ul>
+                <div class="badge-group">
+                    <span class="badge">PHP</span>
+                    <span class="badge">Slim Framework</span>
+                    <span class="badge">CRM Integration</span>
+                    <span class="badge">Analytics</span>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <h3 data-i18n="intern">Java Web Developer Intern</h3>
+                    <div class="job-title"><span class="company" data-i18n="stoom">Stoom</span> | <span data-i18n="stoom_period">Jan 2018 – Oct 2018 · Campinas, Brazil</span></div>
+                </div>
+                <ul>
+                    <li data-i18n="stoom_desc">Developed the Suprevida e-commerce website using Apache Struts 2, Java, and JSP, managing client demands and delivering features in an agile team environment.</li>
+                </ul>
+                <div class="badge-group">
+                    <span class="badge">Java</span>
+                    <span class="badge">Apache Struts 2</span>
+                    <span class="badge">JSP</span>
+                    <span class="badge">E-commerce</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education -->
+        <section>
+            <h2 data-i18n="education_title">Education</h2>
+
+            <div class="education-item">
+                <div class="degree" data-i18n="estacio_degree">B.Tech in Information Security</div>
+                <div class="school" data-i18n="estacio">Estácio</div>
+                <div class="dates" data-i18n="estacio_dates">Feb 2023 – Nov 2025</div>
+            </div>
+
+            <div class="education-item">
+                <div class="degree" data-i18n="unicamp_degree">Computer Engineering</div>
+                <div class="school" data-i18n="unicamp">UNICAMP</div>
+                <div class="dates" data-i18n="unicamp_dates">2014 – Feb 2019</div>
+            </div>
+        </section>
+
+        <!-- Certifications & Highlights -->
+        <section>
+            <h2 data-i18n="certs_title">Certifications & Highlights</h2>
+            <ul class="cert-list">
+                <li data-i18n="cert1"><strong>Foundations of Cybersecurity</strong> – Google</li>
+                <li data-i18n="cert2"><strong>Cambridge B2 First</strong> – Score 169 (Full Professional English)</li>
+                <li data-i18n="cert3"><strong>OBI – Silver Medal</strong> (Brazilian Olympiad in Informatics)</li>
+                <li data-i18n="cert4"><strong>UNICAMP Phoenix Robotics Team</strong> (2014–2016): Developed autonomous robot with visual cone recognition using OpenCV and Python</li>
+            </ul>
+        </section>
+    </div>
+
+    <script>
+        const translations = {
+            en: {
+                'summary_title': 'Professional Summary',
+                'summary_text': 'Senior Software Engineer with 8+ years building resilient full-stack applications and leading infrastructure transformation across fintech, telecom, and logistics. Deep expertise in backend architecture, API design, and cloud-native systems combined with DevOps and SRE practices: migrated 200+ on-premise applications to AWS, architected infrastructure-as-code pipelines reducing provisioning from weeks to days, and managed large-scale incidents with sub-hour MTTR. Currently at Goldman Sachs designing and shipping AI-powered internal tools that automate workflows and accelerate engineering productivity for FICC trading platforms while driving reliability improvements and operational automation across production systems.',
+                'skills_title': 'Technical Skills',
+                'languages': 'Languages & Technologies',
+                'frameworks': 'Frameworks & Platforms',
+                'cloud': 'Cloud & Infrastructure',
+                'databases': 'Databases & APIs',
+                'experience_title': 'Professional Experience',
+                'sre_title': 'Site Reliability Engineer (SRE)',
+                'goldman': 'Goldman Sachs',
+                'sre_period': 'Oct 2024 – Present · São Paulo, Brazil',
+                'sre_desc1': 'Designed and built an AI-assisted RAG documentation tool using Python (Quart) orchestrator for AI logic and internally-hosted LLM backend — enabling support engineers and business users to query internal documentation conversationally.',
+                'sre_desc2': 'Enhanced and fully integrated an existing LLM-based interview platform, repackaging it as a Java web application to streamline firm-wide distribution via executables with standard Helpdesk installation support.',
+                'sre_desc3': 'Deployed a web-based business reporting solution to replace email distribution, improving accessibility, auditability, and operational efficiency for stakeholders.',
+                'sre_desc4': 'Delivered training sessions on GitHub Copilot and AI-assisted workflows for production support engineers across multiple FICC clusters, accelerating adoption of developer productivity tooling.',
+                'sre_desc5': 'Executed migration of internal Apache infrastructure from RHEL 7 to RHEL 8 within cluster; authored migration documentation subsequently adopted by other clusters.',
+                'sre_desc6': 'Triaged and resolved L1–L3 incidents in real time, including full-scale outage management across proprietary trading platforms. Implemented proactive monitoring, alerting automation, failover mechanisms, and event streaming infrastructure (Kafka) for real-time FIX message processing to reduce MTTR and increase platform resilience.',
+                'systems_analyst': 'Systems Analyst',
+                'alctel': 'Alctel Telecom',
+                'alctel_period': 'May 2023 – Mar 2024 · Belo Horizonte, Brazil (remote)',
+                'alctel_desc1': 'Integrated chatbot solutions with WhatsApp using C#, WebSockets, and managed MySQL databases, including writing stored procedures and optimizing queries for production workloads.',
+                'alctel_desc2': 'Provided hands-on technical support for client systems, troubleshooting production issues across Windows Server environments and ensuring high client satisfaction.',
+                'alctel_desc3': 'Managed Windows Server infrastructure, performed database administration tasks, and ran operational procedures to maintain system health and availability. Conducted client meetings for project planning, requirements gathering, and solution design.',
+                'gft': 'GFT Group',
+                'gft_period': 'Jan 2022 – Mar 2023 · São Paulo, Brazil (remote)',
+                'gft_desc1': 'Led the migration of 200 on-premise applications to AWS, architecting cloud-native solutions that resulted in more efficient processes and significant productivity gains.',
+                'gft_desc2': 'Implemented infrastructure and documentation automation using Terraform and CI/CD pipelines, reducing provisioning time from weeks to days. Collaborated with cross-functional teams to establish best practices for cloud security, cost optimization, and operational excellence.',
+                'web_developer': 'Web Developer',
+                'suma': 'Suma – Consulting Group',
+                'suma_period': 'Nov 2019 – Jan 2022 · Campinas, São Paulo',
+                'suma_desc1': 'Developed a Django server to collect data from telemetry modules embedded in freight trucks, handling full backend architecture and API design.',
+                'suma_desc2': 'Managed Linux server infrastructure to deploy and maintain the application in production, including configuration, monitoring, and troubleshooting. Integrated a Data Warehouse with Azure Cloud infrastructure for data processing, analysis, and reporting. Maintained full-stack React.js and Node.js site architecture.',
+                'suma_desc3': 'Collaborated on the development of an Android application for data transmission and real-time tracking.',
+                'junior_dev': 'Junior Software Developer',
+                'bit': 'Bit Capital',
+                'bit_period': 'Jul 2019 – Oct 2019 · Campinas, Brazil',
+                'bit_desc': 'Developed an API layer in TypeScript and Node.js to streamline transactions on a blockchain-based digital banking platform, integrating with multiple payment providers and cryptocurrency exchanges.',
+                'boilesen': 'Boilesen Associates',
+                'boilesen_period': 'Mar 2019 – Jul 2019 · Campinas, Brazil',
+                'boilesen_desc': 'Built a digital marketing tool for lead generation and tracking using PHP and the Slim framework, integrating with CRM systems and analytics dashboards to measure campaign performance.',
+                'intern': 'Java Web Developer Intern',
+                'stoom': 'Stoom',
+                'stoom_period': 'Jan 2018 – Oct 2018 · Campinas, Brazil',
+                'stoom_desc': 'Developed the Suprevida e-commerce website using Apache Struts 2, Java, and JSP, managing client demands and delivering features in an agile team environment.',
+                'education_title': 'Education',
+                'estacio': 'Estácio',
+                'estacio_degree': 'B.Tech in Information Security',
+                'estacio_dates': 'Feb 2023 – Nov 2025',
+                'unicamp': 'UNICAMP',
+                'unicamp_degree': 'Computer Engineering',
+                'unicamp_dates': '2014 – Feb 2019',
+                'certs_title': 'Certifications & Highlights',
+                'cert1': 'Foundations of Cybersecurity – Google',
+                'cert2': 'Cambridge B2 First – Score 169 (Full Professional English)',
+                'cert3': 'OBI – Silver Medal (Brazilian Olympiad in Informatics)',
+                'cert4': 'UNICAMP Phoenix Robotics Team (2014–2016): Developed autonomous robot with visual cone recognition using OpenCV and Python'
+            },
+            pt: {
+                'summary_title': 'Resumo Profissional',
+                'summary_text': 'Engenheiro de Software Sênior com 8+ anos construindo aplicações full-stack resilientes e liderando transformação de infraestrutura em fintech, telecom e logística. Expertise profunda em arquitetura de backend, design de APIs e sistemas cloud-native combinados com práticas DevOps e SRE: migrei 200+ aplicações on-premise para AWS, arquitetei pipelines infrastructure-as-code reduzindo provisionamento de semanas para dias, e gerenciei incidentes em larga escala com MTTR sub-hora. Atualmente no Goldman Sachs projetando e entregando ferramentas internas alimentadas por IA que automatizam fluxos de trabalho e acceleram a produtividade de engenharia para plataformas de trading FICC, enquanto dirijo melhorias de confiabilidade e automação operacional em sistemas de produção.',
+                'skills_title': 'Competências Técnicas',
+                'languages': 'Linguagens & Tecnologias',
+                'frameworks': 'Frameworks & Plataformas',
+                'cloud': 'Cloud & Infraestrutura',
+                'databases': 'Bancos de Dados & APIs',
+                'experience_title': 'Experiência Profissional',
+                'sre_title': 'Engenheiro de Confiabilidade de Site (SRE)',
+                'goldman': 'Goldman Sachs',
+                'sre_period': 'Out 2024 – Presente · São Paulo, Brasil',
+                'sre_desc1': 'Projetei e construí uma ferramenta de documentação assistida por IA usando orquestrador Python (Quart) para lógica de IA e backend LLM hospedado internamente — permitindo que engenheiros de suporte e usuários de negócios consultem documentação interna conversacionalmente.',
+                'sre_desc2': 'Aprimorei e integrei completamente uma plataforma de entrevista baseada em LLM, reembalando-a como uma aplicação web Java para simplificar a distribuição em toda a empresa via executáveis com suporte padrão de instalação do Helpdesk.',
+                'sre_desc3': 'Implantei uma solução de relatório baseada em web para substituir distribuição por email, melhorando acessibilidade, auditabilidade e eficiência operacional para stakeholders.',
+                'sre_desc4': 'Conduzi sessões de treinamento em GitHub Copilot e fluxos de trabalho assistidos por IA para engenheiros de suporte de produção em múltiplos clusters FICC, acelerando adoção de ferramentas de produtividade de desenvolvedor.',
+                'sre_desc5': 'Executei migração de infraestrutura Apache interna de RHEL 7 para RHEL 8 dentro do cluster; criei documentação de migração subsequentemente adotada por outros clusters.',
+                'sre_desc6': 'Triagem e resolução de incidentes L1–L3 em tempo real, incluindo gerenciamento de indisponibilidade em larga escala em plataformas de trading proprietárias. Implementei monitoramento proativo, automação de alertas, mecanismos de failover, e infraestrutura de event streaming (Kafka) para processamento em tempo real de mensagens FIX para reduzir MTTR e aumentar a resiliência da plataforma.',
+                'systems_analyst': 'Analista de Sistemas',
+                'alctel': 'Alctel Telecom',
+                'alctel_period': 'Mai 2023 – Mar 2024 · Belo Horizonte, Brasil (remoto)',
+                'alctel_desc1': 'Integrei soluções de chatbot com WhatsApp usando C#, WebSockets, e bancos de dados MySQL gerenciados, incluindo escrita de stored procedures e otimização de queries para cargas de trabalho de produção.',
+                'alctel_desc2': 'Forneci suporte técnico prático para sistemas de clientes, resolvendo problemas de produção em ambientes Windows Server e garantindo alta satisfação do cliente.',
+                'alctel_desc3': 'Gerenciei infraestrutura Windows Server, realizei tarefas de administração de banco de dados, e executei procedimentos operacionais para manter saúde e disponibilidade do sistema. Conduzi reuniões com clientes para planejamento de projetos, coleta de requisitos, e design de soluções.',
+                'gft': 'GFT Group',
+                'gft_period': 'Jan 2022 – Mar 2023 · São Paulo, Brasil (remoto)',
+                'gft_desc1': 'Liderei migração de 200 aplicações on-premise para AWS, arquitetando soluções cloud-native que resultaram em processos mais eficientes e ganhos significativos de produtividade.',
+                'gft_desc2': 'Implementei automação de infraestrutura e documentação usando Terraform e pipelines CI/CD, reduzindo tempo de provisionamento de semanas para dias. Colaborei com equipes multifuncionais para estabelecer melhores práticas de segurança em cloud, otimização de custos, e excelência operacional.',
+                'web_developer': 'Desenvolvedor Web',
+                'suma': 'Suma – Consulting Group',
+                'suma_period': 'Nov 2019 – Jan 2022 · Campinas, São Paulo',
+                'suma_desc1': 'Desenvolvi servidor Django para coletar dados de módulos de telemetria embutidos em caminhões de frete, tratando arquitetura de backend completa e design de API.',
+                'suma_desc2': 'Gerenciei infraestrutura de servidor Linux para implantar e manter a aplicação em produção, incluindo configuração, monitoramento e troubleshooting. Integrei um Data Warehouse com infraestrutura Azure Cloud para processamento, análise e relatório de dados. Mantive arquitetura full-stack React.js e Node.js do site.',
+                'suma_desc3': 'Colaborei no desenvolvimento de uma aplicação Android para transmissão de dados e rastreamento em tempo real.',
+                'junior_dev': 'Desenvolvedor de Software Júnior',
+                'bit': 'Bit Capital',
+                'bit_period': 'Jul 2019 – Out 2019 · Campinas, Brasil',
+                'bit_desc': 'Desenvolvi uma camada de API em TypeScript e Node.js para simplificar transações em uma plataforma de banco digital baseada em blockchain, integrando com múltiplos provedores de pagamento e exchanges de criptomoeda.',
+                'boilesen': 'Boilesen Associates',
+                'boilesen_period': 'Mar 2019 – Jul 2019 · Campinas, Brasil',
+                'boilesen_desc': 'Construí uma ferramenta de marketing digital para geração e rastreamento de leads usando PHP e framework Slim, integrando com sistemas CRM e dashboards de análise para medir desempenho de campanhas.',
+                'intern': 'Estagiário Desenvolvedor Web Java',
+                'stoom': 'Stoom',
+                'stoom_period': 'Jan 2018 – Out 2018 · Campinas, Brasil',
+                'stoom_desc': 'Desenvolvi website de e-commerce Suprevida usando Apache Struts 2, Java, e JSP, gerenciando demandas de cliente e entregando features em ambiente agile.',
+                'education_title': 'Educação',
+                'estacio': 'Estácio',
+                'estacio_degree': 'B.Tech em Segurança da Informação',
+                'estacio_dates': 'Fev 2023 – Nov 2025',
+                'unicamp': 'UNICAMP',
+                'unicamp_degree': 'Engenharia de Computação',
+                'unicamp_dates': '2014 – Fev 2019',
+                'certs_title': 'Certificações & Destaques',
+                'cert1': 'Fundamentos de Cibersegurança – Google',
+                'cert2': 'Cambridge B2 First – Pontuação 169 (Inglês Profissional Completo)',
+                'cert3': 'OBI – Medalha de Prata (Olimpíada Brasileira de Informática)',
+                'cert4': 'UNICAMP Phoenix Robotics Team (2014–2016): Desenvolvi robô autônomo com reconhecimento de cone visual usando OpenCV e Python'
+            }
+        };
+
+        function setLanguage(lang) {
+            localStorage.setItem('cvLanguage', lang);
+
+            // Update button states
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[data-lang="${lang}"]`).classList.add('active');
+
+            // Update all translatable content
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                element.textContent = translations[lang][key];
+            });
+        }
+
+        // Initialize language on page load
+        window.addEventListener('DOMContentLoaded', function() {
+            const savedLang = localStorage.getItem('cvLanguage') || 'en';
+            setLanguage(savedLang);
+        });
+    </script>
+</body>
+</html>
