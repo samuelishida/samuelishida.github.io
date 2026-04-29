@@ -28,9 +28,11 @@
         header {
             background: linear-gradient(135deg, #1a5276 0%, #2874a6 100%);
             padding: 2.5rem;
+            padding-top: 3.5rem;
             border-radius: 8px;
             margin-bottom: 2rem;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            position: relative;
         }
 
         .header-top {
@@ -258,8 +260,8 @@
         /* Language Toggle */
         .lang-toggle {
             position: fixed;
-            top: 2rem;
-            right: 2rem;
+            top: 1rem;
+            right: 1rem;
             background-color: #3a3a3a;
             border: 1px solid #4a4a4a;
             border-radius: 6px;
@@ -267,6 +269,7 @@
             display: flex;
             gap: 0.5rem;
             z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
         }
 
         .lang-btn {
@@ -290,18 +293,213 @@
             color: #d4d4d4;
         }
 
-        /* Responsive */
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background: linear-gradient(145deg, #363636 0%, #2d2d30 100%);
+            border: 1px solid #4a4a4a;
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #1a5276, #2874a6, #64b5f6);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+            border-color: #2874a6;
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
+        }
+
+        .project-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+            color: #ffffff;
+        }
+
+        .project-period {
+            color: #888;
+            font-size: 0.85rem;
+            font-style: italic;
+            margin-bottom: 0.8rem;
+        }
+
+        .project-card p {
+            color: #d4d4d4;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .project-link {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: #64b5f6;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            transition: color 0.2s;
+        }
+
+        .project-link:hover {
+            color: #aed6f1;
+        }
+
+        .project-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+
+        .project-skill {
+            background-color: #1a5276;
+            color: #aed6f1;
+            padding: 0.25rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        /* Header improvements */
+        .profile-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #2874a6, #1a5276);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            border: 3px solid rgba(255,255,255,0.2);
+        }
+
+        .header-left {
+            flex: 1;
+        }
+
+        .header-right {
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            align-items: flex-end;
+        }
+
+        .header-right a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: #aed6f1;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            padding: 0.3rem 0.8rem;
+            border-radius: 6px;
+            background: rgba(255,255,255,0.05);
+        }
+
+        .header-right a:hover {
+            color: #ffffff;
+            background: rgba(255,255,255,0.15);
+            transform: translateX(-2px);
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Section entrance animation */
+        section {
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        section:nth-child(2) { animation-delay: 0.1s; }
+        section:nth-child(3) { animation-delay: 0.2s; }
+        section:nth-child(4) { animation-delay: 0.3s; }
+        section:nth-child(5) { animation-delay: 0.4s; }
+        section:nth-child(6) { animation-delay: 0.5s; }
+        section:nth-child(7) { animation-delay: 0.6s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Print button */
+        .print-btn {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: linear-gradient(135deg, #1a5276, #2874a6);
+            color: #ffffff;
+            border: none;
+            padding: 0.8rem 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .print-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+        }
+
+        /* Mobile Responsive */
         @media (max-width: 768px) {
             .lang-toggle {
-                top: 1rem;
-                right: 1rem;
+                top: 0.5rem;
+                right: 0.5rem;
+                padding: 0.3rem;
+            }
+            .lang-btn {
+                font-size: 0.8rem;
+                padding: 0.3rem 0.6rem;
             }
             body {
                 padding: 1rem;
+                padding-top: 3.5rem;
             }
 
             header {
                 padding: 1.5rem;
+                padding-top: 3rem;
             }
 
             .header-top {
@@ -311,18 +509,35 @@
 
             .header-right {
                 text-align: left;
+                align-items: flex-start;
             }
 
             .header-left h1 {
-                font-size: 1.8rem;
+                font-size: 1.6rem;
             }
 
             .skills-grid {
                 grid-template-columns: 1fr;
             }
 
-            .header-right {
-                text-align: right;
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media print {
+            .lang-toggle, .print-btn {
+                display: none !important;
+            }
+            body {
+                background: white;
+                color: #333;
+                padding: 1rem;
+            }
+            header {
+                background: #1a5276 !important;
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
             }
         }
     </style>
@@ -417,6 +632,43 @@
             </div>
         </section>
 
+        <!-- Personal Projects -->
+        <section>
+            <h2 data-i18n="projects_title">Personal Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>Yvy</h3>
+                    <div class="project-period">Jul 2025 – Present</div>
+                    <p data-i18n="yvy_desc">Environmental observability platform that tracks and overlays deforestation and wildfire data with firms, conservation units (UCs), and indigenous territories. Integrates official data from ICMBio and FUNAI to provide actionable insights for environmental monitoring and compliance in Brazil.</p>
+                    <a href="https://yvy.app.br" class="project-link" target="_blank">🔗 yvy.app.br</a>
+                    <a href="https://github.com/samuelishida/yvy" class="project-link" target="_blank">🔗 github.com/samuelishida/yvy</a>
+                    <div class="project-skills">
+                        <span class="project-skill">React</span>
+                        <span class="project-skill">Python</span>
+                        <span class="project-skill">SQL</span>
+                        <span class="project-skill">Data Engineering</span>
+                        <span class="project-skill">Geospatial Data</span>
+                        <span class="project-skill">Environmental Monitoring</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>JS Agent</h3>
+                    <div class="project-period">Mar 2026 – Present</div>
+                    <p data-i18n="agent_desc">Browser-first multi-step agent with hosted/local LLM routing, modular skill runtime, modular prompt composition, context-aware orchestration, and durable memory/cache layers in local storage.</p>
+                    <a href="https://github.com/samuelishida/js-agent/" class="project-link" target="_blank">🔗 github.com/samuelishida/js-agent</a>
+                    <a href="https://samuelishida.github.io/js-agent/agentic-search-arch.html" class="project-link" target="_blank">🔗 Architecture Docs</a>
+                    <a href="https://js-agent.onrender.com/" class="project-link" target="_blank">🔗 Live Demo</a>
+                    <div class="project-skills">
+                        <span class="project-skill">Local LLMs</span>
+                        <span class="project-skill">Artificial Intelligence (AI)</span>
+                        <span class="project-skill">JavaScript</span>
+                        <span class="project-skill">Browser APIs</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Professional Experience -->
         <section>
             <h2 data-i18n="experience_title">Professional Experience</h2>
@@ -432,7 +684,7 @@
                     <li data-i18n="sre_desc3">Deployed a web-based business reporting solution to replace email distribution, improving accessibility, auditability, and operational efficiency for stakeholders.</li>
                     <li data-i18n="sre_desc4">Delivered training sessions on GitHub Copilot and AI-assisted workflows for production support engineers across multiple FICC clusters, accelerating adoption of developer productivity tooling.</li>
                     <li data-i18n="sre_desc5">Executed migration of internal Apache infrastructure from RHEL 7 to RHEL 8 within cluster; authored migration documentation subsequently adopted by other clusters.</li>
-                    <li data-i18n="sre_desc6">Triaged and resolved L1–L3 incidents in real time, including full-scale outage management across proprietary trading platforms. Implemented proactive monitoring, alerting automation, failover mechanisms, and event streaming infrastructure (Kafka) for real-time FIX message processing to reduce MTTR and increase platform resilience.</li>
+                    <li data-i18n="sre_desc6">Led incident response for production issues impacting live trades — debugged FIX messages, coordinated with trading desks and engineering teams to resolve outages fast, wrote post-mortems, and followed through on fixes to prevent recurrence.</li>
                 </ul>
                 <div class="badge-group">
                     <span class="badge">Python/Quart</span>
@@ -603,7 +855,7 @@
                 'sre_desc3': 'Deployed a web-based business reporting solution to replace email distribution, improving accessibility, auditability, and operational efficiency for stakeholders.',
                 'sre_desc4': 'Delivered training sessions on GitHub Copilot and AI-assisted workflows for production support engineers across multiple FICC clusters, accelerating adoption of developer productivity tooling.',
                 'sre_desc5': 'Executed migration of internal Apache infrastructure from RHEL 7 to RHEL 8 within cluster; authored migration documentation subsequently adopted by other clusters.',
-                'sre_desc6': 'Triaged and resolved L1–L3 incidents in real time, including full-scale outage management across proprietary trading platforms. Implemented proactive monitoring, alerting automation, failover mechanisms, and event streaming infrastructure (Kafka) for real-time FIX message processing to reduce MTTR and increase platform resilience.',
+                'sre_desc6': 'Led incident response for production issues impacting live trades — debugged FIX messages, coordinated with trading desks and engineering teams to resolve outages fast, wrote post-mortems, and followed through on fixes to prevent recurrence.',
                 'systems_analyst': 'Systems Analyst',
                 'alctel': 'Alctel Telecom',
                 'alctel_period': 'May 2023 – Mar 2024 · Belo Horizonte, Brazil (remote)',
@@ -642,7 +894,10 @@
                 'cert1': 'Foundations of Cybersecurity – Google',
                 'cert2': 'Cambridge B2 First – Score 169 (Full Professional English)',
                 'cert3': 'OBI – Silver Medal (Brazilian Olympiad in Informatics)',
-                'cert4': 'UNICAMP Phoenix Robotics Team (2014–2016): Developed autonomous robot with visual cone recognition using OpenCV and Python'
+                'cert4': 'UNICAMP Phoenix Robotics Team (2014–2016): Developed autonomous robot with visual cone recognition using OpenCV and Python',
+                'projects_title': 'Personal Projects',
+                'agent_desc': 'Browser-first multi-step agent with hosted/local LLM routing, modular skill runtime, modular prompt composition, context-aware orchestration, and durable memory/cache layers in local storage.',
+                'yvy_desc': 'Environmental observability platform that tracks and overlays deforestation and wildfire data with firms, conservation units (UCs), and indigenous territories. Integrates official data from ICMBio and FUNAI to provide actionable insights for environmental monitoring and compliance in Brazil.'
             },
             pt: {
                 'summary_title': 'Resumo Profissional',
@@ -661,7 +916,7 @@
                 'sre_desc3': 'Implantei uma solução de relatório baseada em web para substituir distribuição por email, melhorando acessibilidade, auditabilidade e eficiência operacional para stakeholders.',
                 'sre_desc4': 'Conduzi sessões de treinamento em GitHub Copilot e fluxos de trabalho assistidos por IA para engenheiros de suporte de produção em múltiplos clusters FICC, acelerando adoção de ferramentas de produtividade de desenvolvedor.',
                 'sre_desc5': 'Executei migração de infraestrutura Apache interna de RHEL 7 para RHEL 8 dentro do cluster; criei documentação de migração subsequentemente adotada por outros clusters.',
-                'sre_desc6': 'Triagem e resolução de incidentes L1–L3 em tempo real, incluindo gerenciamento de indisponibilidade em larga escala em plataformas de trading proprietárias. Implementei monitoramento proativo, automação de alertas, mecanismos de failover, e infraestrutura de event streaming (Kafka) para processamento em tempo real de mensagens FIX para reduzir MTTR e aumentar a resiliência da plataforma.',
+                'sre_desc6': 'Liderei resposta a incidentes em produção impactando trades ao vivo — debuguei mensagens FIX, coordenei com mesas de trading e times de engenharia para resolver indisponibilidades rapidamente, escrevi post-mortems e acompanhei correções para prevenir recorrência.',
                 'systems_analyst': 'Analista de Sistemas',
                 'alctel': 'Alctel Telecom',
                 'alctel_period': 'Mai 2023 – Mar 2024 · Belo Horizonte, Brasil (remoto)',
@@ -700,7 +955,10 @@
                 'cert1': 'Fundamentos de Cibersegurança – Google',
                 'cert2': 'Cambridge B2 First – Pontuação 169 (Inglês Profissional Completo)',
                 'cert3': 'OBI – Medalha de Prata (Olimpíada Brasileira de Informática)',
-                'cert4': 'UNICAMP Phoenix Robotics Team (2014–2016): Desenvolvi robô autônomo com reconhecimento de cone visual usando OpenCV e Python'
+                'cert4': 'UNICAMP Phoenix Robotics Team (2014–2016): Desenvolvi robô autônomo com reconhecimento de cone visual usando OpenCV e Python',
+                'projects_title': 'Projetos Pessoais',
+                'agent_desc': 'Agente multi-step browser-first com roteamento de LLM hospedado/local, runtime modular de skills, composição modular de prompts, orquestração com contexto, e camadas duráveis de memória/cache em local storage.',
+                'yvy_desc': 'Plataforma de observabilidade ambiental que rastreia e sobrepõe dados de desmatamento e queimadas com empresas, unidades de conservação (UCs) e territórios indígenas. Integra dados oficiais do ICMBio e FUNAI para fornecer insights acionáveis para monitoramento ambiental e compliance no Brasil.'
             }
         };
 
@@ -726,5 +984,6 @@
             setLanguage(savedLang);
         });
     </script>
+    <button class="print-btn" onclick="window.print()">🖨️ Print / Save PDF</button>
 </body>
 </html>
