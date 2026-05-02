@@ -1,49 +1,40 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Samuel Toyoshi Ishida - Senior Software Engineer</title>
+    <title>Samuel Toyoshi Ishida — Senior Software Engineer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Mulish:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #F4F2EE;
-            --white: #FFFFFF;
-            --text: #111827;
-            --text-2: #374151;
-            --text-3: #6B7280;
-            --text-4: #9CA3AF;
-            --navy: #0F2957;
-            --navy-mid: #1D4ED8;
-            --navy-light: #DBEAFE;
-            --navy-faint: #EFF6FF;
-            --gold: #92660A;
-            --gold-light: #FEF3C7;
-            --border: #E5E7EB;
-            --border-2: #D1D5DB;
-            --accent-bar: #1D4ED8;
-            --shadow: rgba(0,0,0,0.04) 0 4px 6px, rgba(0,0,0,0.07) 0 10px 40px;
-            --transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            --bg: #fafaf9;
+            --surface: #ffffff;
+            --ink: #0a0a0a;
+            --ink-secondary: #44403c;
+            --ink-tertiary: #78716c;
+            --ink-faint: #a8a29e;
+            --accent: #9f4a34;
+            --accent-light: #fdf2ef;
+            --rule: #e7e5e4;
+            --rule-strong: #d6d3d1;
+            --shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.06);
+            --transition: color 0.2s ease, background 0.2s ease;
         }
 
         html[data-theme="dark"] {
-            --bg: #0D1117;
-            --white: #161B22;
-            --text: #E6EDF3;
-            --text-2: #B0BEC5;
-            --text-3: #7D8FA1;
-            --text-4: #4D6070;
-            --navy: #93C5FD;
-            --navy-mid: #60A5FA;
-            --navy-light: #1E3A5F;
-            --navy-faint: #0D2040;
-            --gold: #FCD34D;
-            --gold-light: #1C1500;
-            --border: #21262D;
-            --border-2: #30363D;
-            --shadow: rgba(0,0,0,0.3) 0 4px 6px, rgba(0,0,0,0.5) 0 10px 40px;
+            --bg: #0c0a09;
+            --surface: #1c1917;
+            --ink: #f5f5f4;
+            --ink-secondary: #d6d3d1;
+            --ink-tertiary: #a8a29e;
+            --ink-faint: #78716c;
+            --accent: #d9775e;
+            --accent-light: #2a1b15;
+            --rule: #292524;
+            --rule-strong: #44403c;
+            --shadow: 0 1px 3px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.4);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -51,182 +42,136 @@
         html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Mulish', sans-serif;
+            font-family: "DM Sans", sans-serif;
             background: var(--bg);
-            color: var(--text);
-            line-height: 1.65;
-            padding: 2.5rem 1.5rem;
+            color: var(--ink);
+            line-height: 1.6;
             font-weight: 400;
+            font-size: 15px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
             transition: var(--transition);
         }
 
-        .container {
-            max-width: 880px;
+        .page {
+            max-width: 860px;
             margin: 0 auto;
-            background: var(--white);
-            border-radius: 3px;
-            box-shadow: var(--shadow);
-            overflow: hidden;
+            background: var(--surface);
+            min-height: 100vh;
             transition: var(--transition);
         }
 
-        /* ─── Header ─── */
+        /* Header */
         header {
-            padding: 2.8rem 3rem 2.4rem;
-            border-bottom: 1px solid var(--border);
-            position: relative;
+            padding: 3.5rem 3.5rem 2.5rem;
+            border-bottom: 1px solid var(--rule);
         }
 
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--navy) 0%, var(--navy-mid) 60%, var(--gold) 100%);
-        }
-
-        .header-top {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
+        .header-grid {
+            display: grid;
+            grid-template-columns: 1fr auto;
             gap: 2rem;
-            flex-wrap: wrap;
+            align-items: baseline;
         }
-
-        .header-left { flex: 1; min-width: 260px; }
 
         .header-left h1 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--navy);
-            letter-spacing: -0.01em;
-            line-height: 1.05;
-            margin-bottom: 0.55rem;
-        }
-
-        .header-left .title {
-            font-size: 0.95rem;
-            color: var(--navy-mid);
-            font-weight: 600;
-            letter-spacing: 0.04em;
-            text-transform: uppercase;
-            margin-bottom: 0.35rem;
-        }
-
-        .header-left .location {
-            font-size: 0.875rem;
-            color: var(--text-3);
+            font-family: "DM Serif Display", serif;
+            font-size: 2.6rem;
             font-weight: 400;
+            color: var(--accent);
+            letter-spacing: -0.02em;
+            line-height: 1.05;
+            margin-bottom: 0.4rem;
+        }
+
+        .header-left .subtitle {
+            font-size: 0.95rem;
+            color: var(--ink-secondary);
+            font-weight: 500;
+            letter-spacing: 0.02em;
         }
 
         .header-right {
+            text-align: right;
             display: flex;
             flex-direction: column;
-            gap: 0.55rem;
-            align-items: flex-end;
-            padding-top: 0.4rem;
+            gap: 0.35rem;
         }
 
-        .header-right a {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--text-2);
+        .header-right a,
+        .header-right span {
+            color: var(--ink-tertiary);
             text-decoration: none;
-            font-size: 0.845rem;
-            font-weight: 500;
+            font-size: 0.82rem;
+            font-weight: 400;
             transition: color 0.15s;
         }
 
-        .header-right a:hover { color: var(--navy); }
+        .header-right a:hover { color: var(--accent); }
 
-        .contact-icon {
-            font-style: normal;
-            font-size: 0.8rem;
-            opacity: 0.7;
+        /* Body */
+        .cv-body {
+            padding: 2.5rem 3.5rem 3.5rem;
         }
 
-        /* ─── CV Body ─── */
-        .cv-body { padding: 2.5rem 3rem 3rem; }
-
-        /* ─── Sections ─── */
-        section { margin-bottom: 2.4rem; }
+        /* Sections */
+        section {
+            margin-bottom: 2.2rem;
+        }
 
         section:last-child { margin-bottom: 0; }
 
         h2 {
-            font-family: 'Mulish', sans-serif;
-            font-size: 0.68rem;
-            font-weight: 700;
-            letter-spacing: 0.18em;
+            font-family: "DM Sans", sans-serif;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
             text-transform: uppercase;
-            color: var(--text-3);
-            padding-bottom: 0.7rem;
-            border-bottom: 1.5px solid var(--border);
-            margin-bottom: 1.4rem;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
+            color: var(--ink-faint);
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.6rem;
+            border-bottom: 1px solid var(--rule);
         }
 
-        h2::before {
-            content: '';
-            width: 18px;
-            height: 2px;
-            background: var(--navy-mid);
-            flex-shrink: 0;
-        }
-
-        /* ─── Summary ─── */
+        /* Summary */
         .summary-text {
-            font-size: 0.925rem;
-            color: var(--text-2);
-            line-height: 1.8;
+            font-size: 0.95rem;
+            color: var(--ink-secondary);
+            line-height: 1.75;
             font-weight: 400;
+            max-width: 680px;
         }
 
-        /* ─── Skills ─── */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-            gap: 1.4rem;
-        }
-
-        .skill-category h4 {
-            font-size: 0.72rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--text-3);
-            margin-bottom: 0.7rem;
-        }
-
-        .skill-list {
+        /* Skills */
+        .skills-list {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.4rem;
+            gap: 0.15rem 0.6rem;
+            font-size: 0.88rem;
+            color: var(--ink-secondary);
+            line-height: 1.8;
         }
 
-        .skill-tag {
-            background: var(--navy-faint);
-            color: var(--navy-mid);
-            padding: 0.2rem 0.55rem;
-            border-radius: 3px;
-            font-size: 0.775rem;
-            font-weight: 700;
-            transition: background 0.15s;
+        .skills-list .skill-item {
+            white-space: nowrap;
         }
 
-        .skill-tag:hover {
-            background: var(--navy-light);
+        .skills-list .skill-item::after {
+            content: "·";
+            margin-left: 0.6rem;
+            color: var(--ink-faint);
         }
 
-        /* ─── Experience ─── */
+        .skills-list .skill-item:last-child::after {
+            content: none;
+        }
+
+        /* Experience */
         .experience-item {
-            margin-bottom: 1.8rem;
-            padding-bottom: 1.8rem;
-            border-bottom: 1px solid var(--border);
+            margin-bottom: 1.6rem;
+            padding-bottom: 1.6rem;
+            border-bottom: 1px solid var(--rule);
+            page-break-inside: avoid;
         }
 
         .experience-item:last-child {
@@ -235,415 +180,354 @@
             padding-bottom: 0;
         }
 
-        .experience-header { margin-bottom: 0.8rem; }
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 0.6rem;
+        }
 
         .experience-header h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.25rem;
+            font-family: "DM Sans", sans-serif;
+            font-size: 1.05rem;
             font-weight: 600;
-            color: var(--text);
-            line-height: 1.2;
-            margin-bottom: 0.2rem;
+            color: var(--ink);
+            line-height: 1.3;
         }
 
         .job-meta {
-            display: flex;
-            align-items: baseline;
-            gap: 0.5rem;
-            flex-wrap: wrap;
+            font-size: 0.82rem;
+            color: var(--ink-tertiary);
+            font-weight: 400;
+            white-space: nowrap;
         }
 
-        .company {
-            font-weight: 700;
-            color: var(--navy-mid);
-            font-size: 0.875rem;
-        }
-
-        .job-meta-sep {
-            color: var(--text-4);
-            font-size: 0.8rem;
-        }
-
-        .period {
-            color: var(--text-4);
-            font-size: 0.825rem;
-            font-style: italic;
+        .job-meta .company {
+            color: var(--ink-secondary);
+            font-weight: 500;
         }
 
         .experience-item ul {
-            margin-left: 1.25rem;
-            color: var(--text-2);
-            font-size: 0.9rem;
+            margin-left: 1.1rem;
+            color: var(--ink-secondary);
+            font-size: 0.88rem;
+            line-height: 1.7;
         }
 
         .experience-item li {
-            margin-bottom: 0.55rem;
-            line-height: 1.7;
+            margin-bottom: 0.4rem;
         }
 
-        .badge-group {
+        .experience-item li::marker {
+            color: var(--ink-faint);
+        }
+
+        .tag-row {
+            margin-top: 0.7rem;
             display: flex;
             flex-wrap: wrap;
-            gap: 0.35rem;
-            margin-top: 0.9rem;
+            gap: 0.5rem;
         }
 
-        .badge {
-            background: var(--navy-faint);
-            color: var(--navy-mid);
-            padding: 0.2rem 0.6rem;
-            border-radius: 3px;
-            font-size: 0.755rem;
-            font-weight: 700;
-            letter-spacing: 0.02em;
+        .tag {
+            font-size: 0.72rem;
+            font-weight: 500;
+            color: var(--ink-tertiary);
+            letter-spacing: 0.03em;
         }
 
-        /* ─── Projects ─── */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.25rem;
+        .tag::before {
+            content: "#";
+            color: var(--ink-faint);
+            margin-right: 0.1rem;
         }
 
-        .project-card {
-            border: 1.5px solid var(--border);
-            border-radius: 6px;
-            padding: 1.5rem;
-            transition: all 0.25s ease;
-            position: relative;
-            overflow: hidden;
+        /* Projects */
+        .projects-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.4rem;
         }
 
-        .project-card::after {
-            content: '';
-            position: absolute;
-            left: 0; top: 0; bottom: 0;
-            width: 3px;
-            background: var(--navy-mid);
-            transform: scaleY(0);
-            transition: transform 0.25s ease;
-            transform-origin: bottom;
+        .project-item {
+            page-break-inside: avoid;
         }
 
-        .project-card:hover {
-            border-color: var(--navy-mid);
-            box-shadow: 0 4px 20px rgba(29, 78, 216, 0.08);
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 0.35rem;
         }
 
-        .project-card:hover::after { transform: scaleY(1); }
-
-        .project-card h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--text);
-            margin-bottom: 0.15rem;
+        .project-header h3 {
+            font-family: "DM Sans", sans-serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--ink);
         }
 
         .project-period {
-            font-size: 0.8rem;
-            color: var(--text-4);
+            font-size: 0.82rem;
+            color: var(--ink-tertiary);
             font-style: italic;
-            margin-bottom: 0.75rem;
         }
 
-        .project-card p {
-            font-size: 0.875rem;
-            color: var(--text-2);
+        .project-item p {
+            font-size: 0.88rem;
+            color: var(--ink-secondary);
             line-height: 1.7;
-            margin-bottom: 1rem;
+            margin-bottom: 0.4rem;
         }
 
-        .project-links { margin-bottom: 0.85rem; }
-
-        .project-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.35rem;
-            color: var(--navy-mid);
-            text-decoration: none;
-            font-size: 0.825rem;
-            font-weight: 600;
-            margin-bottom: 0.3rem;
-            transition: color 0.15s;
-            margin-right: 0.75rem;
-        }
-
-        .project-link:hover { color: var(--navy); }
-
-        .project-skills {
+        .project-links {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.35rem;
+            gap: 0.9rem;
+            margin-bottom: 0.4rem;
         }
 
-        .project-skill {
-            background: var(--navy-faint);
-            color: var(--navy-mid);
-            padding: 0.2rem 0.55rem;
-            border-radius: 3px;
-            font-size: 0.75rem;
-            font-weight: 700;
+        .project-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.82rem;
+            font-weight: 500;
+            transition: opacity 0.15s;
         }
 
-        /* ─── Education ─── */
+        .project-link:hover { opacity: 0.7; }
+
+        .project-link::after {
+            content: " →";
+            font-size: 0.9em;
+        }
+
+        /* Education */
+        .education-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
         .education-item {
-            margin-bottom: 1.2rem;
-            padding-bottom: 1.2rem;
-            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 1rem;
+            flex-wrap: wrap;
         }
 
-        .education-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
+        .education-item .degree {
+            font-weight: 500;
+            color: var(--ink);
+            font-size: 0.92rem;
         }
 
-        .degree {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--text);
-            margin-bottom: 0.15rem;
+        .education-item .school {
+            color: var(--ink-tertiary);
+            font-size: 0.82rem;
         }
 
-        .school {
-            font-size: 0.875rem;
-            font-weight: 700;
-            color: var(--navy-mid);
-            margin-bottom: 0.1rem;
-        }
-
-        .dates {
-            font-size: 0.825rem;
-            color: var(--text-4);
+        .education-item .dates {
+            color: var(--ink-faint);
+            font-size: 0.82rem;
             font-style: italic;
         }
 
-        /* ─── Certifications ─── */
-        .cert-list { list-style: none; }
+        /* Certs */
+        .cert-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
 
         .cert-list li {
-            margin-bottom: 0.6rem;
-            font-size: 0.9rem;
-            color: var(--text-2);
+            font-size: 0.88rem;
+            color: var(--ink-secondary);
+            line-height: 1.6;
             padding-left: 1.2rem;
             position: relative;
-            line-height: 1.6;
         }
 
         .cert-list li::before {
-            content: '▸';
+            content: "—";
             position: absolute;
             left: 0;
-            color: var(--navy-mid);
-            font-size: 0.75rem;
-            top: 0.12em;
+            color: var(--ink-faint);
+            font-weight: 300;
         }
 
-        /* ─── Language Toggle ─── */
-        .lang-toggle {
+        /* Controls */
+        .controls {
             position: fixed;
             top: 1.25rem;
             right: 1.25rem;
-            background: var(--white);
-            border: 1.5px solid var(--border-2);
-            border-radius: 8px;
-            padding: 0.4rem;
             display: flex;
-            gap: 0.3rem;
+            gap: 0.4rem;
             z-index: 100;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.1);
         }
 
-        .lang-btn {
-            background: none;
-            border: none;
-            color: var(--text-3);
+        .ctrl-btn {
+            background: var(--surface);
+            border: 1px solid var(--rule-strong);
+            color: var(--ink-tertiary);
             cursor: pointer;
-            font-family: 'Mulish', sans-serif;
-            font-size: 0.8rem;
-            font-weight: 700;
-            padding: 0.35rem 0.7rem;
-            border-radius: 5px;
+            font-family: "DM Sans", sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.4rem 0.75rem;
+            border-radius: 6px;
             transition: all 0.15s;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.04em;
         }
 
-        .lang-btn.active {
-            background: var(--navy);
-            color: var(--white);
+        .ctrl-btn.active {
+            background: var(--ink);
+            color: var(--surface);
+            border-color: var(--ink);
         }
 
-        .lang-btn:hover:not(.active) { background: var(--bg); color: var(--text); }
-
-        .lang-divider {
-            width: 1px;
-            background: var(--border-2);
-            align-self: stretch;
-            margin: 0.15rem 0;
+        .ctrl-btn:hover:not(.active) {
+            background: var(--bg);
+            color: var(--ink);
         }
 
         .theme-btn {
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-            padding: 0.35rem 0.55rem;
-            border-radius: 5px;
-            transition: background 0.15s;
-            line-height: 1;
+            font-size: 0.9rem;
+            padding: 0.4rem 0.6rem;
         }
 
-        .theme-btn:hover { background: var(--bg); }
-
-        html[data-theme="dark"] #themeToggle::before { content: '☾'; }
-        html:not([data-theme="dark"]) #themeToggle::before { content: '☀'; }
-        #themeToggle { font-size: 0; }
-        #themeToggle::before { font-size: 1rem; }
-
-        /* ─── Print Button ─── */
+        /* Print Button */
         .print-btn {
             position: fixed;
             bottom: 2rem;
             right: 2rem;
-            background: var(--navy);
-            color: var(--white);
+            background: var(--ink);
+            color: var(--surface);
             border: none;
-            padding: 0.75rem 1.3rem;
-            border-radius: 50px;
+            padding: 0.7rem 1.2rem;
+            border-radius: 8px;
             cursor: pointer;
-            font-family: 'Mulish', sans-serif;
-            font-size: 0.85rem;
-            font-weight: 700;
-            box-shadow: 0 4px 16px rgba(15, 41, 87, 0.3);
+            font-family: "DM Sans", sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            box-shadow: var(--shadow);
             transition: all 0.2s ease;
             z-index: 100;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
             letter-spacing: 0.02em;
         }
 
         .print-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(15, 41, 87, 0.4);
-            background: var(--navy-mid);
+            transform: translateY(-1px);
+            opacity: 0.85;
         }
 
-        /* ─── Animations ─── */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(16px); }
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
             to   { opacity: 1; transform: translateY(0); }
         }
 
-        header {
-            animation: fadeInUp 0.5s ease both;
+        header, section {
+            animation: fadeIn 0.5s ease both;
         }
 
-        section {
-            opacity: 0;
-            animation: fadeInUp 0.5s ease forwards;
-        }
+        .cv-body section:nth-child(1) { animation-delay: 0.06s; }
+        .cv-body section:nth-child(2) { animation-delay: 0.12s; }
+        .cv-body section:nth-child(3) { animation-delay: 0.18s; }
+        .cv-body section:nth-child(4) { animation-delay: 0.24s; }
+        .cv-body section:nth-child(5) { animation-delay: 0.30s; }
+        .cv-body section:nth-child(6) { animation-delay: 0.36s; }
 
-        .cv-body section:nth-child(1) { animation-delay: 0.1s; }
-        .cv-body section:nth-child(2) { animation-delay: 0.18s; }
-        .cv-body section:nth-child(3) { animation-delay: 0.26s; }
-        .cv-body section:nth-child(4) { animation-delay: 0.34s; }
-        .cv-body section:nth-child(5) { animation-delay: 0.42s; }
-        .cv-body section:nth-child(6) { animation-delay: 0.5s; }
-
-        /* ─── Mobile ─── */
+        /* Mobile */
         @media (max-width: 700px) {
-            body { padding: 0; }
+            body { font-size: 14px; }
 
-            .container {
-                border-radius: 0;
-                box-shadow: none;
+            header { padding: 4rem 1.5rem 2rem; }
+
+            .header-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
             }
 
-            header { padding: 4.5rem 1.5rem 2rem; }
+            .header-right { text-align: left; }
+
+            .header-left h1 { font-size: 2rem; }
 
             .cv-body { padding: 1.75rem 1.5rem 2.5rem; }
 
-            .header-top { flex-direction: column; gap: 1.25rem; }
+            .experience-header {
+                flex-direction: column;
+                gap: 0.2rem;
+            }
 
-            .header-left h1 { font-size: 2.3rem; }
-
-            .header-right { align-items: flex-start; }
-
-            .skills-grid { grid-template-columns: 1fr 1fr; }
-
-            .projects-grid { grid-template-columns: 1fr; }
-
-            .lang-toggle {
+            .controls {
                 top: 0.75rem;
                 right: 0.75rem;
             }
         }
 
-        /* ─── Print ─── */
+        /* Print */
         @media print {
             @page {
                 size: A4;
-                margin: 17mm 15mm;
+                margin: 16mm 18mm;
             }
 
-            * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            * {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
 
             html, body {
-                background: white !important;
-                padding: 0 !important;
-                font-size: 13px;
+                background: #fff !important;
+                font-size: 12.5px;
             }
 
-            .lang-toggle,
-            .print-btn {
+            .controls, .print-btn {
                 display: none !important;
             }
 
-            /* Hide skills section on print */
-            .skills-section { display: none !important; }
-
-            .container {
+            .page {
                 max-width: 100% !important;
-                border-radius: 0 !important;
                 box-shadow: none !important;
+                background: #fff !important;
             }
 
             header {
-                padding: 1.5rem 2rem 1.25rem !important;
+                padding: 1.5rem 0 1.25rem !important;
                 animation: none !important;
                 opacity: 1 !important;
             }
 
-            header::before {
-                background: linear-gradient(90deg, #0F2957 0%, #1D4ED8 60%, #92660A 100%) !important;
-            }
-
             .header-left h1 {
-                font-size: 2.2rem !important;
-                color: #0F2957 !important;
+                font-size: 2rem !important;
+                color: #9f4a34 !important;
             }
 
             .cv-body {
-                padding: 1.5rem 2rem 2rem !important;
+                padding: 1.25rem 0 2rem !important;
             }
 
             section {
                 opacity: 1 !important;
                 transform: none !important;
                 animation: none !important;
-                margin-bottom: 1.6rem !important;
+                margin-bottom: 1.4rem !important;
             }
 
             .experience-item {
-                margin-bottom: 1.2rem !important;
-                padding-bottom: 1.2rem !important;
+                margin-bottom: 1rem !important;
+                padding-bottom: 1rem !important;
                 page-break-inside: avoid;
             }
 
-            .project-card {
+            .project-item {
                 page-break-inside: avoid;
             }
 
@@ -651,69 +535,36 @@
                 page-break-inside: avoid;
             }
 
-            h2 { margin-bottom: 1rem !important; }
+            h2 { margin-bottom: 0.9rem !important; }
 
-            .experience-item ul { font-size: 0.85rem !important; }
+            .experience-item ul { font-size: 0.82rem !important; }
 
-            .experience-item li { margin-bottom: 0.4rem !important; }
-
-            .summary-text { font-size: 0.875rem !important; }
-
-            .projects-grid {
-                grid-template-columns: 1fr 1fr !important;
-                gap: 0.9rem !important;
-            }
-
-            .project-card {
-                padding: 1rem !important;
-            }
-
-            .project-card p { font-size: 0.8rem !important; }
+            .summary-text { font-size: 0.85rem !important; }
 
             a { color: inherit !important; text-decoration: none !important; }
 
-            .header-right a { color: #374151 !important; }
-
-            .badge {
-                background: #EFF6FF !important;
-                color: #1D4ED8 !important;
-            }
-
-            .skill-tag {
-                background: #EFF6FF !important;
-                color: #1D4ED8 !important;
-            }
+            .project-link::after { content: none !important; }
         }
     </style>
 </head>
 <body>
-    <!-- Language Toggle -->
-    <div class="lang-toggle">
-        <button class="lang-btn active" data-lang="en" onclick="setLanguage('en')">EN</button>
-        <button class="lang-btn" data-lang="pt" onclick="setLanguage('pt')">PT</button>
-        <div class="lang-divider"></div>
-        <button class="theme-btn" id="themeToggle" onclick="toggleTheme()" title="Toggle dark mode">☀</button>
+    <div class="controls">
+        <button class="ctrl-btn active" data-lang="en" onclick="setLanguage('en')">EN</button>
+        <button class="ctrl-btn" data-lang="pt" onclick="setLanguage('pt')">PT</button>
+        <button class="ctrl-btn theme-btn" id="themeToggle" onclick="toggleTheme()" title="Toggle theme">◐</button>
     </div>
 
-    <div class="container">
-        <!-- Header -->
+    <div class="page">
         <header>
-            <div class="header-top">
+            <div class="header-grid">
                 <div class="header-left">
                     <h1>Samuel Toyoshi Ishida</h1>
-                    <div class="title">Senior Software Engineer</div>
-                    <div class="location">Goldman Sachs · São Paulo, Brazil</div>
+                    <div class="subtitle">Senior Software Engineer</div>
                 </div>
                 <div class="header-right">
-                    <a href="mailto:samuel.toyoshi@gmail.com">
-                        <span class="contact-icon">✉</span> samuel.toyoshi@gmail.com
-                    </a>
-                    <a href="https://linkedin.com/in/samuelishida" target="_blank">
-                        <span class="contact-icon">in</span> linkedin.com/in/samuelishida
-                    </a>
-                    <a href="#">
-                        <span class="contact-icon">⌖</span> São Paulo, Brazil
-                    </a>
+                    <a href="mailto:samuel.toyoshi@gmail.com">samuel.toyoshi@gmail.com</a>
+                    <a href="https://linkedin.com/in/samuelishida" target="_blank">linkedin.com/in/samuelishida</a>
+                    <span>São Paulo, Brazil</span>
                 </div>
             </div>
         </header>
@@ -728,98 +579,33 @@
             </section>
 
             <!-- Technical Skills -->
-            <section class="skills-section">
-                <h2 data-i18n="skills_title">Technical Skills</h2>
-                <div class="skills-grid">
-                    <div class="skill-category">
-                        <h4 data-i18n="languages">Languages & Technologies</h4>
-                        <div class="skill-list">
-                            <span class="skill-tag">Python</span>
-                            <span class="skill-tag">JavaScript</span>
-                            <span class="skill-tag">TypeScript</span>
-                            <span class="skill-tag">Java</span>
-                            <span class="skill-tag">C#</span>
-                            <span class="skill-tag">PHP</span>
-                        </div>
-                    </div>
-                    <div class="skill-category">
-                        <h4 data-i18n="frameworks">Frameworks & Platforms</h4>
-                        <div class="skill-list">
-                            <span class="skill-tag">Node.js</span>
-                            <span class="skill-tag">React.js</span>
-                            <span class="skill-tag">Django</span>
-                            <span class="skill-tag">Flask</span>
-                            <span class="skill-tag">Spring Boot</span>
-                            <span class="skill-tag">AngularJS</span>
-                            <span class="skill-tag">Slim Framework</span>
-                            <span class="skill-tag">Apache Struts 2</span>
-                        </div>
-                    </div>
-                    <div class="skill-category">
-                        <h4 data-i18n="cloud">Cloud & Infrastructure</h4>
-                        <div class="skill-list">
-                            <span class="skill-tag">AWS</span>
-                            <span class="skill-tag">Azure</span>
-                            <span class="skill-tag">Docker</span>
-                            <span class="skill-tag">Terraform</span>
-                            <span class="skill-tag">Git/GitHub</span>
-                            <span class="skill-tag">CI/CD</span>
-                            <span class="skill-tag">Linux</span>
-                            <span class="skill-tag">Windows Server</span>
-                        </div>
-                    </div>
-                    <div class="skill-category">
-                        <h4 data-i18n="databases">Databases & APIs</h4>
-                        <div class="skill-list">
-                            <span class="skill-tag">PostgreSQL</span>
-                            <span class="skill-tag">MongoDB</span>
-                            <span class="skill-tag">MySQL</span>
-                            <span class="skill-tag">Redis</span>
-                            <span class="skill-tag">REST APIs</span>
-                            <span class="skill-tag">GraphQL</span>
-                            <span class="skill-tag">WebSockets</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Personal Projects -->
             <section>
-                <h2 data-i18n="projects_title">Personal Projects</h2>
-                <div class="projects-grid">
-                    <div class="project-card">
-                        <h3>Yvy</h3>
-                        <div class="project-period">Jul 2025 – Present</div>
-                        <p data-i18n="yvy_desc">Environmental observability platform that tracks and overlays deforestation and wildfire data with firms, conservation units (UCs), and indigenous territories. Integrates official data from ICMBio and FUNAI to provide actionable insights for environmental monitoring and compliance in Brazil.</p>
-                        <div class="project-links">
-                            <a href="https://yvy.app.br" class="project-link" target="_blank">↗ yvy.app.br</a>
-                            <a href="https://github.com/samuelishida/yvy" class="project-link" target="_blank">↗ github.com/samuelishida/yvy</a>
-                        </div>
-                        <div class="project-skills">
-                            <span class="project-skill">React</span>
-                            <span class="project-skill">Python</span>
-                            <span class="project-skill">SQL</span>
-                            <span class="project-skill">Data Engineering</span>
-                            <span class="project-skill">Geospatial Data</span>
-                        </div>
-                    </div>
-
-                    <div class="project-card">
-                        <h3>JS Agent</h3>
-                        <div class="project-period">Mar 2026 – Present</div>
-                        <p data-i18n="agent_desc">Browser-first multi-step agent with hosted/local LLM routing, modular skill runtime, modular prompt composition, context-aware orchestration, and durable memory/cache layers in local storage.</p>
-                        <div class="project-links">
-                            <a href="https://github.com/samuelishida/js-agent/" class="project-link" target="_blank">↗ github.com/samuelishida/js-agent</a>
-                            <a href="https://samuelishida.github.io/js-agent/agentic-search-arch.html" class="project-link" target="_blank">↗ Architecture Docs</a>
-                            <a href="https://js-agent.onrender.com/" class="project-link" target="_blank">↗ Live Demo</a>
-                        </div>
-                        <div class="project-skills">
-                            <span class="project-skill">Local LLMs</span>
-                            <span class="project-skill">AI Agents</span>
-                            <span class="project-skill">JavaScript</span>
-                            <span class="project-skill">Browser APIs</span>
-                        </div>
-                    </div>
+                <h2 data-i18n="skills_title">Technical Skills</h2>
+                <div class="skills-list">
+                    <span class="skill-item">Python</span>
+                    <span class="skill-item">JavaScript</span>
+                    <span class="skill-item">TypeScript</span>
+                    <span class="skill-item">Java</span>
+                    <span class="skill-item">C#</span>
+                    <span class="skill-item">PHP</span>
+                    <span class="skill-item">Node.js</span>
+                    <span class="skill-item">React</span>
+                    <span class="skill-item">Django</span>
+                    <span class="skill-item">Flask</span>
+                    <span class="skill-item">Spring Boot</span>
+                    <span class="skill-item">AWS</span>
+                    <span class="skill-item">Azure</span>
+                    <span class="skill-item">Docker</span>
+                    <span class="skill-item">Terraform</span>
+                    <span class="skill-item">CI/CD</span>
+                    <span class="skill-item">Linux</span>
+                    <span class="skill-item">PostgreSQL</span>
+                    <span class="skill-item">MongoDB</span>
+                    <span class="skill-item">MySQL</span>
+                    <span class="skill-item">Redis</span>
+                    <span class="skill-item">REST APIs</span>
+                    <span class="skill-item">GraphQL</span>
+                    <span class="skill-item">WebSockets</span>
                 </div>
             </section>
 
@@ -832,8 +618,8 @@
                         <h3 data-i18n="sre_title">Site Reliability Engineer (SRE)</h3>
                         <div class="job-meta">
                             <span class="company" data-i18n="goldman">Goldman Sachs</span>
-                            <span class="job-meta-sep">·</span>
-                            <span class="period" data-i18n="sre_period">Oct 2024 – Present · São Paulo, Brazil</span>
+                            <span>·</span>
+                            <span data-i18n="sre_period">Oct 2024 – Present · São Paulo, Brazil</span>
                         </div>
                     </div>
                     <ul>
@@ -844,13 +630,13 @@
                         <li data-i18n="sre_desc5">Executed migration of internal Apache infrastructure from RHEL 7 to RHEL 8 within cluster; authored migration documentation subsequently adopted by other clusters.</li>
                         <li data-i18n="sre_desc6">Led incident response for production issues impacting live trades — debugged FIX messages, coordinated with trading desks and engineering teams to resolve outages fast, wrote post-mortems, and followed through on fixes to prevent recurrence.</li>
                     </ul>
-                    <div class="badge-group">
-                        <span class="badge">Python/Quart</span>
-                        <span class="badge">Java</span>
-                        <span class="badge">LLM/RAG</span>
-                        <span class="badge">Incident Management</span>
-                        <span class="badge">RHEL/Linux</span>
-                        <span class="badge">Monitoring</span>
+                    <div class="tag-row">
+                        <span class="tag">Python/Quart</span>
+                        <span class="tag">Java</span>
+                        <span class="tag">LLM/RAG</span>
+                        <span class="tag">Incident Management</span>
+                        <span class="tag">RHEL/Linux</span>
+                        <span class="tag">Monitoring</span>
                     </div>
                 </div>
 
@@ -859,8 +645,8 @@
                         <h3 data-i18n="systems_analyst">Systems Analyst</h3>
                         <div class="job-meta">
                             <span class="company" data-i18n="alctel">Alctel Telecom</span>
-                            <span class="job-meta-sep">·</span>
-                            <span class="period" data-i18n="alctel_period">May 2023 – Mar 2024 · Belo Horizonte, Brazil (remote)</span>
+                            <span>·</span>
+                            <span data-i18n="alctel_period">May 2023 – Mar 2024 · Belo Horizonte, Brazil (remote)</span>
                         </div>
                     </div>
                     <ul>
@@ -868,12 +654,11 @@
                         <li data-i18n="alctel_desc2">Provided hands-on technical support for client systems, troubleshooting production issues across Windows Server environments and ensuring high client satisfaction.</li>
                         <li data-i18n="alctel_desc3">Managed Windows Server infrastructure, performed database administration tasks, and ran operational procedures to maintain system health and availability. Conducted client meetings for project planning, requirements gathering, and solution design.</li>
                     </ul>
-                    <div class="badge-group">
-                        <span class="badge">C#</span>
-                        <span class="badge">WebSockets</span>
-                        <span class="badge">MySQL</span>
-                        <span class="badge">Stored Procedures</span>
-                        <span class="badge">Windows Server</span>
+                    <div class="tag-row">
+                        <span class="tag">C#</span>
+                        <span class="tag">WebSockets</span>
+                        <span class="tag">MySQL</span>
+                        <span class="tag">Windows Server</span>
                     </div>
                 </div>
 
@@ -882,20 +667,19 @@
                         <h3 data-i18n="systems_analyst">Systems Analyst</h3>
                         <div class="job-meta">
                             <span class="company" data-i18n="gft">GFT Group</span>
-                            <span class="job-meta-sep">·</span>
-                            <span class="period" data-i18n="gft_period">Jan 2022 – Mar 2023 · São Paulo, Brazil (remote)</span>
+                            <span>·</span>
+                            <span data-i18n="gft_period">Jan 2022 – Mar 2023 · São Paulo, Brazil (remote)</span>
                         </div>
                     </div>
                     <ul>
                         <li data-i18n="gft_desc1">Led the migration of 200 on-premise applications to AWS, architecting cloud-native solutions that resulted in more efficient processes and significant productivity gains.</li>
                         <li data-i18n="gft_desc2">Implemented infrastructure and documentation automation using Terraform and CI/CD pipelines, reducing provisioning time from weeks to days. Collaborated with cross-functional teams to establish best practices for cloud security, cost optimization, and operational excellence.</li>
                     </ul>
-                    <div class="badge-group">
-                        <span class="badge">AWS</span>
-                        <span class="badge">Terraform</span>
-                        <span class="badge">CI/CD</span>
-                        <span class="badge">Cloud Architecture</span>
-                        <span class="badge">Infrastructure Automation</span>
+                    <div class="tag-row">
+                        <span class="tag">AWS</span>
+                        <span class="tag">Terraform</span>
+                        <span class="tag">CI/CD</span>
+                        <span class="tag">Cloud Architecture</span>
                     </div>
                 </div>
 
@@ -904,8 +688,8 @@
                         <h3 data-i18n="web_developer">Web Developer</h3>
                         <div class="job-meta">
                             <span class="company" data-i18n="suma">Suma – Consulting Group</span>
-                            <span class="job-meta-sep">·</span>
-                            <span class="period" data-i18n="suma_period">Nov 2019 – Jan 2022 · Campinas, São Paulo</span>
+                            <span>·</span>
+                            <span data-i18n="suma_period">Nov 2019 – Jan 2022 · Campinas, São Paulo</span>
                         </div>
                     </div>
                     <ul>
@@ -913,13 +697,13 @@
                         <li data-i18n="suma_desc2">Managed Linux server infrastructure to deploy and maintain the application in production, including configuration, monitoring, and troubleshooting. Integrated a Data Warehouse with Azure Cloud infrastructure for data processing, analysis, and reporting.</li>
                         <li data-i18n="suma_desc3">Collaborated on the development of an Android application for data transmission and real-time tracking.</li>
                     </ul>
-                    <div class="badge-group">
-                        <span class="badge">Django</span>
-                        <span class="badge">React.js</span>
-                        <span class="badge">Node.js</span>
-                        <span class="badge">Linux</span>
-                        <span class="badge">Azure</span>
-                        <span class="badge">Data Warehouse</span>
+                    <div class="tag-row">
+                        <span class="tag">Django</span>
+                        <span class="tag">React.js</span>
+                        <span class="tag">Node.js</span>
+                        <span class="tag">Linux</span>
+                        <span class="tag">Azure</span>
+                        <span class="tag">Data Warehouse</span>
                     </div>
                 </div>
 
@@ -928,18 +712,18 @@
                         <h3 data-i18n="junior_dev">Junior Software Developer</h3>
                         <div class="job-meta">
                             <span class="company" data-i18n="bit">Bit Capital</span>
-                            <span class="job-meta-sep">·</span>
-                            <span class="period" data-i18n="bit_period">Jul 2019 – Oct 2019 · Campinas, Brazil</span>
+                            <span>·</span>
+                            <span data-i18n="bit_period">Jul 2019 – Oct 2019 · Campinas, Brazil</span>
                         </div>
                     </div>
                     <ul>
                         <li data-i18n="bit_desc">Developed an API layer in TypeScript and Node.js to streamline transactions on a blockchain-based digital banking platform, integrating with multiple payment providers and cryptocurrency exchanges.</li>
                     </ul>
-                    <div class="badge-group">
-                        <span class="badge">TypeScript</span>
-                        <span class="badge">Node.js</span>
-                        <span class="badge">Blockchain</span>
-                        <span class="badge">Payment Integration</span>
+                    <div class="tag-row">
+                        <span class="tag">TypeScript</span>
+                        <span class="tag">Node.js</span>
+                        <span class="tag">Blockchain</span>
+                        <span class="tag">Payment Integration</span>
                     </div>
                 </div>
 
@@ -948,17 +732,17 @@
                         <h3 data-i18n="junior_dev">Junior Software Developer</h3>
                         <div class="job-meta">
                             <span class="company" data-i18n="boilesen">Boilesen Associates</span>
-                            <span class="job-meta-sep">·</span>
-                            <span class="period" data-i18n="boilesen_period">Mar 2019 – Jul 2019 · Campinas, Brazil</span>
+                            <span>·</span>
+                            <span data-i18n="boilesen_period">Mar 2019 – Jul 2019 · Campinas, Brazil</span>
                         </div>
                     </div>
                     <ul>
                         <li data-i18n="boilesen_desc">Built a digital marketing tool for lead generation and tracking using PHP and the Slim framework, integrating with CRM systems and analytics dashboards to measure campaign performance.</li>
                     </ul>
-                    <div class="badge-group">
-                        <span class="badge">PHP</span>
-                        <span class="badge">Slim Framework</span>
-                        <span class="badge">CRM Integration</span>
+                    <div class="tag-row">
+                        <span class="tag">PHP</span>
+                        <span class="tag">Slim Framework</span>
+                        <span class="tag">CRM Integration</span>
                     </div>
                 </div>
 
@@ -967,17 +751,61 @@
                         <h3 data-i18n="intern">Java Web Developer Intern</h3>
                         <div class="job-meta">
                             <span class="company" data-i18n="stoom">Stoom</span>
-                            <span class="job-meta-sep">·</span>
-                            <span class="period" data-i18n="stoom_period">Jan 2018 – Oct 2018 · Campinas, Brazil</span>
+                            <span>·</span>
+                            <span data-i18n="stoom_period">Jan 2018 – Oct 2018 · Campinas, Brazil</span>
                         </div>
                     </div>
                     <ul>
                         <li data-i18n="stoom_desc">Developed the Suprevida e-commerce website using Apache Struts 2, Java, and JSP, managing client demands and delivering features in an agile team environment.</li>
                     </ul>
-                    <div class="badge-group">
-                        <span class="badge">Java</span>
-                        <span class="badge">Apache Struts 2</span>
-                        <span class="badge">JSP</span>
+                    <div class="tag-row">
+                        <span class="tag">Java</span>
+                        <span class="tag">Apache Struts 2</span>
+                        <span class="tag">JSP</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Personal Projects -->
+            <section>
+                <h2 data-i18n="projects_title">Personal Projects</h2>
+                <div class="projects-list">
+                    <div class="project-item">
+                        <div class="project-header">
+                            <h3>Yvy</h3>
+                            <span class="project-period">Jul 2025 – Present</span>
+                        </div>
+                        <p data-i18n="yvy_desc">Environmental observability platform that tracks and overlays deforestation and wildfire data with firms, conservation units (UCs), and indigenous territories. Integrates official data from ICMBio and FUNAI to provide actionable insights for environmental monitoring and compliance in Brazil.</p>
+                        <div class="project-links">
+                            <a href="https://yvy.app.br" class="project-link" target="_blank">yvy.app.br</a>
+                            <a href="https://github.com/samuelishida/yvy" class="project-link" target="_blank">github.com/samuelishida/yvy</a>
+                        </div>
+                        <div class="tag-row">
+                            <span class="tag">React</span>
+                            <span class="tag">Python</span>
+                            <span class="tag">SQL</span>
+                            <span class="tag">Data Engineering</span>
+                            <span class="tag">Geospatial Data</span>
+                        </div>
+                    </div>
+
+                    <div class="project-item">
+                        <div class="project-header">
+                            <h3>JS Agent</h3>
+                            <span class="project-period">Mar 2026 – Present</span>
+                        </div>
+                        <p data-i18n="agent_desc">Browser-first multi-step agent with hosted/local LLM routing, modular skill runtime, modular prompt composition, context-aware orchestration, and durable memory/cache layers in local storage.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/samuelishida/js-agent/" class="project-link" target="_blank">github.com/samuelishida/js-agent</a>
+                            <a href="https://samuelishida.github.io/js-agent/agentic-search-arch.html" class="project-link" target="_blank">Architecture Docs</a>
+                            <a href="https://js-agent.onrender.com/" class="project-link" target="_blank">Live Demo</a>
+                        </div>
+                        <div class="tag-row">
+                            <span class="tag">Local LLMs</span>
+                            <span class="tag">AI Agents</span>
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">Browser APIs</span>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -985,15 +813,21 @@
             <!-- Education -->
             <section>
                 <h2 data-i18n="education_title">Education</h2>
-                <div class="education-item">
-                    <div class="degree" data-i18n="estacio_degree">B.Tech in Information Security</div>
-                    <div class="school" data-i18n="estacio">Estácio</div>
-                    <div class="dates" data-i18n="estacio_dates">Feb 2023 – Nov 2025</div>
-                </div>
-                <div class="education-item">
-                    <div class="degree" data-i18n="unicamp_degree">Computer Engineering</div>
-                    <div class="school" data-i18n="unicamp">UNICAMP</div>
-                    <div class="dates" data-i18n="unicamp_dates">2014 – Feb 2019</div>
+                <div class="education-list">
+                    <div class="education-item">
+                        <div>
+                            <span class="degree" data-i18n="estacio_degree">B.Tech in Information Security</span>
+                            <span class="school" data-i18n="estacio"> · Estácio</span>
+                        </div>
+                        <span class="dates" data-i18n="estacio_dates">Feb 2023 – Nov 2025</span>
+                    </div>
+                    <div class="education-item">
+                        <div>
+                            <span class="degree" data-i18n="unicamp_degree">Computer Engineering</span>
+                            <span class="school" data-i18n="unicamp"> · UNICAMP</span>
+                        </div>
+                        <span class="dates" data-i18n="unicamp_dates">2014 – Feb 2019</span>
+                    </div>
                 </div>
             </section>
 
@@ -1001,8 +835,8 @@
             <section>
                 <h2 data-i18n="certs_title">Certifications & Highlights</h2>
                 <ul class="cert-list">
-                    <li data-i18n="cert1"><strong>Foundations of Cybersecurity</strong> – Google</li>
-                    <li data-i18n="cert2"><strong>Cambridge B2 First</strong> – Score 169 (Full Professional English)</li>
+                    <li data-i18n="cert1"><strong>Foundations of Cybersecurity</strong> — Google</li>
+                    <li data-i18n="cert2"><strong>Cambridge B2 First</strong> — Score 169 (Full Professional English)</li>
                     <li data-i18n="cert3"><strong>OBI – Silver Medal</strong> (Brazilian Olympiad in Informatics)</li>
                     <li data-i18n="cert4"><strong>UNICAMP Phoenix Robotics Team</strong> (2014–2016): Developed autonomous robot with visual cone recognition using OpenCV and Python</li>
                 </ul>
@@ -1010,164 +844,149 @@
         </div>
     </div>
 
-    <button class="print-btn" onclick="window.print()">⎙ Print / Save PDF</button>
+    <button class="print-btn" onclick="window.print()">Print / Save PDF</button>
 
     <script>
         const translations = {
             en: {
-                'summary_title': 'Professional Summary',
-                'summary_text': 'Senior Software Engineer with 8+ years building resilient full-stack applications and leading infrastructure transformation across fintech, telecom, and logistics. Deep expertise in backend architecture, API design, and cloud-native systems combined with DevOps and SRE practices: migrated 200+ on-premise applications to AWS, architected infrastructure-as-code pipelines reducing provisioning from weeks to days, and managed large-scale incidents with sub-hour MTTR. Currently at Goldman Sachs designing and shipping AI-powered internal tools that automate workflows and accelerate engineering productivity for FICC trading platforms while driving reliability improvements and operational automation across production systems.',
-                'skills_title': 'Technical Skills',
-                'languages': 'Languages & Technologies',
-                'frameworks': 'Frameworks & Platforms',
-                'cloud': 'Cloud & Infrastructure',
-                'databases': 'Databases & APIs',
-                'experience_title': 'Professional Experience',
-                'sre_title': 'Site Reliability Engineer (SRE)',
-                'goldman': 'Goldman Sachs',
-                'sre_period': 'Oct 2024 – Present · São Paulo, Brazil',
-                'sre_desc1': 'Designed and built an AI-assisted RAG documentation tool using Python (Quart) orchestrator for AI logic and internally-hosted LLM backend — enabling support engineers and business users to query internal documentation conversationally.',
-                'sre_desc2': 'Enhanced and fully integrated an existing LLM-based interview platform, repackaging it as a Java web application to streamline firm-wide distribution via executables with standard Helpdesk installation support.',
-                'sre_desc3': 'Deployed a web-based business reporting solution to replace email distribution, improving accessibility, auditability, and operational efficiency for stakeholders.',
-                'sre_desc4': 'Delivered training sessions on GitHub Copilot and AI-assisted workflows for production support engineers across multiple FICC clusters, accelerating adoption of developer productivity tooling.',
-                'sre_desc5': 'Executed migration of internal Apache infrastructure from RHEL 7 to RHEL 8 within cluster; authored migration documentation subsequently adopted by other clusters.',
-                'sre_desc6': 'Led incident response for production issues impacting live trades — debugged FIX messages, coordinated with trading desks and engineering teams to resolve outages fast, wrote post-mortems, and followed through on fixes to prevent recurrence.',
-                'systems_analyst': 'Systems Analyst',
-                'alctel': 'Alctel Telecom',
-                'alctel_period': 'May 2023 – Mar 2024 · Belo Horizonte, Brazil (remote)',
-                'alctel_desc1': 'Integrated chatbot solutions with WhatsApp using C#, WebSockets, and managed MySQL databases, including writing stored procedures and optimizing queries for production workloads.',
-                'alctel_desc2': 'Provided hands-on technical support for client systems, troubleshooting production issues across Windows Server environments and ensuring high client satisfaction.',
-                'alctel_desc3': 'Managed Windows Server infrastructure, performed database administration tasks, and ran operational procedures to maintain system health and availability. Conducted client meetings for project planning, requirements gathering, and solution design.',
-                'gft': 'GFT Group',
-                'gft_period': 'Jan 2022 – Mar 2023 · São Paulo, Brazil (remote)',
-                'gft_desc1': 'Led the migration of 200 on-premise applications to AWS, architecting cloud-native solutions that resulted in more efficient processes and significant productivity gains.',
-                'gft_desc2': 'Implemented infrastructure and documentation automation using Terraform and CI/CD pipelines, reducing provisioning time from weeks to days. Collaborated with cross-functional teams to establish best practices for cloud security, cost optimization, and operational excellence.',
-                'web_developer': 'Web Developer',
-                'suma': 'Suma – Consulting Group',
-                'suma_period': 'Nov 2019 – Jan 2022 · Campinas, São Paulo',
-                'suma_desc1': 'Developed a Django server to collect data from telemetry modules embedded in freight trucks, handling full backend architecture and API design.',
-                'suma_desc2': 'Managed Linux server infrastructure to deploy and maintain the application in production, including configuration, monitoring, and troubleshooting. Integrated a Data Warehouse with Azure Cloud infrastructure for data processing, analysis, and reporting.',
-                'suma_desc3': 'Collaborated on the development of an Android application for data transmission and real-time tracking.',
-                'junior_dev': 'Junior Software Developer',
-                'bit': 'Bit Capital',
-                'bit_period': 'Jul 2019 – Oct 2019 · Campinas, Brazil',
-                'bit_desc': 'Developed an API layer in TypeScript and Node.js to streamline transactions on a blockchain-based digital banking platform, integrating with multiple payment providers and cryptocurrency exchanges.',
-                'boilesen': 'Boilesen Associates',
-                'boilesen_period': 'Mar 2019 – Jul 2019 · Campinas, Brazil',
-                'boilesen_desc': 'Built a digital marketing tool for lead generation and tracking using PHP and the Slim framework, integrating with CRM systems and analytics dashboards to measure campaign performance.',
-                'intern': 'Java Web Developer Intern',
-                'stoom': 'Stoom',
-                'stoom_period': 'Jan 2018 – Oct 2018 · Campinas, Brazil',
-                'stoom_desc': 'Developed the Suprevida e-commerce website using Apache Struts 2, Java, and JSP, managing client demands and delivering features in an agile team environment.',
-                'education_title': 'Education',
-                'estacio': 'Estácio',
-                'estacio_degree': 'B.Tech in Information Security',
-                'estacio_dates': 'Feb 2023 – Nov 2025',
-                'unicamp': 'UNICAMP',
-                'unicamp_degree': 'Computer Engineering',
-                'unicamp_dates': '2014 – Feb 2019',
-                'certs_title': 'Certifications & Highlights',
-                'cert1': '<strong>Foundations of Cybersecurity</strong> – Google',
-                'cert2': '<strong>Cambridge B2 First</strong> – Score 169 (Full Professional English)',
-                'cert3': '<strong>OBI – Silver Medal</strong> (Brazilian Olympiad in Informatics)',
-                'cert4': '<strong>UNICAMP Phoenix Robotics Team</strong> (2014–2016): Developed autonomous robot with visual cone recognition using OpenCV and Python',
-                'projects_title': 'Personal Projects',
-                'agent_desc': 'Browser-first multi-step agent with hosted/local LLM routing, modular skill runtime, modular prompt composition, context-aware orchestration, and durable memory/cache layers in local storage.',
-                'yvy_desc': 'Environmental observability platform that tracks and overlays deforestation and wildfire data with firms, conservation units (UCs), and indigenous territories. Integrates official data from ICMBio and FUNAI to provide actionable insights for environmental monitoring and compliance in Brazil.'
+                "summary_title": "Professional Summary",
+                "summary_text": "Senior Software Engineer with 8+ years building resilient full-stack applications and leading infrastructure transformation across fintech, telecom, and logistics. Deep expertise in backend architecture, API design, and cloud-native systems combined with DevOps and SRE practices: migrated 200+ on-premise applications to AWS, architected infrastructure-as-code pipelines reducing provisioning from weeks to days, and managed large-scale incidents with sub-hour MTTR. Currently at Goldman Sachs designing and shipping AI-powered internal tools that automate workflows and accelerate engineering productivity for FICC trading platforms while driving reliability improvements and operational automation across production systems.",
+                "skills_title": "Technical Skills",
+                "experience_title": "Professional Experience",
+                "sre_title": "Site Reliability Engineer (SRE)",
+                "goldman": "Goldman Sachs",
+                "sre_period": "Oct 2024 – Present · São Paulo, Brazil",
+                "sre_desc1": "Designed and built an AI-assisted RAG documentation tool using Python (Quart) orchestrator for AI logic and internally-hosted LLM backend — enabling support engineers and business users to query internal documentation conversationally.",
+                "sre_desc2": "Enhanced and fully integrated an existing LLM-based interview platform, repackaging it as a Java web application to streamline firm-wide distribution via executables with standard Helpdesk installation support.",
+                "sre_desc3": "Deployed a web-based business reporting solution to replace email distribution, improving accessibility, auditability, and operational efficiency for stakeholders.",
+                "sre_desc4": "Delivered training sessions on GitHub Copilot and AI-assisted workflows for production support engineers across multiple FICC clusters, accelerating adoption of developer productivity tooling.",
+                "sre_desc5": "Executed migration of internal Apache infrastructure from RHEL 7 to RHEL 8 within cluster; authored migration documentation subsequently adopted by other clusters.",
+                "sre_desc6": "Led incident response for production issues impacting live trades — debugged FIX messages, coordinated with trading desks and engineering teams to resolve outages fast, wrote post-mortems, and followed through on fixes to prevent recurrence.",
+                "systems_analyst": "Systems Analyst",
+                "alctel": "Alctel Telecom",
+                "alctel_period": "May 2023 – Mar 2024 · Belo Horizonte, Brazil (remote)",
+                "alctel_desc1": "Integrated chatbot solutions with WhatsApp using C#, WebSockets, and managed MySQL databases, including writing stored procedures and optimizing queries for production workloads.",
+                "alctel_desc2": "Provided hands-on technical support for client systems, troubleshooting production issues across Windows Server environments and ensuring high client satisfaction.",
+                "alctel_desc3": "Managed Windows Server infrastructure, performed database administration tasks, and ran operational procedures to maintain system health and availability. Conducted client meetings for project planning, requirements gathering, and solution design.",
+                "gft": "GFT Group",
+                "gft_period": "Jan 2022 – Mar 2023 · São Paulo, Brazil (remote)",
+                "gft_desc1": "Led the migration of 200 on-premise applications to AWS, architecting cloud-native solutions that resulted in more efficient processes and significant productivity gains.",
+                "gft_desc2": "Implemented infrastructure and documentation automation using Terraform and CI/CD pipelines, reducing provisioning time from weeks to days. Collaborated with cross-functional teams to establish best practices for cloud security, cost optimization, and operational excellence.",
+                "web_developer": "Web Developer",
+                "suma": "Suma – Consulting Group",
+                "suma_period": "Nov 2019 – Jan 2022 · Campinas, São Paulo",
+                "suma_desc1": "Developed a Django server to collect data from telemetry modules embedded in freight trucks, handling full backend architecture and API design.",
+                "suma_desc2": "Managed Linux server infrastructure to deploy and maintain the application in production, including configuration, monitoring, and troubleshooting. Integrated a Data Warehouse with Azure Cloud infrastructure for data processing, analysis, and reporting.",
+                "suma_desc3": "Collaborated on the development of an Android application for data transmission and real-time tracking.",
+                "junior_dev": "Junior Software Developer",
+                "bit": "Bit Capital",
+                "bit_period": "Jul 2019 – Oct 2019 · Campinas, Brazil",
+                "bit_desc": "Developed an API layer in TypeScript and Node.js to streamline transactions on a blockchain-based digital banking platform, integrating with multiple payment providers and cryptocurrency exchanges.",
+                "boilesen": "Boilesen Associates",
+                "boilesen_period": "Mar 2019 – Jul 2019 · Campinas, Brazil",
+                "boilesen_desc": "Built a digital marketing tool for lead generation and tracking using PHP and the Slim framework, integrating with CRM systems and analytics dashboards to measure campaign performance.",
+                "intern": "Java Web Developer Intern",
+                "stoom": "Stoom",
+                "stoom_period": "Jan 2018 – Oct 2018 · Campinas, Brazil",
+                "stoom_desc": "Developed the Suprevida e-commerce website using Apache Struts 2, Java, and JSP, managing client demands and delivering features in an agile team environment.",
+                "education_title": "Education",
+                "estacio": "Estácio",
+                "estacio_degree": "B.Tech in Information Security",
+                "estacio_dates": "Feb 2023 – Nov 2025",
+                "unicamp": "UNICAMP",
+                "unicamp_degree": "Computer Engineering",
+                "unicamp_dates": "2014 – Feb 2019",
+                "certs_title": "Certifications & Highlights",
+                "cert1": "<strong>Foundations of Cybersecurity</strong> — Google",
+                "cert2": "<strong>Cambridge B2 First</strong> — Score 169 (Full Professional English)",
+                "cert3": "<strong>OBI – Silver Medal</strong> (Brazilian Olympiad in Informatics)",
+                "cert4": "<strong>UNICAMP Phoenix Robotics Team</strong> (2014–2016): Developed autonomous robot with visual cone recognition using OpenCV and Python",
+                "projects_title": "Personal Projects",
+                "agent_desc": "Browser-first multi-step agent with hosted/local LLM routing, modular skill runtime, modular prompt composition, context-aware orchestration, and durable memory/cache layers in local storage.",
+                "yvy_desc": "Environmental observability platform that tracks and overlays deforestation and wildfire data with firms, conservation units (UCs), and indigenous territories. Integrates official data from ICMBio and FUNAI to provide actionable insights for environmental monitoring and compliance in Brazil."
             },
             pt: {
-                'summary_title': 'Resumo Profissional',
-                'summary_text': 'Engenheiro de Software Sênior com 8+ anos construindo aplicações full-stack resilientes e liderando transformação de infraestrutura em fintech, telecom e logística. Expertise profunda em arquitetura de backend, design de APIs e sistemas cloud-native combinados com práticas DevOps e SRE: migrei 200+ aplicações on-premise para AWS, arquitetei pipelines infrastructure-as-code reduzindo provisionamento de semanas para dias, e gerenciei incidentes em larga escala com MTTR sub-hora. Atualmente no Goldman Sachs projetando e entregando ferramentas internas alimentadas por IA que automatizam fluxos de trabalho e acceleram a produtividade de engenharia para plataformas de trading FICC, enquanto dirijo melhorias de confiabilidade e automação operacional em sistemas de produção.',
-                'skills_title': 'Competências Técnicas',
-                'languages': 'Linguagens & Tecnologias',
-                'frameworks': 'Frameworks & Plataformas',
-                'cloud': 'Cloud & Infraestrutura',
-                'databases': 'Bancos de Dados & APIs',
-                'experience_title': 'Experiência Profissional',
-                'sre_title': 'Engenheiro de Confiabilidade de Site (SRE)',
-                'goldman': 'Goldman Sachs',
-                'sre_period': 'Out 2024 – Presente · São Paulo, Brasil',
-                'sre_desc1': 'Projetei e construí uma ferramenta de documentação assistida por IA usando orquestrador Python (Quart) para lógica de IA e backend LLM hospedado internamente — permitindo que engenheiros de suporte e usuários de negócios consultem documentação interna conversacionalmente.',
-                'sre_desc2': 'Aprimorei e integrei completamente uma plataforma de entrevista baseada em LLM, reembalando-a como uma aplicação web Java para simplificar a distribuição em toda a empresa via executáveis com suporte padrão de instalação do Helpdesk.',
-                'sre_desc3': 'Implantei uma solução de relatório baseada em web para substituir distribuição por email, melhorando acessibilidade, auditabilidade e eficiência operacional para stakeholders.',
-                'sre_desc4': 'Conduzi sessões de treinamento em GitHub Copilot e fluxos de trabalho assistidos por IA para engenheiros de suporte de produção em múltiplos clusters FICC, acelerando adoção de ferramentas de produtividade de desenvolvedor.',
-                'sre_desc5': 'Executei migração de infraestrutura Apache interna de RHEL 7 para RHEL 8 dentro do cluster; criei documentação de migração subsequentemente adotada por outros clusters.',
-                'sre_desc6': 'Liderei resposta a incidentes em produção impactando trades ao vivo — debuguei mensagens FIX, coordenei com mesas de trading e times de engenharia para resolver indisponibilidades rapidamente, escrevi post-mortems e acompanhei correções para prevenir recorrência.',
-                'systems_analyst': 'Analista de Sistemas',
-                'alctel': 'Alctel Telecom',
-                'alctel_period': 'Mai 2023 – Mar 2024 · Belo Horizonte, Brasil (remoto)',
-                'alctel_desc1': 'Integrei soluções de chatbot com WhatsApp usando C#, WebSockets, e bancos de dados MySQL gerenciados, incluindo escrita de stored procedures e otimização de queries para cargas de trabalho de produção.',
-                'alctel_desc2': 'Forneci suporte técnico prático para sistemas de clientes, resolvendo problemas de produção em ambientes Windows Server e garantindo alta satisfação do cliente.',
-                'alctel_desc3': 'Gerenciei infraestrutura Windows Server, realizei tarefas de administração de banco de dados, e executei procedimentos operacionais para manter saúde e disponibilidade do sistema. Conduzi reuniões com clientes para planejamento de projetos, coleta de requisitos, e design de soluções.',
-                'gft': 'GFT Group',
-                'gft_period': 'Jan 2022 – Mar 2023 · São Paulo, Brasil (remoto)',
-                'gft_desc1': 'Liderei migração de 200 aplicações on-premise para AWS, arquitetando soluções cloud-native que resultaram em processos mais eficientes e ganhos significativos de produtividade.',
-                'gft_desc2': 'Implementei automação de infraestrutura e documentação usando Terraform e pipelines CI/CD, reduzindo tempo de provisionamento de semanas para dias. Colaborei com equipes multifuncionais para estabelecer melhores práticas de segurança em cloud, otimização de custos, e excelência operacional.',
-                'web_developer': 'Desenvolvedor Web',
-                'suma': 'Suma – Consulting Group',
-                'suma_period': 'Nov 2019 – Jan 2022 · Campinas, São Paulo',
-                'suma_desc1': 'Desenvolvi servidor Django para coletar dados de módulos de telemetria embutidos em caminhões de frete, tratando arquitetura de backend completa e design de API.',
-                'suma_desc2': 'Gerenciei infraestrutura de servidor Linux para implantar e manter a aplicação em produção, incluindo configuração, monitoramento e troubleshooting. Integrei um Data Warehouse com infraestrutura Azure Cloud para processamento, análise e relatório de dados.',
-                'suma_desc3': 'Colaborei no desenvolvimento de uma aplicação Android para transmissão de dados e rastreamento em tempo real.',
-                'junior_dev': 'Desenvolvedor de Software Júnior',
-                'bit': 'Bit Capital',
-                'bit_period': 'Jul 2019 – Out 2019 · Campinas, Brasil',
-                'bit_desc': 'Desenvolvi uma camada de API em TypeScript e Node.js para simplificar transações em uma plataforma de banco digital baseada em blockchain, integrando com múltiplos provedores de pagamento e exchanges de criptomoeda.',
-                'boilesen': 'Boilesen Associates',
-                'boilesen_period': 'Mar 2019 – Jul 2019 · Campinas, Brasil',
-                'boilesen_desc': 'Construí uma ferramenta de marketing digital para geração e rastreamento de leads usando PHP e framework Slim, integrando com sistemas CRM e dashboards de análise para medir desempenho de campanhas.',
-                'intern': 'Estagiário Desenvolvedor Web Java',
-                'stoom': 'Stoom',
-                'stoom_period': 'Jan 2018 – Out 2018 · Campinas, Brasil',
-                'stoom_desc': 'Desenvolvi website de e-commerce Suprevida usando Apache Struts 2, Java, e JSP, gerenciando demandas de cliente e entregando features em ambiente agile.',
-                'education_title': 'Educação',
-                'estacio': 'Estácio',
-                'estacio_degree': 'B.Tech em Segurança da Informação',
-                'estacio_dates': 'Fev 2023 – Nov 2025',
-                'unicamp': 'UNICAMP',
-                'unicamp_degree': 'Engenharia de Computação',
-                'unicamp_dates': '2014 – Fev 2019',
-                'certs_title': 'Certificações & Destaques',
-                'cert1': '<strong>Fundamentos de Cibersegurança</strong> – Google',
-                'cert2': '<strong>Cambridge B2 First</strong> – Pontuação 169 (Inglês Profissional Completo)',
-                'cert3': '<strong>OBI – Medalha de Prata</strong> (Olimpíada Brasileira de Informática)',
-                'cert4': '<strong>UNICAMP Phoenix Robotics Team</strong> (2014–2016): Desenvolvi robô autônomo com reconhecimento de cone visual usando OpenCV e Python',
-                'projects_title': 'Projetos Pessoais',
-                'agent_desc': 'Agente multi-step browser-first com roteamento de LLM hospedado/local, runtime modular de skills, composição modular de prompts, orquestração com contexto, e camadas duráveis de memória/cache em local storage.',
-                'yvy_desc': 'Plataforma de observabilidade ambiental que rastreia e sobrepõe dados de desmatamento e queimadas com empresas, unidades de conservação (UCs) e territórios indígenas. Integra dados oficiais do ICMBio e FUNAI para fornecer insights acionáveis para monitoramento ambiental e compliance no Brasil.'
+                "summary_title": "Resumo Profissional",
+                "summary_text": "Engenheiro de Software Sênior com 8+ anos construindo aplicações full-stack resilientes e liderando transformação de infraestrutura em fintech, telecom e logística. Expertise profunda em arquitetura de backend, design de APIs e sistemas cloud-native combinados com práticas DevOps e SRE: migrei 200+ aplicações on-premise para AWS, arquitetei pipelines infrastructure-as-code reduzindo provisionamento de semanas para dias, e gerenciei incidentes em larga escala com MTTR sub-hora. Atualmente no Goldman Sachs projetando e entregando ferramentas internas alimentadas por IA que automatizam fluxos de trabalho e aceleram a produtividade de engenharia para plataformas de trading FICC, enquanto dirijo melhorias de confiabilidade e automação operacional em sistemas de produção.",
+                "skills_title": "Competências Técnicas",
+                "experience_title": "Experiência Profissional",
+                "sre_title": "Engenheiro de Confiabilidade de Site (SRE)",
+                "goldman": "Goldman Sachs",
+                "sre_period": "Out 2024 – Presente · São Paulo, Brasil",
+                "sre_desc1": "Projetei e construí uma ferramenta de documentação assistida por IA usando orquestrador Python (Quart) para lógica de IA e backend LLM hospedado internamente — permitindo que engenheiros de suporte e usuários de negócios consultem documentação interna conversacionalmente.",
+                "sre_desc2": "Aprimorei e integrei completamente uma plataforma de entrevista baseada em LLM, reembalando-a como uma aplicação web Java para simplificar a distribuição em toda a empresa via executáveis com suporte padrão de instalação do Helpdesk.",
+                "sre_desc3": "Implantei uma solução de relatório baseada em web para substituir distribuição por email, melhorando acessibilidade, auditabilidade e eficiência operacional para stakeholders.",
+                "sre_desc4": "Conduzi sessões de treinamento em GitHub Copilot e fluxos de trabalho assistidos por IA para engenheiros de suporte de produção em múltiplos clusters FICC, acelerando adoção de ferramentas de produtividade de desenvolvedor.",
+                "sre_desc5": "Executei migração de infraestrutura Apache interna de RHEL 7 para RHEL 8 dentro do cluster; criei documentação de migração subsequentemente adotada por outros clusters.",
+                "sre_desc6": "Liderei resposta a incidentes em produção impactando trades ao vivo — debuguei mensagens FIX, coordenei com mesas de trading e times de engenharia para resolver indisponibilidades rapidamente, escrevi post-mortems e acompanhei correções para prevenir recorrência.",
+                "systems_analyst": "Analista de Sistemas",
+                "alctel": "Alctel Telecom",
+                "alctel_period": "Mai 2023 – Mar 2024 · Belo Horizonte, Brasil (remoto)",
+                "alctel_desc1": "Integrei soluções de chatbot com WhatsApp usando C#, WebSockets, e bancos de dados MySQL gerenciados, incluindo escrita de stored procedures e otimização de queries para cargas de trabalho de produção.",
+                "alctel_desc2": "Forneci suporte técnico prático para sistemas de clientes, resolvendo problemas de produção em ambientes Windows Server e garantindo alta satisfação do cliente.",
+                "alctel_desc3": "Gerenciei infraestrutura Windows Server, realizei tarefas de administração de banco de dados, e executei procedimentos operacionais para manter saúde e disponibilidade do sistema. Conduzi reuniões com clientes para planejamento de projetos, coleta de requisitos, e design de soluções.",
+                "gft": "GFT Group",
+                "gft_period": "Jan 2022 – Mar 2023 · São Paulo, Brasil (remoto)",
+                "gft_desc1": "Liderei migração de 200 aplicações on-premise para AWS, arquitetando soluções cloud-native que resultaram em processos mais eficientes e ganhos significativos de produtividade.",
+                "gft_desc2": "Implementei automação de infraestrutura e documentação usando Terraform e pipelines CI/CD, reduzindo tempo de provisionamento de semanas para dias. Colaborei com equipes multifuncionais para estabelecer melhores práticas de segurança em cloud, otimização de custos, e excelência operacional.",
+                "web_developer": "Desenvolvedor Web",
+                "suma": "Suma – Consulting Group",
+                "suma_period": "Nov 2019 – Jan 2022 · Campinas, São Paulo",
+                "suma_desc1": "Desenvolvi servidor Django para coletar dados de módulos de telemetria embutidos em caminhões de frete, tratando arquitetura de backend completa e design de API.",
+                "suma_desc2": "Gerenciei infraestrutura de servidor Linux para implantar e manter a aplicação em produção, incluindo configuração, monitoramento e troubleshooting. Integrei um Data Warehouse com infraestrutura Azure Cloud para processamento, análise e relatório de dados.",
+                "suma_desc3": "Colaborei no desenvolvimento de uma aplicação Android para transmissão de dados e rastreamento em tempo real.",
+                "junior_dev": "Desenvolvedor de Software Júnior",
+                "bit": "Bit Capital",
+                "bit_period": "Jul 2019 – Out 2019 · Campinas, Brasil",
+                "bit_desc": "Desenvolvi uma camada de API em TypeScript e Node.js para simplificar transações em uma plataforma de banco digital baseada em blockchain, integrando com múltiplos provedores de pagamento e exchanges de criptomoeda.",
+                "boilesen": "Boilesen Associates",
+                "boilesen_period": "Mar 2019 – Jul 2019 · Campinas, Brasil",
+                "boilesen_desc": "Construí uma ferramenta de marketing digital para geração e rastreamento de leads usando PHP e framework Slim, integrando com sistemas CRM e dashboards de análise para medir desempenho de campanhas.",
+                "intern": "Estagiário Desenvolvedor Web Java",
+                "stoom": "Stoom",
+                "stoom_period": "Jan 2018 – Out 2018 · Campinas, Brasil",
+                "stoom_desc": "Desenvolvi website de e-commerce Suprevida usando Apache Struts 2, Java, e JSP, gerenciando demandas de cliente e entregando features em ambiente agile.",
+                "education_title": "Educação",
+                "estacio": "Estácio",
+                "estacio_degree": "B.Tech em Segurança da Informação",
+                "estacio_dates": "Fev 2023 – Nov 2025",
+                "unicamp": "UNICAMP",
+                "unicamp_degree": "Engenharia de Computação",
+                "unicamp_dates": "2014 – Fev 2019",
+                "certs_title": "Certificações & Destaques",
+                "cert1": "<strong>Fundamentos de Cibersegurança</strong> — Google",
+                "cert2": "<strong>Cambridge B2 First</strong> — Pontuação 169 (Inglês Profissional Completo)",
+                "cert3": "<strong>OBI – Medalha de Prata</strong> (Olimpíada Brasileira de Informática)",
+                "cert4": "<strong>UNICAMP Phoenix Robotics Team</strong> (2014–2016): Desenvolvi robô autônomo com reconhecimento de cone visual usando OpenCV e Python",
+                "projects_title": "Projetos Pessoais",
+                "agent_desc": "Agente multi-step browser-first com roteamento de LLM hospedado/local, runtime modular de skills, composição modular de prompts, orquestração com contexto, e camadas duráveis de memória/cache em local storage.",
+                "yvy_desc": "Plataforma de observabilidade ambiental que rastreia e sobrepõe dados de desmatamento e queimadas com empresas, unidades de conservação (UCs) e territórios indígenas. Integra dados oficiais do ICMBio e FUNAI para fornecer insights acionáveis para monitoramento ambiental e compliance no Brasil."
             }
         };
 
         function setLanguage(lang) {
-            localStorage.setItem('cvLanguage', lang);
-
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            document.querySelector(`[data-lang="${lang}"]`).classList.add('active');
-
-            document.querySelectorAll('[data-i18n]').forEach(element => {
-                const key = element.getAttribute('data-i18n');
-                if (translations[lang][key]) {
-                    element.innerHTML = translations[lang][key];
-                }
+            localStorage.setItem("cvLanguage", lang);
+            document.querySelectorAll(".ctrl-btn[data-lang]").forEach(btn => btn.classList.remove("active"));
+            document.querySelector(`[data-lang="${lang}"]`).classList.add("active");
+            document.querySelectorAll("[data-i18n]").forEach(el => {
+                const key = el.getAttribute("data-i18n");
+                if (translations[lang][key]) el.innerHTML = translations[lang][key];
             });
         }
 
         function toggleTheme() {
-            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-            const next = isDark ? 'light' : 'dark';
-            document.documentElement.setAttribute('data-theme', next);
-            localStorage.setItem('cvTheme', next);
+            const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+            const next = isDark ? "light" : "dark";
+            document.documentElement.setAttribute("data-theme", next);
+            localStorage.setItem("cvTheme", next);
         }
 
-        window.addEventListener('DOMContentLoaded', function() {
-            const savedLang = localStorage.getItem('cvLanguage') || 'en';
+        window.addEventListener("DOMContentLoaded", function() {
+            const savedLang = localStorage.getItem("cvLanguage") || "en";
             setLanguage(savedLang);
-
-            const savedTheme = localStorage.getItem('cvTheme');
-            if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-                document.documentElement.setAttribute('data-theme', 'dark');
+            const savedTheme = localStorage.getItem("cvTheme");
+            if (savedTheme === "dark" || (!savedTheme && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+                document.documentElement.setAttribute("data-theme", "dark");
             }
         });
     </script>
