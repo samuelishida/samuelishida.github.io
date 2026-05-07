@@ -24,11 +24,10 @@ Senior Software Engineer with 8+ years building backend systems at scale. Python
 ### Goldman Sachs — Site Reliability Engineer (SRE)
 *Oct 2024 – Present | São Paulo, Brazil*
 
-- Built AI-assisted docs tool w/ RAG. Conversational queries for support/business on FICC.
-- Deployed an automated web reporting solution.
-- Built LLM pipelines (OpenAI + VPS) for knowledge retrieval.
-- Collaborated with Strats/Quant team to enhance critical infrastructure.
-- Delivered training on GitHub Copilot and AI-assisted workflows.
+- Architected an AI-assisted documentation tool, enabling conversational queries for support engineers and business users.  
+- Deployed a web-based reporting solution, significantly improving accessibility and operational efficiency for stakeholders.  
+- Collaborated with the Strats team to optimize infrastructure used for risk curves and pricing models.
+- Delivered training on GitHub Copilot and AI-assisted workflows, enhancing productivity for production support engineers.
 ### Alctel Telecom — Backend Engineer
 *May 2023 – Mar 2024 | Belo Horizonte, Brazil (remote)*
 
