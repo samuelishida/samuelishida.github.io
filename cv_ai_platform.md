@@ -24,8 +24,7 @@
 ### Goldman Sachs — DevOps Engineer | AI Platform Focus
 *Oct 2024 – Present | São Paulo, Brazil*
 
-- Built a production support AI agent leveraging RAG and GitHub Copilot.
-- Built AI-assisted docs tool with RAG, using OpenAI's API running in a VPS.
+- Built a production support AI tool to query internal documentation and live logs, with RAG and GitHub Copilot.
 - Migrated internal Apache servers from RHEL 7 to RHEL 8, producing documentation for other clusters to follow
 - Collaborated with the Strats team to optimize infrastructure used for risk curves and pricing models.
 - Delivered trainings on GitHub Copilot and AI-assisted workflows.
