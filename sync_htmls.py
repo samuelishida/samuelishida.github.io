@@ -1,188 +1,319 @@
-import re
+#!/usr/bin/env python3
+"""Update all HTML CV files with new job descriptions. Preserves job titles."""
 
-# Read index.html as template
-with open('index.html', 'r', encoding='utf-8') as f:
-    template = f.read()
+import os
 
-# CV to HTML mapping: cv file -> html file, subtitle
-mappings = [
-    ('cv_ai_platform.md', 'cv_ai_platform.html', 'AI Platform Engineer'),
-    ('cv_genai.md', 'cv_genai.html', 'Senior AI Engineer'),
-    ('cv_backend.md', 'cv_backend.html', 'Senior Software Engineer'),
-    ('cv_bespoke.md', 'cv_bespoke.html', 'Senior Backend & DevOps Engineer'),
-    ('cv_uber_auth.md', 'cv_uber_auth.html', 'Software Engineer | DevSecOps'),
+BASE_DIR = r"e:\Code\github-pages-cv"
+
+VARIANT_FILES = [
+    "cv_ai_platform.html",
+    "cv_genai.html",
+    "cv_backend.html",
+    "cv_bespoke.html",
+    "cv_uber_auth.html",
 ]
 
-# Company logo URLs
-COMPANY_LOGOS = {
-    'Goldman Sachs': 'https://media.licdn.com/dms/image/v2/D4E0BAQG9L7InIQVZrQ/company-logo_100_100/company-logo_100_100/0/1722506756452/goldman_sachs_logo?e=1779321600&v=beta&t=br1hASPJXeBzWgxCKPLetiP6k47KfolKYXKcFkuty7E',
-    'Alctel Telecom': 'https://media.licdn.com/dms/image/v2/C4D0BAQEGzpjuQOQuFw/company-logo_100_100/company-logo_100_100/0/1630433013891/alctel_logo?e=1779321600&v=beta&t=xX2nvBomnzv_ddAJJoUKBliIoWBrMVeXwGJ76F4hNUU',
-    'GFT Group': 'https://media.licdn.com/dms/image/v2/D4E0BAQFS8Oq_RoTX9Q/company-logo_100_100/B4EZmE9ECUIUAQ-/0/1758872224292/gft_technologies_logo?e=1779321600&v=beta&t=Tcf9QtphP6AM5DuBF-e2ig7BXX_JEmFZWIX0G1inAV4',
-    'Suma': 'https://media.licdn.com/dms/image/v2/C4D0BAQGYIJKBpVfk6w/company-logo_100_100/company-logo_100_100/0/1654033713354/sumaconnect_logo?e=1779321600&v=beta&t=fqSN59v79PX3qjrPzr2pNJU46gCdybasJjw-p3QSAVE',
-    'Bit Capital': 'bitcapital-icon.png',
-    'Boilesen Associates': 'https://media.licdn.com/dms/image/v2/D4D0BAQE7GIxYxDhmsg/company-logo_100_100/B4DZnjEaquJUAQ-/0/1760451210272/boilesen_logo?e=1779321600&v=beta&t=qjuVR2ppvvDAunSelQwkTOUlVhbKelz8Stg4UEhJX-Y',
-    'Stoom': 'https://media.licdn.com/dms/image/v2/D4D0BAQHh4TSJtPM07A/company-logo_100_100/B4DZ3QF0wAH8AQ-/0/1777312681695/stoom_ecommerce_logo?e=1779321600&v=beta&t=5tq5jluijiARCsfCG3W38naJbifPzvyELvDfeZTAh4Y',
-}
+# Each replacement is (old_string, new_string)
+REPLACEMENTS = []
 
-def get_logo(company_name):
-    for key, url in COMPANY_LOGOS.items():
-        if key.lower() in company_name.lower():
-            return url
-    return ''
+# Goldman Sachs
+REPLACEMENTS.append((
+    '<li>Built AI-assisted docs tool w/ RAG. Conversational queries for support/business on FICC.</li>\n'
+    '                                <li>Deployed an automated web reporting solution.</li>\n'
+    '                                <li>Built LLM pipelines (OpenAI + VPS) for knowledge retrieval.</li>\n'
+    '                                <li>Collaborated with Strats/Quant team to enhance critical infrastructure.</li>\n'
+    '                                <li>Delivered training on GitHub Copilot and AI-assisted workflows.</li>',
+    '<li>Built AI-assisted docs tool with RAG, using OpenAI\'s API running in a VPS.</li>\n'
+    '                                <li>Migrated internal Apache servers from RHEL 7 to RHEL 8, producing documentation for other clusters to follow</li>\n'
+    '                                <li>Collaborated with the Strats team to optimize infrastructure used for risk curves and pricing models.</li>\n'
+    '                                <li>Delivered trainings on GitHub Copilot and AI-assisted workflows.</li>'
+))
 
-def md_to_html(text):
-    """Convert markdown bold (**text**) to HTML <strong>text</strong>"""
-    return re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', text)
+# Alctel
+REPLACEMENTS.append((
+    '<li>Integrated chatbot solutions with WhatsApp using C#.</li>\n'
+    '                                <li>Managed MySQL databases to ensure data integrity and performance.</li>\n'
+    '                                <li>Provided technical support to resolve production issues.</li>',
+    '<li>Gathered client business requirements and integrated chatbot solutions with WhatsApp using C#, .NET and MySQL.</li>\n'
+    '                                <li>Provided technical support to resolve production issues.</li>'
+))
 
-def strip_bullet(text):
-    """Remove leading '- ' from bullet points"""
-    if text.startswith('- '):
-        return text[2:]
-    return text
+# GFT
+REPLACEMENTS.append((
+    '<li>Led migration of 200 on-premise applications to AWS. Enhanced operational efficiency, reduced infrastructure costs.</li>\n'
+    '                                <li>Implemented automation solutions: reduced processing time weeks \u2192 days (Terraform, CI/CD).</li>\n'
+    '                                <li>Collaborated with international GFT team on automating document generation and backend service deployments.</li>',
+    '<li>Led the migration of 200 on-premise applications to AWS using CloudFormation.</li>\n'
+    '                                <li>Collaborated with the international team to automate document generation using Terraform and Python.</li>'
+))
 
-def parse_cv(content):
-    """Parse markdown CV into sections"""
-    result = {'summary': '', 'skills': [], 'experience': [], 'education': [], 'certs': [], 'languages': []}
-    
-    lines = content.split('\n')
-    current_section = None
-    current_exp = None
-    
-    for line in lines:
-        stripped = line.strip()
-        
-        if stripped.startswith('## Professional Summary'):
-            current_section = 'summary'
-            continue
-        elif stripped.startswith('## Technical Skills'):
-            current_section = 'skills'
-            continue
-        elif stripped.startswith('## Professional Experience'):
-            current_section = 'experience'
-            continue
-        elif stripped.startswith('## Education'):
-            current_section = 'education'
-            continue
-        elif stripped.startswith('## Certifications'):
-            current_section = 'certs'
-            continue
-        elif stripped.startswith('## Languages'):
-            current_section = 'languages'
-            continue
-        elif stripped.startswith('## Contact') or stripped.startswith('# '):
-            current_section = None
-            continue
-        
-        if current_section == 'summary':
-            if stripped and not stripped.startswith('##'):
-                result['summary'] += stripped + ' '
-        elif current_section == 'skills':
-            if stripped.startswith('**') and ':**' in stripped:
-                skills_text = stripped.split(':**', 1)[1].strip()
-                for skill in skills_text.split(','):
-                    skill = skill.strip()
-                    if skill:
-                        result['skills'].append(skill)
-        elif current_section == 'experience':
-            if stripped.startswith('### '):
-                header = stripped.replace('### ', '').strip()
-                result['experience'].append({'header': header, 'date': '', 'bullets': []})
-                current_exp = result['experience'][-1]
-            elif stripped.startswith('*') and current_exp and not current_exp['date']:
-                current_exp['date'] = stripped.strip('*').strip()
-            elif stripped.startswith('- ') and current_exp:
-                current_exp['bullets'].append(strip_bullet(stripped))
-        elif current_section == 'education':
-            if stripped.startswith('- **'):
-                result['education'].append(md_to_html(stripped.strip('- ').strip()))
-        elif current_section == 'certs':
-            if stripped.startswith('- **'):
-                result['certs'].append(md_to_html(stripped.strip('- ').strip()))
-        elif current_section == 'languages':
-            if stripped.startswith('- **'):
-                result['languages'].append(md_to_html(stripped.strip('- ').strip()))
-    
-    return result
+# Suma
+REPLACEMENTS.append((
+    '<li>Developed Django backend with ML integration for telemetry from truck sensors. Enabled predictive maintenance models.</li>\n'
+    '                                <li>Built ETL pipelines: ingested, preprocessed large-scale sensor data for route optimization.</li>\n'
+    '                                <li>Managed cloud data warehouse (Azure). Implemented feature engineering pipelines, integrated PowerBI for AI operational insights and anomaly detection.</li>',
+    '<li>Built ETL pipelines to ingest and preprocess large scale sensor data, preparing datasets for route optimization.</li>\n'
+    '                                <li>Integrated low-latency UDP communication protocols from custom-built telemetry sensors with SUMA servers.</li>\n'
+    '                                <li>Managed a cloud data warehouse on Azure, engineering pipelines and integrating with PowerBI for AI-driven insights via Power BI.</li>'
+))
 
-def build_html(template, cv_data, subtitle):
-    html = template
-    
-    # Update title tag
-    html = re.sub(r'<title>.*?</title>', f'<title>Samuel Toyoshi Ishida \u2014 {subtitle}</title>', html)
-    
-    # Update subtitle in header
-    html = re.sub(r'<div class="subtitle">.*?</div>', f'<div class="subtitle">{subtitle}</div>', html)
-    
-    # Update summary
-    summary = cv_data['summary'].strip()
-    html = re.sub(
-        r'<p class="summary-text" data-i18n="summary_text">.*?</p>',
-        f'<p class="summary-text" data-i18n="summary_text">{summary}</p>',
-        html, flags=re.DOTALL
-    )
-    
-    # Update skills
-    skills_html = '\n'.join([f'                    <span class="skill-item">{s}</span>' for s in cv_data['skills']])
-    skills_pattern = r'(<div class="skills-list">)\n.*?\n(                </div>)'
-    html = re.sub(skills_pattern, rf'\1\n{skills_html}\n\2', html, flags=re.DOTALL)
-    
-    # Update experience with logos
-    exp_items = []
-    for job in cv_data['experience']:
-        logo_url = get_logo(job['header'])
-        bullets_html = '\n'.join([f'                                <li>{b}</li>' for b in job['bullets']])
-        exp_items.append(f'''                <div class="experience-item">
-                    <div class="exp-layout">
-                        <div class="exp-logo">
-                            <img src="{logo_url}" alt="" loading="lazy">
-                        </div>
-                        <div class="exp-body">
-                            <div class="experience-header">
-                                <h3>{job['header']}</h3>
-                                <div class="job-meta">
-                                    <span>{job['date']}</span>
-                                </div>
-                            </div>
-                            <ul>
-{bullets_html}
-                            </ul>
-                        </div>
-                    </div>
-                </div>''')
-    
-    exp_section = '\n\n'.join(exp_items)
-    
-    # Replace experience section (between experience_title h2 and projects_title h2)
-    exp_pattern = r'(<h2 data-i18n="experience_title">.*?</h2>)\s*\n\s*.*?\n(\s*</section>\s*\n\s*<section>\s*\n\s*<h2 data-i18n="projects_title">)'
-    replacement = rf'\1\n\n{exp_section}\n\n            \2'
-    html = re.sub(exp_pattern, replacement, html, flags=re.DOTALL)
-    
-    # Update education
-    edu_items = '\n'.join([f'                    <div class="education-item"><div><span class="degree">{e}</span></div></div>' for e in cv_data['education']])
-    edu_pattern = r'(<div class="education-list">)\n.*?\n(                </div>)'
-    html = re.sub(edu_pattern, rf'\1\n{edu_items}\n\2', html, flags=re.DOTALL)
-    
-    # Update certs
-    cert_items = '\n'.join([f'                    <li>{c}</li>' for c in cv_data['certs']])
-    cert_pattern = r'(<h2 data-i18n="certs_title">.*?</h2>\s*\n\s*<ul class="cert-list">)\n.*?\n(\s*</ul>)'
-    html = re.sub(cert_pattern, rf'\1\n{cert_items}\n\2', html, flags=re.DOTALL)
-    
-    # Update languages
-    lang_items = '\n'.join([f'                    <li>{l}</li>' for l in cv_data['languages']])
-    lang_pattern = r'(<h2 data-i18n="languages_title">.*?</h2>\s*\n\s*<ul class="cert-list">)\n.*?\n(\s*</ul>)'
-    html = re.sub(lang_pattern, rf'\1\n{lang_items}\n\2', html, flags=re.DOTALL)
-    
-    return html
+# Bit Capital
+REPLACEMENTS.append((
+    '<li>Developed TypeScript APIs for blockchain-based digital banking platform.</li>\n'
+    '                                <li>Reduced transaction intermediaries to improve efficiency.</li>',
+    '<li>Developed high performance APIs in TypeScript to be used in credit cards transacions.</li>\n'
+    '                                <li>Worked in the integration with Pix system</li>'
+))
 
-for cv_file, html_file, subtitle in mappings:
-    with open(cv_file, 'r', encoding='utf-8') as f:
-        cv_content = f.read()
-    
-    cv_data = parse_cv(cv_content)
-    html = build_html(template, cv_data, subtitle)
-    
-    with open(html_file, 'w', encoding='utf-8') as f:
-        f.write(html)
-    print(f'Generated: {html_file}')
+# Boilesen
+REPLACEMENTS.append((
+    '<li>Developed digital marketing tool for lead generation and tracking using PHP and Slim framework.</li>\n'
+    '                                <li>Provided client support for Android Java applications, enhancing user experience.</li>',
+    '<li>Developed a digital marketing tool for lead generation and tracking using PHP and the Slim framework.</li>\n'
+    '                                <li>Provided client support for Android Java applications, enhancing user experience and satisfaction.</li>'
+))
 
-print('All HTMLs updated!')
+# Stoom
+STOOM_OLD = '<li>Developed Suprevida e-commerce website using Apache Struts 2, Java, and JSP in an agile team environment.</li>'
+STOOM_NEW = (
+    '<li>Developed the Suprevida website using Apache Struts 2 and PostgreSQL.</li>\n'
+    '                                <li>Collaborated with the team to address client demands and gather business requirements.</li>\n'
+    '                                <li>Assisted in feature development and issue resolution for Brazil\'s leading retailer of domestic animal products.</li>'
+)
+
+# Devnup block to insert
+DEVNUP_BLOCK = (
+    '\n'
+    '                <div class="experience-item">\n'
+    '                    <div class="exp-layout">\n'
+    '                        <div class="exp-logo">\n'
+    '                            <img src="https://media.licdn.com/dms/image/v2/D4D0BAQHh4TSJtPM07A/company-logo_100_100/B4DZ3QF0wAH8AQ-/0/1777312681695/stoom_ecommerce_logo?e=1779321600&v=beta&t=5tq5jluijiARCsfCG3W38naJbifPzvyELvDfeZTAh4Y" alt="" loading="lazy">\n'
+    '                        </div>\n'
+    '                        <div class="exp-body">\n'
+    '                            <div class="experience-header">\n'
+    '                                <h3>Devnup IT Solutions \u2014 Software Engineer Intern</h3>\n'
+    '                                <div class="job-meta">\n'
+    '                                    <span>Jul 2017 \u2013 Dec 2017 \u00b7 6 mos</span>\n'
+    '                                </div>\n'
+    '                            </div>\n'
+    '                            <ul>\n'
+    '                                <li>Developed a sports distribution platform, Matchup Sports, utilizing Play, Spring, and AngularJS at Devnup IT Solutions.</li>\n'
+    '                                <li>Enhanced platform functionality and user experience through skills in Springboot, Git, Docker, Java, and AngularJS.</li>\n'
+    '                            </ul>\n'
+    '                        </div>\n'
+    '                    </div>\n'
+    '                </div>'
+)
+
+STOOM_CLOSING = (
+    '                            </ul>\n'
+    '                        </div>\n'
+    '                    </div>\n'
+    '                </div>\n'
+    '\n'
+    '                        </section>'
+)
+
+STOOM_CLOSING_NEW = (
+    '                            </ul>\n'
+    '                        </div>\n'
+    '                    </div>\n'
+    '                </div>'
+    + DEVNUP_BLOCK +
+    '\n\n                        </section>'
+)
+
+
+def process_variant(filepath):
+    with open(filepath, "r", encoding="utf-8") as f:
+        content = f.read()
+
+    original = content
+    changes = 0
+
+    for old, new in REPLACEMENTS:
+        if old in content:
+            content = content.replace(old, new)
+            changes += 1
+        else:
+            print(f"  WARN: block not found in {os.path.basename(filepath)}: {old[:80]}...")
+
+    if STOOM_OLD in content:
+        content = content.replace(STOOM_OLD, STOOM_NEW)
+        changes += 1
+    else:
+        print(f"  WARN: Stoom not found in {os.path.basename(filepath)}")
+
+    if STOOM_CLOSING in content:
+        content = content.replace(STOOM_CLOSING, STOOM_CLOSING_NEW)
+        changes += 1
+    else:
+        print(f"  WARN: Stoom closing not found in {os.path.basename(filepath)}")
+
+    if content != original:
+        with open(filepath, "w", encoding="utf-8") as f:
+            f.write(content)
+        print(f"  OK {os.path.basename(filepath)}: {changes} changes")
+    else:
+        print(f"  - {os.path.basename(filepath)}: no changes")
+
+
+def process_index():
+    filepath = os.path.join(BASE_DIR, "index.html")
+    with open(filepath, "r", encoding="utf-8") as f:
+        content = f.read()
+
+    original = content
+    changes = 0
+
+    # EN i18n replacements
+    en_reps = [
+        ('"sre_desc1": "Architected an AI-assisted documentation tool, enabling conversational queries for support engineers and business users."',
+         '"sre_desc1": "Built AI-assisted docs tool with RAG, using OpenAI\'s API running in a VPS."'),
+        ('"sre_desc2": "Deployed a web-based reporting solution, significantly improving accessibility and operational efficiency for stakeholders."',
+         '"sre_desc2": "Migrated internal Apache servers from RHEL 7 to RHEL 8, producing documentation for other clusters to follow"'),
+        ('"sre_desc3": "Collaborated with Strats/Quant team to enhance critical infrastructure."',
+         '"sre_desc3": "Collaborated with the Strats team to optimize infrastructure used for risk curves and pricing models."'),
+        ('"sre_desc4": "Delivered training on GitHub Copilot and AI-assisted workflows, enhancing productivity for production support engineers."',
+         '"sre_desc4": "Delivered trainings on GitHub Copilot and AI-assisted workflows."'),
+        ('"alctel_desc1": "Integrated chatbot solutions with WhatsApp using C#, enhancing user engagement and accessibility."',
+         '"alctel_desc1": "Gathered client business requirements and integrated chatbot solutions with WhatsApp using C#, .NET and MySQL."'),
+        ('"alctel_desc2": "Managed MySQL databases to ensure data integrity and performance."',
+         '"alctel_desc2": "Provided technical support to resolve production issues."'),
+        ('"gft_desc1": "Led the migration of 200 on-premise applications to AWS, enhancing operational efficiency."',
+         '"gft_desc1": "Led the migration of 200 on-premise applications to AWS using CloudFormation."'),
+        ('"gft_desc2": "Implemented automation solutions that reduced processing time from weeks to days."',
+         '"gft_desc2": "Collaborated with the international team to automate document generation using Terraform and Python."'),
+        ('"suma_desc1": "Developed a Django backend for processing telemetry data from freight truck sensors."',
+         '"suma_desc1": "Built ETL pipelines to ingest and preprocess large scale sensor data, preparing datasets for route optimization."'),
+        ('"suma_desc2": "Built ETL pipelines to ingest on SUMA\'s stack, utilizing truck driver fuel receipts for gas price mapping."',
+         '"suma_desc2": "Integrated low-latency UDP communication protocols from custom-built telemetry sensors with SUMA servers."'),
+        ('"suma_desc3": "Managed a cloud data warehouse on Azure, integrating it with PowerBI for enhanced dashboards and operational reporting."',
+         '"suma_desc3": "Managed a cloud data warehouse on Azure, engineering pipelines and integrating with PowerBI for AI-driven insights via Power BI."'),
+        ('"bit_desc": "Developed APIs in TypeScript for a blockchain-based digital banking platform."',
+         '"bit_desc": "Developed high performance APIs in TypeScript to be used in credit cards transacions."'),
+        ('"bit_desc2": "Focused on reducing intermediaries involved in transactions to improve efficiency."',
+         '"bit_desc2": "Worked in the integration with Pix system"'),
+        ('"stoom_desc": "Developed the Suprevida website using Apache Struts 2, enhancing user experience for Stoom\'s customers."',
+         '"stoom_desc": "Developed the Suprevida website using Apache Struts 2 and PostgreSQL."'),
+        ('"stoom_desc2": "Collaborated with a team to address client demands and improve overall functionality."',
+         '"stoom_desc2": "Collaborated with the team to address client demands and gather business requirements."'),
+    ]
+
+    for old, new in en_reps:
+        if old in content:
+            content = content.replace(old, new)
+            changes += 1
+        else:
+            print(f"  WARN: index EN not found: {old[:80]}...")
+
+    # Remove alctel_desc3
+    old_a3 = '"alctel_desc3": "Provided technical support to resolve production issues, ensuring high client satisfaction.",\n'
+    if old_a3 in content:
+        content = content.replace(old_a3, "")
+        changes += 1
+
+    # Remove gft_desc3
+    old_g3 = '"gft_desc3": "Collaborated with the international team at GFT Group to automate document generation.",\n'
+    if old_g3 in content:
+        content = content.replace(old_g3, "")
+        changes += 1
+
+    # Add Devnup if not present
+    if "Devnup" not in content:
+        # Insert Devnup HTML block after Stoom
+        stoom_close = (
+            '                            </ul>\n'
+            '                            </div>\n'
+            '                    </div>\n'
+            '                </div>\n'
+            '\n'
+            '                        </section>'
+        )
+        devnup_html = (
+            '\n'
+            '                <div class="experience-item">\n'
+            '                    <div class="exp-layout">\n'
+            '                        <div class="exp-logo">\n'
+            '                            <img src="https://media.licdn.com/dms/image/v2/D4D0BAQHh4TSJtPM07A/company-logo_100_100/B4DZ3QF0wAH8AQ-/0/1777312681695/stoom_ecommerce_logo?e=1779321600&v=beta&t=5tq5jluijiARCsfCG3W38naJbifPzvyELvDfeZTAh4Y" alt="Devnup IT Solutions" loading="lazy">\n'
+            '                        </div>\n'
+            '                        <div class="exp-body">\n'
+            '                            <div class="experience-header">\n'
+            '                                <h3 data-i18n="devnup_title">Software Engineer Intern</h3>\n'
+            '                                <div class="job-meta">\n'
+            '                                    <span data-i18n="devnup_period">Jul 2017 \u2013 Dec 2017 \u00b7 6 mos</span>\n'
+            '                                </div>\n'
+            '                            </div>\n'
+            '                            <div class="job-company"><span class="company" data-i18n="devnup">Devnup IT Solutions</span></div>\n'
+            '                            <ul>\n'
+            '                                <li data-i18n="devnup_desc1">Developed a sports distribution platform, Matchup Sports, utilizing Play, Spring, and AngularJS at Devnup IT Solutions.</li>\n'
+            '                                <li data-i18n="devnup_desc2">Enhanced platform functionality and user experience through skills in Springboot, Git, Docker, Java, and AngularJS.</li>\n'
+            '                            </ul>\n'
+            '                            </div>\n'
+            '                    </div>\n'
+            '                </div>'
+        )
+        if stoom_close in content:
+            new_stoom = stoom_close.replace('</section>', devnup_html + '\n\n                        </section>')
+            content = content.replace(stoom_close, new_stoom)
+            changes += 1
+
+        # Add EN i18n keys
+        en_devnup = (
+            ',\n'
+            '                "devnup_title": "Software Engineer Intern",\n'
+            '                "devnup_period": "Jul 2017 \u2013 Dec 2017 \u00b7 6 mos",\n'
+            '                "devnup": "Devnup IT Solutions",\n'
+            '                "devnup_desc1": "Developed a sports distribution platform, Matchup Sports, utilizing Play, Spring, and AngularJS at Devnup IT Solutions.",\n'
+            '                "devnup_desc2": "Enhanced platform functionality and user experience through skills in Springboot, Git, Docker, Java, and AngularJS."'
+        )
+        en_close = (
+            ',\n'
+            '                "stoom_desc3": "Assisted in feature development and issue resolution for Brazil\'s leading retailer of domestic animal products."\n'
+            '            },'
+        )
+        if en_close in content:
+            content = content.replace(en_close, en_close.replace('}', en_devnup + '\n            }'))
+            changes += 1
+
+        # Add PT i18n keys
+        pt_devnup = (
+            ',\n'
+            '                "devnup_title": "Estagi\u00e1rio em Engenharia de Software",\n'
+            '                "devnup_period": "Jul 2017 \u2013 Dez 2017 \u00b7 6 meses",\n'
+            '                "devnup": "Devnup IT Solutions",\n'
+            '                "devnup_desc1": "Desenvolveu uma plataforma de distribui\u00e7\u00e3o esportiva, Matchup Sports, utilizando Play, Spring e AngularJS na Devnup IT Solutions.",\n'
+            '                "devnup_desc2": "Aprimorou a funcionalidade e experi\u00eancia do usu\u00e1rio da plataforma utilizando Springboot, Git, Docker, Java e AngularJS."'
+        )
+        pt_close = (
+            ',\n'
+            '                "stoom_desc3": "Auxiliou no desenvolvimento de funcionalidades e resolu\u00e7\u00e3o de problemas para o maior varejista brasileiro de produtos para animais dom\u00e9sticos."\n'
+            '            }'
+        )
+        if pt_close in content:
+            content = content.replace(pt_close, pt_close.replace('}', pt_devnup + '\n            }'))
+            changes += 1
+
+    if content != original:
+        with open(filepath, "w", encoding="utf-8") as f:
+            f.write(content)
+        print(f"  OK index.html: {changes} changes")
+    else:
+        print(f"  - index.html: no changes")
+
+
+def main():
+    print("=== Variant HTMLs ===")
+    for filename in VARIANT_FILES:
+        filepath = os.path.join(BASE_DIR, filename)
+        if os.path.exists(filepath):
+            process_variant(filepath)
+
+    print("\n=== index.html ===")
+    process_index()
+
+    print("\nDone!")
+
+
+if __name__ == "__main__":
+    main()
