@@ -7,7 +7,7 @@
 
 ## Professional Summary
 
-Senior Software Engineer with 8+ years in full-stack development, cloud infrastructure, data engineering, and production operations. Proficient in Python, JavaScript/TypeScript, Java, and C#. Deep expertise in AWS, Azure, and infrastructure-as-code (Terraform, Docker). Experience migrating legacy systems to the cloud, building ETL pipelines, and designing AI-powered internal tooling. Currently at Goldman Sachs as SRE for FX, Fixed Income, and Commodities (FICC) trading platforms across São Paulo, London, and New York — combining incident management with RAG-based knowledge systems and automated reporting.
+Senior Software Engineer with 8+ years in full-stack development, cloud infrastructure, data engineering, and production operations. Proficient in Python, JavaScript/TypeScript, Java, and C#. Deep expertise in AWS, Azure, and infrastructure-as-code (Terraform, Docker). Experience migrating legacy systems to the cloud, building ETL pipelines, and designing AI-powered internal tooling. Currently at Goldman Sachs as SRE for FX, Fixed Income, and Commodities (FICC) trading platforms across São Paulo, London, and New York.
 
 ## Technical Skills
 
