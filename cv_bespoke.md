@@ -32,7 +32,7 @@
 *May 2023 – Mar 2024 | Belo Horizonte, Brazil (remote)*
 
 - Gathered client business requirements and integrated chatbot solutions with WhatsApp using C#, .NET and MySQL.
-- Provided technical support to resolve production issues.
+- Provided direct technical support to clients, leading meetings with their engineering teams to diagnose and resolve integration issues
 ### GFT Group — DevOps Engineer
 *Jan 2022 – Mar 2023 | São Paulo, Brazil (remote)*
 

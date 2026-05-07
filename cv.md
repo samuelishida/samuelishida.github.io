@@ -22,8 +22,7 @@ Senior Software Engineer with 8+ years in full-stack development, cloud infrastr
 ### Goldman Sachs — Site Reliability Engineer (SRE)
 *Oct 2024 – Present | São Paulo, Brazil*
 
-- Built a production support AI agent leveraging RAG and GitHub Copilot.
-- Built AI-assisted docs tool with RAG, using OpenAI's API running in a VPS.
+- Built a production support AI tool to query internal documentation and live logs, with RAG and GitHub Copilot.
 - Migrated internal Apache servers from RHEL 7 to RHEL 8, producing documentation for other clusters to follow
 - Collaborated with the Strats team to optimize infrastructure used for risk curves and pricing models.
 - Delivered trainings on GitHub Copilot and AI-assisted workflows.
@@ -31,7 +30,7 @@ Senior Software Engineer with 8+ years in full-stack development, cloud infrastr
 *May 2023 – Mar 2024 | Belo Horizonte, Brazil (remote)*
 
 - Gathered client business requirements and integrated chatbot solutions with WhatsApp using C#, .NET and MySQL.
-- Provided technical support to resolve production issues.
+- Provided direct technical support to clients, leading meetings with their engineering teams to diagnose and resolve integration issues
 ### GFT Group — DevOps Engineer
 *Jan 2022 – Mar 2023 | São Paulo, Brazil (remote)*
 
