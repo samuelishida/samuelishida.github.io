@@ -1,4 +1,4 @@
-# Samuel Toyoshi Ishida — Software Engineer | DevSecOps
+# Samuel Toyoshi Ishida — Senior Software Engineer
 
 ## Contact
 - **Email:** samuel.toyoshi@gmail.com
@@ -7,7 +7,7 @@
 
 ## Professional Summary
 
-Software Engineer with 8+ years of experience building and operating distributed backend services, with a strong focus on security, authentication, and platform reliability. Proven track record designing APIs, token/session flows, and policy enforcement mechanisms. Hands-on experience with auth flows, identity and access management (IAM), and least-privilege architectures. Currently at Goldman Sachs, providing SRE support for FX, Fixed Income, and Commodities (FICC) trading platforms across São Paulo, London, and New York — combining incident management with development of knowledge systems and automated reporting. Seeking to apply this expertise to authentication platforms serving human and non-human identities at massive scale.
+8+ years building distributed backend services with focus on security, authentication, and reliability. APIs, token/session flows, policy enforcement. Currently at Goldman Sachs SRE for FICC trading (São Paulo, London, NYC) — knowledge systems, reporting automation, incident management. Targeting auth platforms at scale.
 
 ## Technical Skills
 
@@ -24,50 +24,43 @@ Software Engineer with 8+ years of experience building and operating distributed
 ### Goldman Sachs — Site Reliability Engineer (SRE)
 *Oct 2024 – Present | São Paulo, Brazil*
 
-- Architected an AI-assisted documentation tool, enabling conversational queries for support engineers and business users across FICC trading platforms.
-- Deployed a web-based reporting solution with automated data pipelines, significantly improving accessibility and operational efficiency for stakeholders.
+- Built AI-assisted docs tool w/ RAG. Conversational queries for support/business on FICC.
+- Deployed an automated web reporting solution.
+- Built LLM pipelines (OpenAI + VPS) for knowledge retrieval.
 - Collaborated with Strats/Quant team to enhance critical infrastructure.
-- Participated in on-call rotations, adding observability (metrics, logs, traces), dashboards, and alerts; drove incident follow-ups to completion.
-- Delivered training on GitHub Copilot and AI-assisted workflows, enhancing productivity for production support engineers.
-
-### Alctel Telecom — DevOps Engineer
+- Delivered training on GitHub Copilot and AI-assisted workflows.
+### Alctel Telecom — Software Engineer
 *May 2023 – Mar 2024 | Belo Horizonte, Brazil (remote)*
 
-- Integrated chatbot solutions with WhatsApp using C#, enhancing user engagement and accessibility.
+- Integrated chatbot solutions with WhatsApp using C#.
 - Managed MySQL databases to ensure data integrity and performance.
-- Provided technical support to resolve production issues, ensuring high client satisfaction.
-
-### GFT Group — DevOps Engineer
+- Provided technical support to resolve production issues.
+### GFT Group — Software Engineer
 *Jan 2022 – Mar 2023 | São Paulo, Brazil (remote)*
 
-- Led the migration of 200 on-premise applications to AWS, enhancing operational efficiency and security posture.
-- Implemented automation solutions that reduced processing time from weeks to days.
-- Collaborated with the international team at GFT Group to automate document generation and standardize secure deployment workflows.
-
-### Suma – Consulting Group — Data Engineer
+- Led migration of 200 on-premise applications to AWS. Enhanced operational efficiency, reduced infrastructure costs.
+- Implemented automation solutions: reduced processing time from weeks to days (Terraform, CI/CD).
+- Collaborated with international GFT team on automating document generation and backend service deployments.
+### Suma – Consulting Group — Backend Engineer
 *Nov 2019 – Jan 2022 | Campinas, São Paulo*
 
-- Developed a Django backend with ML integration for processing telemetry data from freight truck sensors, enabling predictive maintenance models.
-- Built ETL pipelines to ingest and preprocess large-scale sensor data, preparing datasets for route optimization.
-- Managed a cloud data warehouse on Azure, implementing feature engineering pipelines and integrating with PowerBI for AI-powered operational insights and anomaly detection dashboards.
-
+- Developed Django backend with ML integration for telemetry from truck sensors. Enabled predictive maintenance models.
+- Built ETL pipelines: ingested, preprocessed large-scale sensor data for route optimization.
+- Managed cloud data warehouse (Azure). Implemented feature engineering pipelines, integrated PowerBI for AI operational insights and anomaly detection.
 ### Bit Capital — Backend Engineer
 *Jul 2019 – Oct 2019 | Campinas, Brazil*
 
-- Developed APIs in TypeScript/Node.js for a blockchain-based digital banking platform, focusing on secure transaction flows.
-- Reduced intermediaries involved in transactions to improve efficiency while maintaining security controls.
-
+- Developed TypeScript APIs for blockchain-based digital banking platform.
+- Reduced transaction intermediaries to improve efficiency.
 ### Boilesen Associates — Full-Stack Developer
 *Mar 2019 – Jul 2019 | Campinas, Brazil*
 
-- Developed a digital marketing tool for lead generation and tracking utilizing PHP and the Slim framework.
-- Provided client support for Android Java applications, enhancing user experience and satisfaction.
-
+- Developed digital marketing tool for lead generation and tracking using PHP and Slim framework.
+- Provided client support for Android Java applications, enhancing user experience.
 ### Stoom — Software Engineer Intern
 *Jan 2018 – Oct 2018 | Campinas, Brazil*
 
-- Developed the Suprevida e-commerce website using Apache Struts 2, Java, and JSP, managing client demands and delivering features in an agile team environment.
-
+- Developed Suprevida e-commerce website using Apache Struts 2, Java, and JSP in an agile team environment.
 ## Education
 
 - **B.Tech in Information Security** — Estácio (Feb 2023 – Nov 2025)
@@ -76,12 +69,11 @@ Software Engineer with 8+ years of experience building and operating distributed
 ## Certifications & Highlights
 
 - **Foundations of Cybersecurity** — Google
-- **Cambridge B2 First** — Score 169 (Full Professional English)
+- **Cambridge B2 First** — Score 169
 - **OBI — Silver Medal** (Brazilian Olympiad in Informatics)
-- **Member of UNICAMP Phoenix Robotics Team** (2014–2016): developed an autonomous robot with visual cone recognition using OpenCV and Python
+- **Member of UNICAMP Phoenix Robotics Team** (2014–2016): developed autonomous robot with visual cone recognition using OpenCV and Python
 
 ## Languages
 
 - **Portuguese:** Native
-- **English:** Full Professional Proficiency (Cambridge B2 First, Score 169)
-- **Japanese:** Conversational
+- **English:** Professional Proficiency (Cambridge B2, 169)
