@@ -1,0 +1,11 @@
+# Define o modelo base que você já baixou
+FROM qwen3.5
+
+# Define o tamanho do contexto (75k tokens)
+PARAMETER num_ctx 75000
+
+# Ajusta a temperatura para manter a coerência em textos longos
+PARAMETER temperature 0.7
+
+# Define a mensagem de sistema (opcional, mas recomendada)
+SYSTEM """Você é o Qwen 3.5, um assistente de IA avançado e útil. Você é capaz de processar documentos muito longos com precisão."""
