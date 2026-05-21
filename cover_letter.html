@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cover Letter - Samuel Toyoshi Ishida</title>
+    <style>
+        :root {
+            --text-primary: #1a1a1a;
+            --text-secondary: #4a4a4a;
+            --text-tertiary: #6a6a6a;
+            --text-muted: #8a8a8a;
+            --border: #e0e0e0;
+            --bg: #ffffff;
+            --link: #2563eb;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: var(--bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        .page {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        header {
+            margin-bottom: 2rem;
+            border-bottom: 2px solid var(--text-primary);
+            padding-bottom: 1.5rem;
+        }
+
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .name {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.1;
+        }
+
+        .contact-info {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-align: right;
+        }
+
+        .contact-info a {
+            color: var(--link);
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        .content {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        .placeholder {
+            background-color: #f5f5f5;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-style: italic;
+            color: var(--text-tertiary);
+        }
+
+        .signature {
+            margin-top: 2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        @media (max-width: 600px) {
+            .page { padding: 1.25rem; }
+            .header-top { flex-direction: column; }
+            .contact-info { text-align: left; }
+            .name { font-size: 1.75rem; }
+        }
+
+        @media print {
+            @page { size: A4; margin: 15mm 20mm; }
+            * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            body { font-size: 12px; }
+            .page { max-width: 100% !important; padding: 0; }
+            header { border-bottom: 2px solid #000 !important; }
+            .section-title { color: #000 !important; }
+            .name { color: #000 !important; }
+            a { color: #000 !important; text-decoration: none !important; }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <header>
+            <div class="header-top">
+                <div class="name">Samuel Toyoshi Ishida</div>
+                <div class="contact-info">
+                    <a href="mailto:samuel.toyoshi@gmail.com">samuel.toyoshi@gmail.com</a> | 
+                    <a href="https://linkedin.com/in/samuelishida" target="_blank">linkedin.com/in/samuelishida</a> | 
+                    Brazil, São Paulo
+                </div>
+            </div>
+        </header>
+
+        <div class="content">
+            <section class="section">
+                <p>Dear Hiring Manager,</p>
+
+                <p>My passion for technology began early, leading me to learn programming in C during high school and earn a silver medal in the Brazilian Informatics Olympiad (OBI). Over the years, that competitive drive to solve complex problems has evolved into a career building resilient infrastructure and scalable backend systems. Currently, I work at Goldman Sachs supporting critical global trading platforms while driving internal AI initiatives.</p>
+
+                <p>My experience spans the full software lifecycle: from developing high-performance APIs in Python, TypeScript, and Java to architecting cloud infrastructure on AWS and Azure using Terraform, Docker, and Kubernetes. I have built ETL pipelines for large-scale sensor data, migrated hundreds of on-premise applications to the cloud, and designed AI-powered tools with RAG and LLM orchestration. Whether it is backend systems, data engineering, DevOps, or AI-assisted workflows, I bring a track record of shipping production-grade solutions.</p>
+
+                <p>I am eager to bring my background to your team. I thrive in agile, collaborative environments where reliability and innovation go hand in hand, and I look forward to discussing how my experience can bring value to your team. Thank you for your time and consideration.</p>
+
+                <p>Sincerely,</p>
+
+                <p class="signature">Samuel Toyoshi Ishida</p>
+            </section>
+        </div>
+    </div>
+
+   
+</body>
+</html>
