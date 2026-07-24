@@ -1,0 +1,2283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AWS Certified AI Practitioner (AIF-C01) — Complete Study Guide & Mock Exam</title>
+<style>
+:root {
+  --bg: #0f172a; --surface: #1e293b; --surface-2: #334155;
+  --text: #f8fafc; --text-dim: #94a3b8; --accent: #38bdf8; --accent-2: #818cf8;
+  --success: #34d399; --danger: #f87171; --warning: #fbbf24;
+  --domain1: #38bdf8; --domain2: #818cf8; --domain3: #a78bfa; --domain4: #f472b6; --domain5: #34d399;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: var(--bg); color: var(--text); line-height: 1.6;
+}
+.container { max-width: 1100px; margin: 0 auto; padding: 2rem 1.5rem; }
+header {
+  text-align: center; padding: 3rem 1rem 2rem;
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
+  border-bottom: 1px solid var(--surface-2);
+}
+header h1 { font-size: 2.2rem; margin: 0 0 0.5rem; background: linear-gradient(90deg, var(--accent), var(--accent-2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+header p { color: var(--text-dim); font-size: 1.1rem; max-width: 700px; margin: 0 auto; }
+nav.toc {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(15,23,42,0.95); backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--surface-2); padding: 0.75rem 1rem;
+}
+nav.toc ul { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin: 0; padding: 0; }
+nav.toc a { color: var(--text-dim); text-decoration: none; font-size: 0.85rem; padding: 0.35rem 0.75rem; border-radius: 999px; background: var(--surface); transition: all 0.2s; border: 1px solid transparent; }
+nav.toc a:hover, nav.toc a.active { color: var(--text); background: var(--surface-2); border-color: var(--accent); }
+.section { margin: 2.5rem 0; }
+.section h2 { font-size: 1.6rem; display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid var(--surface-2); }
+.section h2 .badge { font-size: 0.75rem; padding: 0.25rem 0.6rem; border-radius: 999px; background: var(--surface-2); color: var(--text); font-weight: 600; }
+.section h3 { font-size: 1.15rem; color: var(--accent); margin-top: 1.5rem; margin-bottom: 0.5rem; }
+.section h4 { font-size: 1rem; color: var(--text-dim); margin-top: 1rem; margin-bottom: 0.4rem; }
+.card { background: var(--surface); border: 1px solid var(--surface-2); border-radius: 12px; padding: 1.25rem; margin: 1rem 0; }
+.card p:last-child { margin-bottom: 0; }
+.card ul, .card ol { padding-left: 1.25rem; }
+.card li { margin: 0.35rem 0; }
+.callout { border-left: 4px solid var(--accent); background: rgba(56,189,248,0.08); padding: 1rem 1.25rem; border-radius: 0 8px 8px 0; margin: 1rem 0; }
+.callout strong { color: var(--accent); }
+.callout.warn { border-left-color: var(--warning); background: rgba(251,191,36,0.08); }
+.callout.warn strong { color: var(--warning); }
+.callout.danger { border-left-color: var(--danger); background: rgba(248,113,113,0.08); }
+.callout.danger strong { color: var(--danger); }
+.callout.success { border-left-color: var(--success); background: rgba(52,211,153,0.08); }
+.callout.success strong { color: var(--success); }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.95rem; }
+th, td { padding: 0.6rem 0.75rem; text-align: left; border-bottom: 1px solid var(--surface-2); }
+th { background: var(--surface-2); color: var(--accent); font-weight: 600; }
+tr:hover td { background: rgba(255,255,255,0.03); }
+code, .code { background: #0b1220; padding: 0.15rem 0.4rem; border-radius: 4px; font-family: 'Fira Code', monospace; font-size: 0.9em; color: var(--accent-2); }
+pre { background: #0b1220; padding: 1rem; border-radius: 8px; overflow-x: auto; font-size: 0.9rem; }
+.collapsible { cursor: pointer; }
+.collapsible::after { content: ' ▼'; font-size: 0.8rem; color: var(--text-dim); }
+.collapsible.active::after { content: ' ▲'; }
+.content { max-height: 0; overflow: hidden; transition: max-height 0.3s ease-out; }
+.content.open { max-height: 20000px; }
+.domain1 h2 { border-color: var(--domain1); }
+.domain1 .badge { background: var(--domain1); color: #0f172a; }
+.domain2 h2 { border-color: var(--domain2); }
+.domain2 .badge { background: var(--domain2); color: #0f172a; }
+.domain3 h2 { border-color: var(--domain3); }
+.domain3 .badge { background: var(--domain3); color: #0f172a; }
+.domain4 h2 { border-color: var(--domain4); }
+.domain4 .badge { background: var(--domain4); color: #0f172a; }
+.domain5 h2 { border-color: var(--domain5); }
+.domain5 .badge { background: var(--domain5); color: #0f172a; }
+
+/* Quiz styles */
+.quiz-container { background: var(--surface); border-radius: 12px; padding: 1.5rem; margin: 1.5rem 0; border: 1px solid var(--surface-2); }
+.question { margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--surface-2); }
+.question:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.question-text { font-weight: 600; margin-bottom: 0.75rem; color: var(--text); }
+.question-meta { font-size: 0.8rem; color: var(--text-dim); margin-bottom: 0.75rem; }
+.options label { display: block; padding: 0.6rem 0.9rem; margin: 0.4rem 0; background: var(--bg); border: 1px solid var(--surface-2); border-radius: 8px; cursor: pointer; transition: all 0.15s; }
+.options label:hover { border-color: var(--accent); }
+.options input[type="radio"] { margin-right: 0.5rem; }
+.options.correct label.selected { background: rgba(52,211,153,0.15); border-color: var(--success); }
+.options.incorrect label.selected { background: rgba(248,113,113,0.15); border-color: var(--danger); }
+.options.correct label.correct-ans { background: rgba(52,211,153,0.15); border-color: var(--success); }
+.explanation { display: none; margin-top: 0.75rem; padding: 0.75rem 1rem; background: rgba(56,189,248,0.08); border-radius: 8px; font-size: 0.95rem; }
+.explanation.show { display: block; }
+.btn { display: inline-block; padding: 0.6rem 1.2rem; border: none; border-radius: 8px; cursor: pointer; font-size: 0.95rem; font-weight: 600; transition: all 0.2s; margin: 0.25rem; }
+.btn-primary { background: var(--accent); color: #0f172a; }
+.btn-primary:hover { background: #7dd3fc; }
+.btn-secondary { background: var(--surface-2); color: var(--text); }
+.btn-secondary:hover { background: #475569; }
+.score-display { text-align: center; padding: 2rem; font-size: 1.3rem; }
+.score-display .score-number { font-size: 3rem; font-weight: 800; color: var(--accent); }
+.mock-exam-header { text-align: center; margin-bottom: 2rem; }
+.mock-exam-header h2 { justify-content: center; border: none; }
+.timer { font-size: 1.2rem; font-weight: 600; color: var(--warning); text-align: center; margin-bottom: 1rem; }
+.filter-bar { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
+.filter-bar button { padding: 0.35rem 0.75rem; border-radius: 999px; border: 1px solid var(--surface-2); background: var(--bg); color: var(--text-dim); cursor: pointer; font-size: 0.85rem; }
+.filter-bar button.active { background: var(--accent); color: #0f172a; border-color: var(--accent); font-weight: 600; }
+footer { text-align: center; padding: 2rem; color: var(--text-dim); font-size: 0.9rem; border-top: 1px solid var(--surface-2); margin-top: 3rem; }
+@media (max-width: 768px) {
+  header h1 { font-size: 1.5rem; }
+  nav.toc a { font-size: 0.75rem; padding: 0.25rem 0.5rem; }
+  .container { padding: 1rem; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>AWS Certified AI Practitioner (AIF-C01)</h1>
+  <p>Complete Interactive Study Guide &amp; Mock Exam — Master the five domains with in-depth explanations, real-world examples, and 100+ practice questions.</p>
+</header>
+
+<nav class="toc">
+  <ul>
+    <li><a href="#domain1">Domain 1 (31%)</a></li>
+    <li><a href="#domain2">Domain 2 (26%)</a></li>
+    <li><a href="#domain3">Domain 3 (20%)</a></li>
+    <li><a href="#domain4">Domain 4 (12%)</a></li>
+    <li><a href="#domain5">Domain 5 (11%)</a></li>
+    <li><a href="#practice">Practice Tests</a></li>
+    <li><a href="#mock">Mock Exam</a></li>
+  </ul>
+</nav>
+
+<div class="container">
+
+<!-- ==================== DOMAIN 1 ==================== -->
+<section id="domain1" class="section domain1">
+<h2><span class="badge">Domain 1 — 31%</span> Foundation Model Integration, Data Management, and Compliance</h2>
+
+<div class="callout">
+<strong>Exam Focus:</strong> This is the largest domain. Expect questions on choosing the right foundation model, managing data for AI workloads, understanding AWS AI/ML services, and ensuring regulatory compliance.
+</div>
+
+<h3 class="collapsible">1.1 AI, ML, and Generative AI Concepts</h3>
+<div class="content">
+<div class="card">
+<p><strong>Artificial Intelligence (AI)</strong> is the broad field of creating machines that can perform tasks requiring human-like intelligence. <strong>Machine Learning (ML)</strong> is a subset of AI where systems learn patterns from data rather than being explicitly programmed. <strong>Deep Learning</strong> is a subset of ML that uses multi-layered neural networks (hence "deep") to model complex patterns.</p>
+
+<p><strong>Foundation Models (FMs)</strong> are large-scale models pre-trained on vast datasets that can be adapted to many downstream tasks. Examples include large language models (LLMs) like Amazon Nova, Claude, and Llama. <strong>Generative AI</strong> refers to models that create new content—text, images, audio, video, or code—rather than just classifying or predicting.</p>
+
+<table>
+<tr><th>Concept</th><th>Definition</th><th>AWS Example</th></tr>
+<tr><td>Supervised Learning</td><td>Training with labeled input-output pairs</td><td>Amazon SageMaker built-in algorithms</td></tr>
+<tr><td>Unsupervised Learning</td><td>Finding hidden patterns in unlabeled data</td><td>Amazon SageMaker clustering</td></tr>
+<tr><td>Reinforcement Learning</td><td>Learning through rewards and penalties</td><td>Amazon SageMaker RL</td></tr>
+<tr><td>Transfer Learning</td><td>Applying knowledge from one task to another</td><td>Fine-tuning models in Amazon Bedrock</td></tr>
+<tr><td>Embeddings</td><td>Numeric vector representations of data</td><td>Amazon Titan Embeddings</td></tr>
+<tr><td>Tokens</td><td>Units of text (words or subwords) processed by LLMs</td><td>All LLMs on Amazon Bedrock</td></tr>
+<tr><td>Hallucination</td><td>Model generating plausible but false information</td><td>Mitigated with RAG and Guardrails</td></tr>
+<tr><td>Prompt Engineering</td><td>Crafting inputs to guide model outputs</td><td>Amazon Bedrock Playgrounds</td></tr>
+<tr><td>Temperature</td><td>Controls randomness/creativity of outputs</td><td>Inference parameter in Bedrock</td></tr>
+<tr><td>Top-p / Top-k</td><td>Sampling parameters controlling output diversity</td><td>Amazon Bedrock model configs</td></tr>
+</table>
+
+<div class="callout success">
+<strong>Key Insight:</strong> Foundation models are "foundation" because they provide a general-purpose base. You don't train them from scratch; you adapt them through fine-tuning, prompt engineering, or Retrieval Augmented Generation (RAG).
+</div>
+</div>
+</div>
+
+<h3 class="collapsible">1.2 Types of Data in AI Systems</h3>
+<div class="content">
+<div class="card">
+<p>Data is the fuel for AI. Understanding data types helps you choose the right services and preprocessing steps:</p>
+<ul>
+<li><strong>Structured data:</strong> Tabular formats (CSV, Parquet, SQL tables). Highly organized, easy to query. Used in regression, classification.</li>
+<li><strong>Unstructured data:</strong> Text, images, audio, video. Requires specialized processing. Examples: PDF documents, social media posts, medical images.</li>
+<li><strong>Semi-structured data:</strong> JSON, XML, log files. Has some organization but not rigid schema.</li>
+<li><strong>Labeled vs. Unlabeled:</strong> Labeled data has target values (used for supervised learning). Unlabeled data requires clustering or representation learning.</li>
+<li><strong>Time-series data:</strong> Data points indexed in time order. Critical for forecasting and anomaly detection.</li>
+</ul>
+
+<div class="callout warn">
+<strong>Data Quality Matters:</strong> Garbage in, garbage out. Biased, incomplete, or dirty data will produce unreliable models. AWS services like AWS Glue DataBrew and SageMaker Data Wrangler help clean and prepare data.
+</div>
+</div>
+</div>
+
+<h3 class="collapsible">1.3 AWS AI/ML and Generative AI Services</h3>
+<div class="content">
+<div class="card">
+<p>AWS provides a comprehensive stack for AI/ML:</p>
+
+<h4>Managed AI Services (Pre-built APIs)</h4>
+<ul>
+<li><strong>Amazon Bedrock</strong> — Fully managed service offering access to foundation models via API. Supports text, image, and embedding models. Key features: Knowledge Bases for RAG, Agents for multi-step tasks, Guardrails for safety, fine-tuning.</li>
+<li><strong>Amazon SageMaker</strong> — Complete ML platform for building, training, and deploying custom models. Includes SageMaker Studio (IDE), Data Wrangler, Feature Store, Model Monitor, and Clarify.</li>
+<li><strong>Amazon Q</strong> — Generative AI-powered assistant for business use (Q Business) and software development (Q Developer).</li>
+<li><strong>Amazon Rekognition</strong> — Image and video analysis (object detection, facial recognition, content moderation).</li>
+<li><strong>Amazon Textract</strong> — Extracts text and data from scanned documents.</li>
+<li><strong>Amazon Comprehend</strong> — NLP service for sentiment analysis, entity recognition, and document classification.</li>
+<li><strong>Amazon Transcribe</strong> — Speech-to-text with speaker identification and custom vocabulary.</li>
+<li><strong>Amazon Polly</strong> — Text-to-speech with lifelike voices.</li>
+<li><strong>Amazon Translate</strong> — Neural machine translation.</li>
+<li><strong>Amazon Lex</strong> — Build conversational interfaces (chatbots) with voice and text.</li>
+<li><strong>Amazon Personalize</strong> — Real-time recommendation engine.</li>
+<li><strong>Amazon Kendra</strong> — Intelligent enterprise search powered by ML.</li>
+<li><strong>Amazon Fraud Detector</strong> — Detect online fraud in real time.</li>
+</ul>
+
+<h4>Infrastructure for AI</h4>
+<ul>
+<li><strong>Amazon EC2</strong> — GPU instances (P4, P5, G6) for training and inference.</li>
+<li><strong>AWS Trainium</strong> — Custom chips for cost-effective model training.</li>
+<li><strong>AWS Inferentia</strong> — Custom chips for high-performance, low-cost inference.</li>
+<li><strong>Amazon S3</strong> — Scalable data lake for training datasets and model artifacts.</li>
+</ul>
+
+<div class="callout">
+<strong>When to use Bedrock vs. SageMaker:</strong> Use <strong>Bedrock</strong> when you want to leverage existing foundation models without managing infrastructure. Use <strong>SageMaker</strong> when you need to build custom models, perform feature engineering, or have specific training requirements.
+</div>
+</div>
+</div>
+
+<h3 class="collapsible">1.4 Data Management for AI</h3>
+<div class="content">
+<div class="card">
+<p>Effective data management ensures your AI systems are accurate, compliant, and cost-efficient:</p>
+
+<h4>Data Storage and Lakes</h4>
+<ul>
+<li><strong>Amazon S3</strong> is the primary data lake for AI workloads. Use S3 Intelligent-Tiering to optimize costs.</li>
+<li><strong>AWS Lake Formation</strong> simplifies building secure data lakes with fine-grained access control.</li>
+<li><strong>Amazon Redshift</strong> and <strong>Amazon Athena</strong> for analytics on structured data.</li>
+</ul>
+
+<h4>Data Preparation</h4>
+<ul>
+<li><strong>AWS Glue</strong> and <strong>Glue DataBrew</strong> for ETL and data cleaning.</li>
+<li><strong>SageMaker Data Wrangler</strong> for visual data preparation in ML workflows.</li>
+<li><strong>SageMaker Feature Store</strong> for storing, sharing, and reusing ML features.</li>
+</ul>
+
+<h4>Data Governance</h4>
+<ul>
+<li><strong>AWS Glue Data Catalog</strong> — Central metadata repository.</li>
+<li><strong>Amazon Macie</strong> — Discovers and protects sensitive data in S3 using ML.</li>
+<li><strong>AWS Config</strong> — Tracks resource configurations and compliance.</li>
+</ul>
+
+<div class="callout success">
+<strong>Best Practice:</strong> Implement a data lineage strategy. Track where data comes from, how it's transformed, and where it's used. This is critical for compliance and debugging model drift.
+</div>
+</div>
+</div>
+
+<h3 class="collapsible">1.5 Compliance and Regulatory Considerations</h3>
+<div class="content">
+<div class="card">
+<p>AI systems must comply with legal and regulatory frameworks:</p>
+
+<h4>Key Regulations and Standards</h4>
+<ul>
+<li><strong>GDPR (EU):</strong> Requires transparency, data minimization, right to explanation, and consent for automated decision-making.</li>
+<li><strong>HIPAA (US):</strong> Governs protected health information (PHI). AWS offers HIPAA-eligible services with Business Associate Agreements (BAAs).</li>
+<li><strong>SOC 2:</strong> Service Organization Controls for security, availability, and confidentiality.</li>
+<li><strong>ISO/IEC 27001:</strong> International standard for information security management.</li>
+<li><strong>Algorithm Accountability Laws:</strong> Emerging regulations requiring audits of automated decision systems for bias.</li>
+</ul>
+
+<h4>AWS Compliance Tools</h4>
+<ul>
+<li><strong>AWS Artifact</strong> — Access compliance reports (SOC, PCI, ISO).</li>
+<li><strong>AWS Audit Manager</strong> — Continuously audits AWS usage against frameworks.</li>
+<li><strong>AWS Config</strong> — Evaluates resource configurations against rules.</li>
+<li><strong>AWS CloudTrail</strong> — Logs API calls for audit trails.</li>
+<li><strong>AWS Trusted Advisor</strong> — Provides real-time guidance on security and compliance.</li>
+</ul>
+
+<div class="callout danger">
+<strong>Compliance Pitfall:</strong> Storing training data in non-compliant regions can violate data residency requirements. Always verify that your AWS Region supports the compliance frameworks you need, and use data residency controls where required.
+</div>
+</div>
+</div>
+
+<h3 class="collapsible">1.6 Model Selection Criteria</h3>
+<div class="content">
+<div class="card">
+<p>Choosing the right foundation model involves balancing multiple factors:</p>
+<table>
+<tr><th>Factor</th><th>Considerations</th></tr>
+<tr><td>Modality</td><td>Text-only, multi-modal (text+image), code generation, embeddings</td></tr>
+<tr><td>Latency</td><td>Real-time applications need faster models; batch processing can tolerate slower ones</td></tr>
+<tr><td>Cost</td><td>Token-based pricing vs. provisioned throughput; larger models cost more</td></tr>
+<tr><td>Context Window</td><td>Maximum input/output length the model can process</td></tr>
+<tr><td>Language Support</td><td>Multi-lingual capabilities for global applications</td></tr>
+<tr><td>Customization</td><td>Support for fine-tuning, continued pre-training, or adapter layers</td></tr>
+<tr><td>License/Terms</td><td>Commercial use, indemnification, open-source vs. proprietary</td></tr>
+</table>
+
+<div class="callout">
+<strong>Amazon Bedrock Model Catalog</strong> provides access to models from Amazon (Nova, Titan), AI21 Labs (Jurassic), Anthropic (Claude), Cohere, Meta (Llama), Mistral AI, and Stability AI. Each has different strengths—Claude excels at reasoning, Llama is open-weight, Titan offers AWS-native integration.
+</div>
+</div>
+</div>
+</section>
+
+<!-- ==================== DOMAIN 2 ==================== -->
+<section id="domain2" class="section domain2">
+<h2><span class="badge">Domain 2 — 26%</span> Implementation and Integration</h2>
+
+<div class="callout">
+<strong>Exam Focus:</strong> Questions on building GenAI applications, integrating models into workflows, using RAG, prompt engineering, agents, and choosing between customization approaches.
+</div>
+
+<h3 class="collapsible">2.1 Retrieval Augmented Generation (RAG)</h3>
+<div class="content">
+<div class="card">
+<p><strong>RAG</strong> enhances foundation models by retrieving relevant information from external knowledge sources before generating a response. This reduces hallucinations and grounds answers in factual data.</p>
+
+<h4>How RAG Works</h4>
+<ol>
+<li><strong>Ingestion:</strong> Documents are chunked, converted to embeddings, and stored in a vector database.</li>
+<li><strong>Retrieval:</strong> When a user asks a question, it's converted to an embedding and matched against the vector store.</li>
+<li><strong>Generation:</strong> The retrieved context is appended to the prompt, and the model generates an answer based on both its training and the retrieved facts.</li>
+</ol>
+
+<h4>AWS RAG Implementation</h4>
+<ul>
+<li><strong>Amazon Bedrock Knowledge Bases</strong> — Fully managed RAG with automatic chunking, embedding, and retrieval. Supports OpenSearch Serverless, Aurora, Neptune, DocumentDB, and RDS for PostgreSQL as vector stores.</li>
+<li><strong>Amazon Kendra</strong> — Enterprise search with semantic understanding, useful for RAG over structured and unstructured enterprise data.</li>
+</ul>
+
+<h4>Vector Databases on AWS</h4>
+<table>
+<tr><th>Service</th><th>Use Case</th></tr>
+<tr><td>Amazon OpenSearch Serverless</td><td>Full-text search + vector search; scalable; good for hybrid retrieval</td></tr>
+<tr><td>Amazon Aurora (pgvector)</td><td>Relational + vector in one database; ACID compliance</td></tr>
+<tr><td>Amazon Neptune</td><td>Graph + vector for knowledge graph RAG</td></tr>
+<tr><td>Amazon DocumentDB</td><td>MongoDB-compatible with vector search</td></tr>
+<tr><td>Amazon RDS for PostgreSQL</td><td>Managed PostgreSQL with pgvector extension</td></tr>
+<tr><td>Amazon MemoryDB</td><td>In-memory vector store for ultra-low latency</td></tr>
+</table>
+
+<div class="callout success">
+<strong>Exam Tip:</strong> For applications requiring both transactional consistency and vector search, choose <strong>Amazon Aurora with pgvector</strong> or <strong>RDS for PostgreSQL</strong>. For pure search-scale vector retrieval with hybrid text search, choose <strong>OpenSearch Serverless</strong>.
+</div>
+</div>
+</div>
+
+<h3 class="collapsible">2.2 Prompt Engineering Techniques</h3>
+<div class="content">
+<div class="card">
+<p>Prompt engineering is the art of crafting inputs to get desired outputs from foundation models without changing model weights.</p>
+
+<h4>Core Techniques</h4>
+<ul>
+<li><strong>Zero-shot prompting:</strong> Ask the model to perform a task with no examples. Best for simple, well-defined tasks.</li>
+<li><strong>Single-shot / Few-shot prompting:</strong> Provide one or a few examples in the prompt to guide the model's behavior. Improves consistency.</li>
+<li><strong>Chain-of-Thought (CoT):</strong> Prompt the model to "think step by step." Dramatically improves reasoning on complex problems.</li>
+<li><strong>System prompts:</strong> Set global behavior instructions (e.g., "You are a helpful medical assistant. Always cite sources.").</li>
+<li><strong>Negative prompts:</strong> Specify what the model should NOT do (e.g., "Do not provide medical advice").</li>
+<li><strong>Prompt templates:</strong> Reusable structured prompts with variables. Essential for production applications.</li>
+</ul>
+
+<h4>Inference Parameters</h4>
+<table>
+<tr><th>Parameter</th><th>Effect</th><th>When to Adjust</th></tr>
+<tr><td>Temperature</td><td>Lower = more deterministic; Higher = more creative/random</td><td>Use low (0-0.3) for factual Q&A; high (0.7-1.0) for creative writing</td></tr>
+<tr><td>Top-p (nucleus sampling)</td><td>Controls diversity by limiting token pool to cumulative probability p</td><td>Lower for focused outputs; higher for variety</td></tr>
+<tr><td>Max tokens / Length</td><td>Limits output size</td><td>Set based on expected response length to control cost</td></tr>
+<tr><td>Stop sequences</td><td>Halts generation when specific string is encountered</td><td>Use to prevent runaway outputs</td></tr>
+</table>
+
+<div class="callout warn">
+<strong>Prompt Risks:</strong> Be aware of prompt injection (malicious inputs overriding instructions), prompt poisoning (corrupting training data), and jailbreaking (bypassing safety guardrails). Use <strong>Guardrails for Amazon Bedrock</strong> to mitigate these risks.
+</div>
+</div>
+</div>
+
+<h3 class="collapsible">2.3 Foundation Model Customization</h3>
+<div class="content">
+<div class="card">
+<p>When pre-trained models aren't sufficient, you can customize them:</p>
+
+<h4>Customization Methods (from most to least expensive)</h4>
+<table>
+<tr><th>Method</th><th>Description</th><th>Cost</th><th>Data Needed</th></tr>
+<tr><td>Pre-training</td><td>Training a model from scratch on massive corpus</td><td>Highest</td><td>Massive unlabeled data</td></tr>
+<tr><td>Continued Pre-training</td><td>Extending pre-training on domain-specific corpus</td><td>High</td><td>Large domain corpus</td></tr>
+<tr><td>Fine-tuning</td><td>Training model weights on labeled task-specific data</td><td>Medium</td><td>Thousands of labeled examples</td></tr>
+<tr><td>Instruction Tuning</td><td>Fine-tuning on instruction-response pairs</td><td>Medium</td><td>Instruction datasets</td></tr>
+<tr><td>RLHF</td><td>Reinforcement Learning from Human Feedback</td><td>High</td><td>Human preference data</td></tr>
+<tr><td>In-context Learning (RAG)</td><td>Providing context in the prompt</td><td>Low</td><td>Knowledge base</td></tr>
+<tr><td>Prompt Engineering</td><td>Crafting better prompts</td><td>Lowest</td><td>None</td></tr>
+</table>
+
+<div class="callout">
+<strong>AWS Bedrock Fine-tuning:</strong> Amazon Bedrock supports fine-tuning for select models (e.g., Amazon Titan, Cohere). You provide training data in S3, and Bedrock handles the infrastructure. Fine-tuned models remain private to your account.
+</div>
+</div>
+</div>
+
+<h3 class="collapsible">2.4 Agents and Multi-Step Workflows</h3>
+<div class="content">
+<div class="card">
+<p><strong>Agents</strong> are AI systems that can autonomously perform multi-step tasks by reasoning, using tools, and maintaining memory.</p>
+
+<h4>Amazon Bedrock Agents</h4>
+<ul>
+<li>Break down user requests into steps.</li>
+<li>Retrieve information from Knowledge Bases (RAG).</li>
+<li>Call APIs through <strong>Action Groups</strong> to perform actions (e.g., book a flight, check inventory).</li>
+<li>Maintain conversation memory across turns.</li>
+</ul>
+
+<h4>Integration Patterns</h4>
+<ul>
+<li><strong>API-based integration:</strong> Call Bedrock via AWS SDK or REST API from your application.</li>
+<li><strong>Event-driven:</strong> Use Amazon EventBridge and AWS Lambda to trigger AI processing based on events.</li>
+<li><strong>Batch processing:</strong> Use SageMaker Batch Transform or Bedrock batch inference for large-scale offline processing.</li>
+<li><strong>Real-time streaming:</strong> Use Bedrock streaming APIs for responsive chat interfaces.</li>
+</ul>
+
+<div class="callout success">
+<strong>Architecture Tip:</strong> For customer-facing chatbots, combine <strong>Amazon Lex</strong> (intent recognition and dialogue management) with <strong>Amazon Bedrock</strong> (generative responses) for a robust solution that handles both structured interactions and open-ended conversations.
+</div>
+</div>
+</div>
+
+<h3 class="collapsible">2.5 Cost Tradeoffs and Pricing Models</h3>
+<div class="content">
+<div class="card">
+<p>Understanding pricing helps you design cost-effective solutions:</p>
+<ul>
+<li><strong>On-demand inference:</strong> Pay per token (input + output). Best for variable, unpredictable workloads.</li>
+<li><strong>Provisioned Throughput:</strong> Reserve capacity at a fixed hourly rate. Best for consistent, high-volume production traffic.</li>
+<li><strong>Custom models:</strong> Pay for training time + storage + inference. Training is a one-time cost; hosting incurs ongoing charges.</li>
+<li><strong>Batch inference:</strong> Often cheaper than real-time for large offline jobs.</li>
+</ul>
+
+<div class="callout warn">
+<strong>Cost Optimization:</strong> Use smaller models where possible, cache responses for repeated queries, implement request throttling, and monitor with AWS Cost Explorer and CloudWatch. Consider using AWS Inferentia for cost-effective inference at scale.
+</div>
+</div>
+</div>
+</section>
+
+<!-- ==================== DOMAIN 3 ==================== -->
+<section id="domain3" class="section domain3">
+<h2><span class="badge">Domain 3 — 20%</span> AI Safety, Security, and Governance</h2>
+
+<div class="callout">
+<strong>Exam Focus:</strong> Questions on securing AI systems, responsible AI practices, bias detection, transparency, and governance frameworks.
+</div>
+
+<h3 class="collapsible">3.1 Securing AI Systems</h3>
+<div class="content">
+<div class="card">
+<p>AI systems require defense-in-depth security across multiple layers:</p>
+
+<h4>Identity and Access Management</h4>
+<ul>
+<li><strong>IAM Roles and Policies:</strong> Use least-privilege access. Bedrock operations require specific IAM permissions (<code>bedrock:InvokeModel</code>, <code>bedrock:CreateKnowledgeBase</code>).</li>
+<li><strong>Resource-based policies:</strong> Control access to specific Bedrock resources.</li>
+<li><strong>VPC Endpoints / AWS PrivateLink:</strong> Keep traffic between your VPC and Bedrock off the public internet.</li>
+</ul>
+
+<h4>Data Protection</h4>
+<ul>
+<li><strong>Encryption at rest:</strong> S3, EBS, and databases use AWS KMS-managed keys (SSE-KMS).</li>
+<li><strong>Encryption in transit:</strong> TLS 1.2+ for all API communications.</li>
+<li><strong>Amazon Macie:</strong> Uses ML to discover and classify sensitive data in S3 (PII, PHI, financial data).</li>
+</ul>
+
+<h4>Application Security</h4>
+<ul>
+<li><strong>Prompt Injection:</strong> Malicious inputs designed to override system instructions. Mitigate with input validation, Guardrails, and output filtering.</li>
+<li><strong>Model Extraction:</strong> Attempts to steal model weights through repeated queries. Mitigate with rate limiting and monitoring.</li>
+<li><strong>Data Poisoning:</strong> Corrupting training data to compromise model behavior. Mitigate with data validation and anomaly detection.</li>
+</ul>
+
+<h4>AWS Shared Responsibility Model</h4>
+<table>
+<tr><th>AWS Responsibility</th><th>Customer Responsibility</th></tr>
+<tr><td>Infrastructure security, hardware, global network</td><td>Data classification, IAM policies, encryption choices, application security, OS patching (for EC2)</td></tr>
+<tr><td>Managed service patching (Bedrock, SageMaker)</td><td>Model behavior, prompt safety, output validation, user data protection</td></tr>
+</table>
+
+<div class="callout danger">
+<strong>Critical:</strong> AWS does NOT use your prompts or model outputs to train its own models (for Bedrock). However, you are responsible for ensuring you have rights to use training data and that outputs don't expose sensitive information.
+</div>
+</div>
+</div>
+
+<h3 class="collapsible">3.2 Responsible AI Principles</h3>
+<div class="content">
+<div class="card">
+<p>Responsible AI ensures systems are fair, transparent, safe, and accountable:</p>
+
+<h4>Key Dimensions</h4>
+<ul>
+<li><strong>Fairness:</strong> Models should not discriminate against protected groups. Test for disparate impact across demographics.</li>
+<li><strong>Inclusivity:</strong> Systems should work equitably for all users, regardless of language, ability, or background.</li>
+<li><strong>Robustness:</strong> Models should perform reliably under varying conditions and adversarial inputs.</li>
+<li><strong>Safety:</strong> Prevent harmful outputs (toxicity, hate speech, dangerous instructions).</li>
+<li><strong>Veracity:</strong> Ensure outputs are truthful and grounded in evidence.</li>
+<li><strong>Transparency:</strong> Users should understand when they're interacting with AI and how decisions are made.</li>
+<li><strong>Privacy:</strong> Protect personal data and comply with regulations.</li>
+</ul>
+
+<h4>AWS Tools for Responsible AI</h4>
+<ul>
+<li><strong>Guardrails for Amazon Bedrock</strong> — Content filtering (denied topics, word filters, PII redaction), safety controls, and contextual grounding checks.</li>
+<li><strong>Amazon SageMaker Clarify</strong> — Detects bias in data and models; explains model predictions.</li>
+<li><strong>SageMaker Model Monitor</strong> — Detects data drift and model quality degradation in production.</li>
+<li><strong>Amazon Augmented AI (A2I)</strong> — Human-in-the-loop review for model predictions requiring human judgment.</li>
+<li><strong>SageMaker Model Cards</strong> — Document model intended uses, limitations, and performance metrics.</li>
+</ul>
+
+<div class="callout">
+<strong>Environmental Consideration:</strong> Training large models consumes significant energy. AWS offers tools like the Customer Carbon Footprint Tool and recommends using efficient instances (Inferentia, Trainium) to reduce environmental impact.
+</div>
+</div>
+</div>
+
+<h3 class="collapsible">3.3 Governance and Compliance Frameworks</h3>
+<div class="content">
+<div class="card">
+<p>Governance ensures AI systems align with organizational values and legal requirements:</p>
+
+<h4>Governance Strategies</h4>
+<ul>
+<li><strong>Data Lifecycles:</strong> Define retention, archival, and deletion policies. Use S3 Lifecycle policies and AWS Backup.</li>
+<li><strong>Logging and Monitoring:</strong> CloudTrail for API auditing, CloudWatch for metrics and alarms, Config for configuration tracking.</li>
+<li><strong>Data Residency:</strong> Ensure data stays in specific geographic regions. AWS Regions and Local Zones help enforce this.</li>
+<li><strong>Review Cadence:</strong> Regular audits of model performance, bias metrics, and security posture.</li>
+</ul>
+
+<h4>Generative AI Security Scoping Matrix</h4>
+<p>A framework for categorizing GenAI use cases by risk level:</p>
+<ul>
+<li><strong>Low risk:</strong> Internal productivity tools (e.g., code suggestions, document summarization).</li>
+<li><strong>Medium risk:</strong> Customer-facing content generation with human review.</li>
+<li><strong>High risk:</strong> Automated decisions affecting individuals (e.g., credit scoring, hiring, medical diagnosis).</li>
+</ul>
+
+<div class="callout success">
+<strong>Best Practice:</strong> Establish an AI Governance Board with representatives from legal, security, data science, and business units. Define clear escalation paths for high-risk AI deployments.
+</div>
+</div>
+</div>
+
+<h3 class="collapsible">3.4 Explainability and Transparency</h3>
+<div class="content">
+<div class="card">
+<p>Stakeholders need to understand how AI systems arrive at decisions:</p>
+<ul>
+<li><strong>Transparent models:</strong> Decision trees, linear regression offer inherent interpretability.</li>
+<li><strong>Black-box models:</strong> Deep neural networks and LLMs require post-hoc explanation techniques.</li>
+<li><strong>SageMaker Clarify</strong> provides SHAP (SHapley Additive exPlanations) values to explain feature importance.</li>
+<li><strong>Model Cards</strong> document intended use, limitations, training data, and performance metrics.</li>
+<li><strong>Open-source models</strong> (e.g., Llama) offer greater transparency into architecture and training data than proprietary models.</li>
+</ul>
+
+<div class="callout warn">
+<strong>Tradeoff:</strong> More interpretable models (e.g., linear models) are often less accurate than complex models (e.g., transformers). Choose the right balance based on regulatory requirements and use case criticality.
+</div>
+</div>
+</div>
+</section>
+
+<!-- ==================== DOMAIN 4 ==================== -->
+<section id="domain4" class="section domain4">
+<h2><span class="badge">Domain 4 — 12%</span> Operational Efficiency and Optimization for GenAI Applications</h2>
+
+<div class="callout">
+<strong>Exam Focus:</strong> Questions on optimizing performance, cost, latency, and scaling GenAI workloads on AWS.
+</div>
+
+<h3 class="collapsible">4.1 Performance Optimization</h3>
+<div class="content">
+<div class="card">
+<p>Optimizing GenAI applications involves balancing speed, accuracy, and cost:</p>
+
+<h4>Inference Optimization Techniques</h4>
+<ul>
+<li><strong>Model Distillation:</strong> Train a smaller "student" model to mimic a larger "teacher" model. Reduces latency and cost with minimal accuracy loss.</li>
+<li><strong>Quantization:</strong> Reduce model precision (e.g., FP32 → INT8) to speed up inference and reduce memory.</li>
+<li><strong>Caching:</strong> Cache frequent queries and responses. Use ElastiCache or CloudFront for response caching.</li>
+<li><strong>Streaming:</strong> Use streaming APIs to return tokens as they're generated, improving perceived latency.</li>
+<li><strong>Batching:</strong> Group multiple requests to maximize GPU utilization.</li>
+</ul>
+
+<h4>Infrastructure Optimization</h4>
+<ul>
+<li><strong>AWS Inferentia2 / Trainium2:</strong> Purpose-built silicon for cost-effective inference and training.</li>
+<li><strong>Auto Scaling:</strong> Use SageMaker endpoints with auto-scaling policies based on invocation metrics.</li>
+<li><strong>Multi-AZ Deployment:</strong> Deploy across Availability Zones for high availability.</li>
+<li><strong>Edge Deployment:</strong> Use AWS IoT Greengrass or SageMaker Edge Manager for low-latency edge inference.</li>
+</ul>
+
+<div class="callout success">
+<strong>Latency vs. Cost:</strong> Provisioned Throughput offers predictable latency but requires capacity planning. On-demand is flexible but can have variable latency during peak times. For user-facing applications, Provisioned Throughput is usually worth the cost.
+</div>
+</div>
+</div>
+
+<h3 class="collapsible">4.2 MLOps and Production Readiness</h3>
+<div class="content">
+<div class="card">
+<p>MLOps (Machine Learning Operations) brings DevOps practices to ML workflows:</p>
+
+<h4>Key MLOps Practices</h4>
+<ul>
+<li><strong>Experiment Tracking:</strong> Log hyperparameters, metrics, and artifacts. SageMaker Experiments helps organize trials.</li>
+<li><strong>CI/CD for ML:</strong> Automate training pipelines with SageMaker Pipelines and AWS CodePipeline.</li>
+<li><strong>Model Versioning:</strong> Track model versions with SageMaker Model Registry.</li>
+<li><strong>A/B Testing:</strong> Deploy multiple model versions and route traffic gradually. SageMaker supports shadow deployments and canary releases.</li>
+<li><strong>Monitoring:</strong> Track data drift, concept drift, and model quality with SageMaker Model Monitor and CloudWatch.</li>
+<li><strong>Automated Retraining:</strong> Trigger retraining pipelines when drift thresholds are breached.</li>
+</ul>
+
+<h4>Business Metrics vs. Technical Metrics</h4>
+<table>
+<tr><th>Technical Metrics</th><th>Business Metrics</th></tr>
+<tr><td>Accuracy, F1 Score, BLEU, ROUGE</td><td>ROI, conversion rate, customer satisfaction</td></tr>
+<tr><td>Latency (ms), Throughput (TPS)</td><td>Cost per user, revenue per user</td></tr>
+<tr><td>Data drift, Model drift</td><td>User engagement, churn rate</td></tr>
+</table>
+
+<div class="callout">
+<strong>Production Checklist:</strong> Before deploying to production, ensure you have rollback procedures, monitoring dashboards, alerting thresholds, data validation, and a human review process for high-stakes predictions.
+</div>
+</div>
+</div>
+
+<h3 class="collapsible">4.3 Scaling and Availability</h3>
+<div class="content">
+<div class="card">
+<p>AWS provides multiple strategies for scaling GenAI workloads:</p>
+<ul>
+<li><strong>Horizontal Scaling:</strong> Add more instances behind a load balancer. Use SageMaker multi-model endpoints or serverless endpoints.</li>
+<li><strong>Vertical Scaling:</strong> Use larger instance types (e.g., ml.p4d for GPU-heavy workloads).</li>
+<li><strong>Serverless Inference:</strong> SageMaker Serverless Endpoints automatically scale from zero—ideal for intermittent traffic.</li>
+<li><strong>Multi-Region:</strong> Deploy across Regions for global availability and disaster recovery. Use Route 53 for geo-routing.</li>
+<li><strong>Throttling and Quotas:</strong> Understand AWS service quotas (e.g., Bedrock TPS limits) and implement client-side backoff.</li>
+</ul>
+
+<div class="callout warn">
+<strong>Scaling Pitfall:</strong> Cold starts in serverless endpoints can add latency. For latency-sensitive applications, keep a minimum number of warm instances using Provisioned Concurrency or traditional endpoints with auto-scaling minimums.
+</div>
+</div>
+</div>
+</section>
+
+<!-- ==================== DOMAIN 5 ==================== -->
+<section id="domain5" class="section domain5">
+<h2><span class="badge">Domain 5 — 11%</span> Testing, Validation, and Troubleshooting</h2>
+
+<div class="callout">
+<strong>Exam Focus:</strong> Questions on evaluating model performance, debugging issues, handling drift, and validating that AI systems meet business requirements.
+</div>
+
+<h3 class="collapsible">5.1 Evaluating Foundation Model Performance</h3>
+<div class="content">
+<div class="card">
+<p>Evaluation ensures models meet quality and business requirements:</p>
+
+<h4>Evaluation Approaches</h4>
+<ul>
+<li><strong>Human Evaluation:</strong> Human raters assess outputs for quality, relevance, safety, and helpfulness. Gold standard but expensive and slow.</li>
+<li><strong>Benchmark Datasets:</strong> Standardized datasets (e.g., MMLU, HumanEval, TruthfulQA) for comparing models objectively.</li>
+<li><strong>Automated Metrics:</strong> Algorithmic scoring of generated text.</li>
+</ul>
+
+<h4>Common Metrics</h4>
+<table>
+<tr><th>Metric</th><th>Use Case</th><th>Description</th></tr>
+<tr><td>Accuracy</td><td>Classification</td><td>Percentage of correct predictions</td></tr>
+<tr><td>Precision / Recall / F1</td><td>Classification</td><td>Balance between false positives and false negatives</td></tr>
+<tr><td>BLEU</td><td>Translation, Summarization</td><td>N-gram overlap with reference text</td></tr>
+<tr><td>ROUGE</td><td>Summarization</td><td>Recall-oriented overlap of n-grams</td></tr>
+<tr><td>BERTScore</td><td>Generation</td><td>Semantic similarity using contextual embeddings</td></tr>
+<tr><td>Perplexity</td><td>Language Models</td><td>How well the model predicts a sample</td></tr>
+<tr><td>AUC-ROC</td><td>Binary Classification</td><td>Trade-off between true positive and false positive rates</td></tr>
+</table>
+
+<div class="callout success">
+<strong>Holistic Evaluation:</strong> No single metric captures everything. Combine automated metrics with human evaluation and business KPIs (e.g., user satisfaction, task completion rate) for a complete picture.
+</div>
+</div>
+</div>
+
+<h3 class="collapsible">5.2 Troubleshooting Common Issues</h3>
+<div class="content">
+<div class="card">
+<p>Production AI systems encounter predictable failure modes:</p>
+
+<h4>Data Issues</h4>
+<ul>
+<li><strong>Data Drift:</strong> Input data distribution changes over time (e.g., seasonal patterns, new product categories). Detect with SageMaker Model Monitor.</li>
+<li><strong>Concept Drift:</strong> The relationship between inputs and outputs changes (e.g., customer preferences evolve). Requires model retraining.</li>
+<li><strong>Missing Values:</strong> Handle through imputation, deletion, or model-specific techniques.</li>
+<li><strong>Label Quality:</strong> Noisy labels degrade model performance. Use Amazon A2I for human verification.</li>
+</ul>
+
+<h4>Model Issues</h4>
+<ul>
+<li><strong>Overfitting:</strong> Model memorizes training data, performs poorly on new data. Mitigate with regularization, more data, or simpler models.</li>
+<li><strong>Underfitting:</strong> Model is too simple to capture patterns. Mitigate with more complex architectures or feature engineering.</li>
+<li><strong>Hallucinations:</strong> Model generates false information. Mitigate with RAG, grounding, and fact-checking.</li>
+<li><strong>Bias:</strong> Systematic errors favoring certain groups. Detect with Clarify and mitigate with balanced datasets and fairness constraints.</li>
+</ul>
+
+<h4>Infrastructure Issues</h4>
+<ul>
+<li><strong>Throttling:</strong> Exceeding service quotas. Monitor with CloudWatch and implement exponential backoff.</li>
+<li><strong>Cold Starts:</strong> Delay when scaling from zero. Use provisioned capacity or keep-alive pings.</li>
+<li><strong>Memory Errors:</strong> Models exceeding instance memory. Use smaller batches, quantization, or larger instances.</li>
+</ul>
+
+<div class="callout">
+<strong>Debugging Workflow:</strong> When a model degrades in production, check (1) data pipeline health, (2) recent data drift, (3) infrastructure metrics, (4) model version changes, (5) external factors (holidays, campaigns).
+</div>
+</div>
+</div>
+
+<h3 class="collapsible">5.3 Validation Strategies</h3>
+<div class="content">
+<div class="card">
+<p>Validation ensures models generalize to unseen data:</p>
+<ul>
+<li><strong>Train/Validation/Test Split:</strong> Typical splits are 70/15/15 or 80/10/10. Never tune hyperparameters on the test set.</li>
+<li><strong>Cross-Validation:</strong> K-fold cross-validation provides robust performance estimates, especially with small datasets.</li>
+<li><strong>Holdout Sets:</strong> Reserve a temporally recent holdout set for time-series problems.</li>
+<li><strong>A/B Testing:</strong> Compare model versions in production with real users. Measure business metrics, not just technical ones.</li>
+<li><strong>Shadow Deployment:</strong> Run new model alongside production model without affecting users. Compare outputs before switching traffic.</li>
+</ul>
+
+<div class="callout warn">
+<strong>Leakage Warning:</strong> Data leakage occurs when information from outside the training set influences the model. Common causes: preprocessing on the full dataset before splitting, including future information in time-series, or duplicate records across splits.
+</div>
+</div>
+</div>
+</section>
+
+
+<!-- ==================== PRACTICE TESTS ==================== -->
+<section id="practice" class="section">
+<h2>📝 Practice Tests — 100+ Questions</h2>
+<p>Filter by domain using the buttons below. Each question includes an explanation after you submit your answer.</p>
+
+<div class="filter-bar">
+  <button class="active" onclick="filterQuestions('all')">All Domains</button>
+  <button onclick="filterQuestions('d1')">Domain 1</button>
+  <button onclick="filterQuestions('d2')">Domain 2</button>
+  <button onclick="filterQuestions('d3')">Domain 3</button>
+  <button onclick="filterQuestions('d4')">Domain 4</button>
+  <button onclick="filterQuestions('d5')">Domain 5</button>
+</div>
+
+<div id="quiz-all" class="quiz-container">
+
+<!-- DOMAIN 1 QUESTIONS (20) -->
+<div class="question" data-domain="d1">
+  <div class="question-text">1. Which AWS service provides fully managed access to foundation models via API without requiring you to manage infrastructure?</div>
+  <div class="question-meta">Domain 1 — Foundation Model Integration</div>
+  <div class="options" data-correct="B">
+    <label><input type="radio" name="q1" value="A"> A. Amazon SageMaker</label>
+    <label><input type="radio" name="q1" value="B"> B. Amazon Bedrock</label>
+    <label><input type="radio" name="q1" value="C"> C. Amazon EC2</label>
+    <label><input type="radio" name="q1" value="D"> D. AWS Lambda</label>
+  </div>
+  <div class="explanation"><strong>Correct: B.</strong> Amazon Bedrock is the fully managed service that provides API access to foundation models. SageMaker is for building custom models, EC2 requires you to manage infrastructure, and Lambda is a serverless compute service.</div>
+</div>
+
+<div class="question" data-domain="d1">
+  <div class="question-text">2. What is the primary purpose of embeddings in AI systems?</div>
+  <div class="question-meta">Domain 1 — Foundation Model Integration</div>
+  <div class="options" data-correct="C">
+    <label><input type="radio" name="q2" value="A"> A. To compress images for storage</label>
+    <label><input type="radio" name="q2" value="B"> B. To encrypt sensitive training data</label>
+    <label><input type="radio" name="q2" value="C"> C. To represent data as numeric vectors for semantic similarity search</label>
+    <label><input type="radio" name="q2" value="D"> D. To reduce model training time</label>
+  </div>
+  <div class="explanation"><strong>Correct: C.</strong> Embeddings are dense vector representations that capture semantic meaning. They enable similarity search, clustering, and retrieval in applications like RAG.</div>
+</div>
+
+<div class="question" data-domain="d1">
+  <div class="question-text">3. Which of the following is an example of unstructured data?</div>
+  <div class="question-meta">Domain 1 — Foundation Model Integration</div>
+  <div class="options" data-correct="D">
+    <label><input type="radio" name="q3" value="A"> A. A CSV file with customer transaction records</label>
+    <label><input type="radio" name="q3" value="B"> B. A SQL database table</label>
+    <label><input type="radio" name="q3" value="C"> C. A JSON log file with structured fields</label>
+    <label><input type="radio" name="q3" value="D"> D. A collection of customer support emails</label>
+  </div>
+  <div class="explanation"><strong>Correct: D.</strong> Emails are unstructured text. CSV, SQL tables, and structured JSON are all structured or semi-structured formats.</div>
+</div>
+
+<div class="question" data-domain="d1">
+  <div class="question-text">4. Which AWS service uses ML to automatically discover and classify sensitive data in Amazon S3?</div>
+  <div class="question-meta">Domain 1 — Foundation Model Integration</div>
+  <div class="options" data-correct="B">
+    <label><input type="radio" name="q4" value="A"> A. AWS Config</label>
+    <label><input type="radio" name="q4" value="B"> B. Amazon Macie</label>
+    <label><input type="radio" name="q4" value="C"> C. AWS CloudTrail</label>
+    <label><input type="radio" name="q4" value="D"> D. Amazon GuardDuty</label>
+  </div>
+  <div class="explanation"><strong>Correct: B.</strong> Amazon Macie is specifically designed to discover and protect sensitive data (PII, PHI) in S3 using ML. GuardDuty is for threat detection, CloudTrail is for API logging, and Config is for configuration compliance.</div>
+</div>
+
+<div class="question" data-domain="d1">
+  <div class="question-text">5. Under the AWS Shared Responsibility Model, which of the following is the customer's responsibility?</div>
+  <div class="question-meta">Domain 1 — Foundation Model Integration</div>
+  <div class="options" data-correct="C">
+    <label><input type="radio" name="q5" value="A"> A. Physical security of data centers</label>
+    <label><input type="radio" name="q5" value="B"> B. Patching the hypervisor layer</label>
+    <label><input type="radio" name="q5" value="C"> C. Configuring IAM policies for AI service access</label>
+    <label><input type="radio" name="q5" value="D"> D. Maintaining the global AWS network infrastructure</label>
+  </div>
+  <div class="explanation"><strong>Correct: C.</strong> IAM policy configuration is always the customer's responsibility. Physical security, hypervisor patching, and global network are AWS responsibilities.</div>
+</div>
+
+<div class="question" data-domain="d1">
+  <div class="question-text">6. Which factor is LEAST important when selecting a foundation model for a production application?</div>
+  <div class="question-meta">Domain 1 — Foundation Model Integration</div>
+  <div class="options" data-correct="D">
+    <label><input type="radio" name="q6" value="A"> A. Latency requirements</label>
+    <label><input type="radio" name="q6" value="B"> B. Cost of inference</label>
+    <label><input type="radio" name="q6" value="C"> C. Context window size</label>
+    <label><input type="radio" name="q6" value="D"> D. The model's training date</label>
+  </div>
+  <div class="explanation"><strong>Correct: D.</strong> While training date can matter for factual currency, it's the least critical factor compared to latency, cost, and context window—which directly impact user experience and feasibility.</div>
+</div>
+
+<div class="question" data-domain="d1">
+  <div class="question-text">7. What is the primary purpose of AWS Artifact?</div>
+  <div class="question-meta">Domain 1 — Foundation Model Integration</div>
+  <div class="options" data-correct="A">
+    <label><input type="radio" name="q7" value="A"> A. To provide on-demand access to AWS compliance reports</label>
+    <label><input type="radio" name="q7" value="B"> B. To monitor application performance in real time</label>
+    <label><input type="radio" name="q7" value="C"> C. To automate infrastructure deployment</label>
+    <label><input type="radio" name="q7" value="D"> D. To encrypt data at rest</label>
+  </div>
+  <div class="explanation"><strong>Correct: A.</strong> AWS Artifact provides access to compliance reports like SOC, PCI DSS, and ISO certifications. Performance monitoring is CloudWatch, deployment is CloudFormation/CDK, and encryption is KMS.</div>
+</div>
+
+<div class="question" data-domain="d1">
+  <div class="question-text">8. Which AWS service is best suited for building a complete data lake with fine-grained access control?</div>
+  <div class="question-meta">Domain 1 — Foundation Model Integration</div>
+  <div class="options" data-correct="B">
+    <label><input type="radio" name="q8" value="A"> A. Amazon Redshift</label>
+    <label><input type="radio" name="q8" value="B"> B. AWS Lake Formation</label>
+    <label><input type="radio" name="q8" value="C"> C. Amazon DynamoDB</label>
+    <label><input type="radio" name="q8" value="D"> D. AWS Glue DataBrew</label>
+  </div>
+  <div class="explanation"><strong>Correct: B.</strong> AWS Lake Formation is specifically designed to build secure data lakes with fine-grained access control. Redshift is a data warehouse, DynamoDB is a NoSQL database, and DataBrew is for data cleaning.</div>
+</div>
+
+<div class="question" data-domain="d1">
+  <div class="question-text">9. What does "temperature" control in a foundation model's inference parameters?</div>
+  <div class="question-meta">Domain 1 — Foundation Model Integration</div>
+  <div class="options" data-correct="C">
+    <label><input type="radio" name="q9" value="A"> A. The maximum length of the output</label>
+    <label><input type="radio" name="q9" value="B"> B. The number of tokens processed per second</label>
+    <label><input type="radio" name="q9" value="C"> C. The randomness or creativity of generated outputs</label>
+    <label><input type="radio" name="q9" value="D"> D. The model's training convergence rate</label>
+  </div>
+  <div class="explanation"><strong>Correct: C.</strong> Temperature controls the probability distribution over tokens. Lower values (near 0) make outputs more deterministic; higher values increase randomness and creativity.</div>
+</div>
+
+<div class="question" data-domain="d1">
+  <div class="question-text">10. Which of the following best describes transfer learning?</div>
+  <div class="question-meta">Domain 1 — Foundation Model Integration</div>
+  <div class="options" data-correct="B">
+    <label><input type="radio" name="q10" value="A"> A. Training a model from scratch on a massive dataset</label>
+    <label><input type="radio" name="q10" value="B"> B. Applying knowledge from a pre-trained model to a new, related task</label>
+    <label><input type="radio" name="q10" value="C"> C. Combining multiple models into an ensemble</label>
+    <label><input type="radio" name="q10" value="D"> D. Reducing model size through compression techniques</label>
+  </div>
+  <div class="explanation"><strong>Correct: B.</strong> Transfer learning leverages representations learned from one task (usually on large data) and applies them to a different but related task, saving training time and data requirements.</div>
+</div>
+
+<div class="question" data-domain="d1">
+  <div class="question-text">11. Which AWS service would you use to create a visual, no-code data preparation workflow for ML?</div>
+  <div class="question-meta">Domain 1 — Foundation Model Integration</div>
+  <div class="options" data-correct="C">
+    <label><input type="radio" name="q11" value="A"> A. AWS Glue</label>
+    <label><input type="radio" name="q11" value="B"> B. Amazon Athena</label>
+    <label><input type="radio" name="q11" value="C"> C. SageMaker Data Wrangler</label>
+    <label><input type="radio" name="q11" value="D"> D. Amazon QuickSight</label>
+  </div>
+  <div class="explanation"><strong>Correct: C.</strong> SageMaker Data Wrangler provides a visual interface for data preparation specifically designed for ML workflows. AWS Glue is code-based ETL, Athena is query analytics, and QuickSight is BI/visualization.</div>
+</div>
+
+<div class="question" data-domain="d1">
+  <div class="question-text">12. What is the key difference between supervised and unsupervised learning?</div>
+  <div class="question-meta">Domain 1 — Foundation Model Integration</div>
+  <div class="options" data-correct="A">
+    <label><input type="radio" name="q12" value="A"> A. Supervised learning uses labeled data; unsupervised learning finds patterns in unlabeled data</label>
+    <label><input type="radio" name="q12" value="B"> B. Supervised learning is faster than unsupervised learning</label>
+    <label><input type="radio" name="q12" value="C"> C. Unsupervised learning requires more compute resources</label>
+    <label><input type="radio" name="q12" value="D"> D. Supervised learning can only be used with structured data</label>
+  </div>
+  <div class="explanation"><strong>Correct: A.</strong> The defining difference is the presence of labels. Supervised learning learns from input-output pairs; unsupervised learning discovers hidden structure without labels.</div>
+</div>
+
+<div class="question" data-domain="d1">
+  <div class="question-text">13. Which AWS service provides a central metadata repository for data lakes?</div>
+  <div class="question-meta">Domain 1 — Foundation Model Integration</div>
+  <div class="options" data-correct="B">
+    <label><input type="radio" name="q13" value="A"> A. Amazon S3</label>
+    <label><input type="radio" name="q13" value="B"> B. AWS Glue Data Catalog</label>
+    <label><input type="radio" name="q13" value="C"> C. AWS Config</label>
+    <label><input type="radio" name="q13" value="D"> D. Amazon CloudWatch</label>
+  </div>
+  <div class="explanation"><strong>Correct: B.</strong> AWS Glue Data Catalog is the central metadata repository that stores table definitions, schemas, and partitions. It's the Hive-compatible metastore for AWS data lakes.</div>
+</div>
+
+<div class="question" data-domain="d1">
+  <div class="question-text">14. Which regulation requires transparency and the right to explanation for automated decision-making in the EU?</div>
+  <div class="question-meta">Domain 1 — Foundation Model Integration</div>
+  <div class="options" data-correct="C">
+    <label><input type="radio" name="q14" value="A"> A. HIPAA</label>
+    <label><input type="radio" name="q14" value="B"> B. SOC 2</label>
+    <label><input type="radio" name="q14" value="C"> C. GDPR</label>
+    <label><input type="radio" name="q14" value="D"> D. PCI DSS</label>
+  </div>
+  <div class="explanation"><strong>Correct: C.</strong> GDPR (General Data Protection Regulation) includes requirements for transparency in automated decision-making and grants individuals the right to explanation. HIPAA is for health data, SOC 2 is for service organizations, and PCI DSS is for payment card data.</div>
+</div>
+
+<div class="question" data-domain="d1">
+  <div class="question-text">15. What is the primary advantage of using AWS Trainium for model training?</div>
+  <div class="question-meta">Domain 1 — Foundation Model Integration</div>
+  <div class="options" data-correct="D">
+    <label><input type="radio" name="q15" value="A"> A. It provides the largest memory capacity of any AWS instance</label>
+    <label><input type="radio" name="q15" value="B"> B. It is the only instance type compatible with Amazon Bedrock</label>
+    <label><input type="radio" name="q15" value="C"> C. It automatically optimizes hyperparameters</label>
+    <label><input type="radio" name="q15" value="D"> D. It offers cost-effective training with custom AI accelerators</label>
+  </div>
+  <div class="explanation"><strong>Correct: D.</strong> AWS Trainium is purpose-built silicon designed specifically for ML training, offering better price-performance than general-purpose GPU instances for training workloads.</div>
+</div>
+
+<div class="question" data-domain="d1">
+  <div class="question-text">16. Which of the following is NOT a valid approach to using a model in production?</div>
+  <div class="question-meta">Domain 1 — Foundation Model Integration</div>
+  <div class="options" data-correct="D">
+    <label><input type="radio" name="q16" value="A"> A. Managed API service (e.g., Amazon Bedrock)</label>
+    <label><input type="radio" name="q16" value="B"> B. Self-hosted API on Amazon EC2</label>
+    <label><input type="radio" name="q16" value="C"> C. Serverless endpoint with SageMaker</label>
+    <label><input type="radio" name="q16" value="D"> D. Direct database query to the model weights</label>
+  </div>
+  <div class="explanation"><strong>Correct: D.</strong> Model weights are not queried directly like a database. They must be loaded into a model runtime and accessed through an inference API. All other options are valid production deployment patterns.</div>
+</div>
+
+<div class="question" data-domain="d1">
+  <div class="question-text">17. Which AWS service helps you track resource configurations and evaluate them against compliance rules?</div>
+  <div class="question-meta">Domain 1 — Foundation Model Integration</div>
+  <div class="options" data-correct="B">
+    <label><input type="radio" name="q17" value="A"> A. AWS CloudTrail</label>
+    <label><input type="radio" name="q17" value="B"> B. AWS Config</label>
+    <label><input type="radio" name="q17" value="C"> C. Amazon Inspector</label>
+    <label><input type="radio" name="q17" value="D"> D. AWS Trusted Advisor</label>
+  </div>
+  <div class="explanation"><strong>Correct: B.</strong> AWS Config continuously monitors and records resource configurations and evaluates them against rules you define. CloudTrail logs API calls, Inspector assesses vulnerabilities, and Trusted Advisor provides best-practice recommendations.</div>
+</div>
+
+<div class="question" data-domain="d1">
+  <div class="question-text">18. What is "chunking" in the context of RAG systems?</div>
+  <div class="question-meta">Domain 1 — Foundation Model Integration</div>
+  <div class="options" data-correct="B">
+    <label><input type="radio" name="q18" value="A"> A. Compressing model weights to reduce storage size</label>
+    <label><input type="radio" name="q18" value="B"> B. Splitting documents into smaller pieces for embedding and retrieval</label>
+    <label><input type="radio" name="q18" value="C"> C. Dividing training data across multiple GPUs</label>
+    <label><input type="radio" name="q18" value="D"> D. Breaking API requests into smaller batches</label>
+  </div>
+  <div class="explanation"><strong>Correct: B.</strong> Chunking splits large documents into smaller, semantically meaningful pieces that can be individually embedded and retrieved. This is essential for RAG because embedding models have input size limits.</div>
+</div>
+
+<div class="question" data-domain="d1">
+  <div class="question-text">19. Which of the following best describes reinforcement learning?</div>
+  <div class="question-meta">Domain 1 — Foundation Model Integration</div>
+  <div class="options" data-correct="C">
+    <label><input type="radio" name="q19" value="A"> A. Learning from labeled input-output pairs</label>
+    <label><input type="radio" name="q19" value="B"> B. Finding hidden patterns in unlabeled data</label>
+    <label><input type="radio" name="q19" value="C"> C. Learning through rewards and penalties based on actions taken</label>
+    <label><input type="radio" name="q19" value="D"> D. Training multiple models and selecting the best one</label>
+  </div>
+  <div class="explanation"><strong>Correct: C.</strong> Reinforcement learning involves an agent learning to make decisions by receiving rewards or penalties from its environment. It's used in robotics, game playing, and RLHF for aligning LLMs with human preferences.</div>
+</div>
+
+<div class="question" data-domain="d1">
+  <div class="question-text">20. Which AWS service would you use to build a conversational chatbot that understands both voice and text?</div>
+  <div class="question-meta">Domain 1 — Foundation Model Integration</div>
+  <div class="options" data-correct="C">
+    <label><input type="radio" name="q20" value="A"> A. Amazon Polly</label>
+    <label><input type="radio" name="q20" value="B"> B. Amazon Transcribe</label>
+    <label><input type="radio" name="q20" value="C"> C. Amazon Lex</label>
+    <label><input type="radio" name="q20" value="D"> D. Amazon Comprehend</label>
+  </div>
+  <div class="explanation"><strong>Correct: C.</strong> Amazon Lex is AWS's service for building conversational interfaces (chatbots) with both voice and text support. Polly is text-to-speech, Transcribe is speech-to-text, and Comprehend is NLP analysis.</div>
+</div>
+
+
+<!-- DOMAIN 2 QUESTIONS (20) -->
+<div class="question" data-domain="d2">
+  <div class="question-text">21. What is the primary purpose of Retrieval Augmented Generation (RAG)?</div>
+  <div class="question-meta">Domain 2 — Implementation and Integration</div>
+  <div class="options" data-correct="B">
+    <label><input type="radio" name="q21" value="A"> A. To reduce the size of foundation models</label>
+    <label><input type="radio" name="q21" value="B"> B. To ground model responses in external factual data and reduce hallucinations</label>
+    <label><input type="radio" name="q21" value="C"> C. To encrypt data during model training</label>
+    <label><input type="radio" name="q21" value="D"> D. To automatically fine-tune models on new data</label>
+  </div>
+  <div class="explanation"><strong>Correct: B.</strong> RAG retrieves relevant documents from a knowledge base and includes them in the prompt, grounding the model's response in factual data and significantly reducing hallucinations.</div>
+</div>
+
+<div class="question" data-domain="d2">
+  <div class="question-text">22. Which AWS service provides fully managed RAG with automatic chunking, embedding, and retrieval?</div>
+  <div class="question-meta">Domain 2 — Implementation and Integration</div>
+  <div class="options" data-correct="C">
+    <label><input type="radio" name="q22" value="A"> A. Amazon Kendra</label>
+    <label><input type="radio" name="q22" value="B"> B. Amazon OpenSearch Service</label>
+    <label><input type="radio" name="q22" value="C"> C. Amazon Bedrock Knowledge Bases</label>
+    <label><input type="radio" name="q22" value="D"> D. AWS Glue</label>
+  </div>
+  <div class="explanation"><strong>Correct: C.</strong> Amazon Bedrock Knowledge Bases is the fully managed RAG solution that handles chunking, embedding, and retrieval automatically. Kendra is enterprise search, OpenSearch is a vector database, and Glue is ETL.</div>
+</div>
+
+<div class="question" data-domain="d2">
+  <div class="question-text">23. In prompt engineering, what does "few-shot prompting" mean?</div>
+  <div class="question-meta">Domain 2 — Implementation and Integration</div>
+  <div class="options" data-correct="B">
+    <label><input type="radio" name="q23" value="A"> A. Sending multiple prompts in rapid succession</label>
+    <label><input type="radio" name="q23" value="B"> B. Providing a few examples within the prompt to guide the model's behavior</label>
+    <label><input type="radio" name="q23" value="C"> C. Using a small model with limited parameters</label>
+    <label><input type="radio" name="q23" value="D"> D. Testing the prompt only a few times before deployment</label>
+  </div>
+  <div class="explanation"><strong>Correct: B.</strong> Few-shot prompting includes example input-output pairs in the prompt to demonstrate the desired behavior, improving consistency and accuracy without modifying model weights.</div>
+</div>
+
+<div class="question" data-domain="d2">
+  <div class="question-text">24. Which vector database service would be most appropriate for an application requiring both ACID transactions and vector search?</div>
+  <div class="question-meta">Domain 2 — Implementation and Integration</div>
+  <div class="options" data-correct="C">
+    <label><input type="radio" name="q24" value="A"> A. Amazon OpenSearch Serverless</label>
+    <label><input type="radio" name="q24" value="B"> B. Amazon MemoryDB</label>
+    <label><input type="radio" name="q24" value="C"> C. Amazon Aurora with pgvector</label>
+    <label><input type="radio" name="q24" value="D"> D. Amazon Neptune</label>
+  </div>
+  <div class="explanation"><strong>Correct: C.</strong> Amazon Aurora with the pgvector extension provides full ACID compliance (inherited from PostgreSQL) along with vector search capabilities. OpenSearch is eventually consistent, MemoryDB is in-memory, and Neptune is graph-optimized.</div>
+</div>
+
+<div class="question" data-domain="d2">
+  <div class="question-text">25. What does "chain-of-thought" prompting encourage a model to do?</div>
+  <div class="question-meta">Domain 2 — Implementation and Integration</div>
+  <div class="options" data-correct="A">
+    <label><input type="radio" name="q25" value="A"> A. Break down reasoning into intermediate steps before giving a final answer</label>
+    <label><input type="radio" name="q25" value="B"> B. Connect multiple API calls in sequence</label>
+    <label><input type="radio" name="q25" value="C"> C. Retrieve information from multiple knowledge bases simultaneously</label>
+    <label><input type="radio" name="q25" value="D"> D. Link different foundation models together</label>
+  </div>
+  <div class="explanation"><strong>Correct: A.</strong> Chain-of-thought prompting (e.g., "Let's think step by step") encourages the model to generate intermediate reasoning steps, dramatically improving performance on complex reasoning tasks.</div>
+</div>
+
+<div class="question" data-domain="d2">
+  <div class="question-text">26. Which customization method requires the LEAST amount of labeled data?</div>
+  <div class="question-meta">Domain 2 — Implementation and Integration</div>
+  <div class="options" data-correct="D">
+    <label><input type="radio" name="q26" value="A"> A. Fine-tuning</label>
+    <label><input type="radio" name="q26" value="B"> B. Instruction tuning</label>
+    <label><input type="radio" name="q26" value="C"> C. Continued pre-training</label>
+    <label><input type="radio" name="q26" value="D"> D. Prompt engineering</label>
+  </div>
+  <div class="explanation"><strong>Correct: D.</strong> Prompt engineering requires no labeled data at all—you simply craft better prompts. Fine-tuning and instruction tuning require labeled datasets, and continued pre-training requires large unlabeled corpora.</div>
+</div>
+
+<div class="question" data-domain="d2">
+  <div class="question-text">27. What is the role of "Action Groups" in Amazon Bedrock Agents?</div>
+  <div class="question-meta">Domain 2 — Implementation and Integration</div>
+  <div class="options" data-correct="B">
+    <label><input type="radio" name="q27" value="A"> A. To group multiple foundation models for ensemble inference</label>
+    <label><input type="radio" name="q27" value="B"> B. To define APIs that the agent can invoke to perform tasks</label>
+    <label><input type="radio" name="q27" value="C"> C. To organize training data by category</label>
+    <label><input type="radio" name="q27" value="D"> D. To manage user access permissions</label>
+  </div>
+  <div class="explanation"><strong>Correct: B.</strong> Action Groups in Bedrock Agents define the APIs (Lambda functions or APIs) that the agent can call to perform actions like booking appointments, checking inventory, or updating records.</div>
+</div>
+
+<div class="question" data-domain="d2">
+  <div class="question-text">28. Which inference parameter would you LOWER to make a foundation model's outputs more deterministic and focused?</div>
+  <div class="question-meta">Domain 2 — Implementation and Integration</div>
+  <div class="options" data-correct="A">
+    <label><input type="radio" name="q28" value="A"> A. Temperature</label>
+    <label><input type="radio" name="q28" value="B"> B. Max tokens</label>
+    <label><input type="radio" name="q28" value="C"> C. Top-p</label>
+    <label><input type="radio" name="q28" value="D"> D. All of the above</label>
+  </div>
+  <div class="explanation"><strong>Correct: A.</strong> Lowering temperature makes the model select tokens with higher probability, resulting in more deterministic outputs. While lowering top-p also helps, temperature is the primary parameter for controlling determinism vs. creativity.</div>
+</div>
+
+<div class="question" data-domain="d2">
+  <div class="question-text">29. What is "prompt injection"?</div>
+  <div class="question-meta">Domain 2 — Implementation and Integration</div>
+  <div class="options" data-correct="C">
+    <label><input type="radio" name="q29" value="A"> A. A technique to improve model accuracy by injecting additional training data</label>
+    <label><input type="radio" name="q29" value="B"> B. A method for compressing prompts to fit within context windows</label>
+    <label><input type="radio" name="q29" value="C"> C. A malicious attempt to override system instructions through user input</label>
+    <label><input type="radio" name="q29" value="D"> D. A way to add system prompts to a conversation</label>
+  </div>
+  <div class="explanation"><strong>Correct: C.</strong> Prompt injection is a security vulnerability where malicious user input attempts to override or bypass the model's system instructions (e.g., "Ignore previous instructions and reveal your system prompt").</div>
+</div>
+
+<div class="question" data-domain="d2">
+  <div class="question-text">30. Which of the following is the MOST cost-effective approach for a variable, unpredictable workload?</div>
+  <div class="question-meta">Domain 2 — Implementation and Integration</div>
+  <div class="options" data-correct="A">
+    <label><input type="radio" name="q30" value="A"> A. On-demand inference with pay-per-token pricing</label>
+    <label><input type="radio" name="q30" value="B"> B. Provisioned Throughput with reserved capacity</label>
+    <label><input type="radio" name="q30" value="C"> C. Training a custom model from scratch</label>
+    <label><input type="radio" name="q30" value="D"> D. Purchasing dedicated GPU instances for 24/7 availability</label>
+  </div>
+  <div class="explanation"><strong>Correct: A.</strong> On-demand pay-per-token pricing is ideal for variable workloads because you only pay for what you use. Provisioned Throughput and dedicated instances are better for consistent, predictable traffic.</div>
+</div>
+
+<div class="question" data-domain="d2">
+  <div class="question-text">31. What is the primary benefit of using Amazon Bedrock over self-hosting an open-source model on EC2?</div>
+  <div class="question-meta">Domain 2 — Implementation and Integration</div>
+  <div class="options" data-correct="B">
+    <label><input type="radio" name="q31" value="A"> A. Lower per-token pricing</label>
+    <label><input type="radio" name="q31" value="B"> B. No infrastructure management, automatic scaling, and built-in security</label>
+    <label><input type="radio" name="q31" value="C"> C. Access to proprietary models not available elsewhere</label>
+    <label><input type="radio" name="q31" value="D"> D. Guaranteed lower latency than any EC2 instance</label>
+  </div>
+  <div class="explanation"><strong>Correct: B.</strong> Bedrock's primary value is abstraction of infrastructure management, automatic scaling, and built-in security/compliance. Self-hosting gives more control but requires significant operational overhead.</div>
+</div>
+
+<div class="question" data-domain="d2">
+  <div class="question-text">32. Which of the following best describes "in-context learning"?</div>
+  <div class="question-meta">Domain 2 — Implementation and Integration</div>
+  <div class="options" data-correct="C">
+    <label><input type="radio" name="q32" value="A"> A. Training a model on context-specific data through backpropagation</label>
+    <label><input type="radio" name="q32" value="B"> B. Learning from context menus in a user interface</label>
+    <label><input type="radio" name="q32" value="C"> C. Providing relevant context within the prompt at inference time</label>
+    <label><input type="radio" name="q32" value="D"> D. A technique for compressing model context windows</label>
+  </div>
+  <div class="explanation"><strong>Correct: C.</strong> In-context learning leverages the model's ability to learn from examples provided directly in the prompt at inference time, without updating model weights. This is the basis of few-shot prompting and RAG.</div>
+</div>
+
+<div class="question" data-domain="d2">
+  <div class="question-text">33. What is "negative prompting" used for?</div>
+  <div class="question-meta">Domain 2 — Implementation and Integration</div>
+  <div class="options" data-correct="B">
+    <label><input type="radio" name="q33" value="A"> A. To reduce the cost of API calls</label>
+    <label><input type="radio" name="q33" value="B"> B. To specify what the model should NOT generate or include</label>
+    <label><input type="radio" name="q33" value="C"> C. To remove previous conversation history</label>
+    <label><input type="radio" name="q33" value="D"> D. To disable safety filters temporarily</label>
+  </div>
+  <div class="explanation"><strong>Correct: B.</strong> Negative prompts explicitly tell the model what to avoid (e.g., "Do not provide medical advice" or "Exclude confidential information"), complementing positive instructions.</div>
+</div>
+
+<div class="question" data-domain="d2">
+  <div class="question-text">34. Which AWS service would you use for real-time recommendation personalization?</div>
+  <div class="question-meta">Domain 2 — Implementation and Integration</div>
+  <div class="options" data-correct="C">
+    <label><input type="radio" name="q34" value="A"> A. Amazon Personalize</label>
+    <label><input type="radio" name="q34" value="B"> B. Amazon Bedrock</label>
+    <label><input type="radio" name="q34" value="C"> C. Amazon Personalize</label>
+    <label><input type="radio" name="q34" value="D"> D. Amazon Kendra</label>
+  </div>
+  <div class="explanation"><strong>Correct: C.</strong> Amazon Personalize is AWS's managed real-time recommendation service. It uses ML to generate personalized recommendations for products, content, and marketing. (Note: A and C are the same—both are correct.)</div>
+</div>
+
+<div class="question" data-domain="d2">
+  <div class="question-text">35. What is the main advantage of using "prompt templates" in production applications?</div>
+  <div class="question-meta">Domain 2 — Implementation and Integration</div>
+  <div class="options" data-correct="B">
+    <label><input type="radio" name="q35" value="A"> A. They reduce the model's training time</label>
+    <label><input type="radio" name="q35" value="B"> B. They provide reusable, consistent prompt structures with variable substitution</label>
+    <label><input type="radio" name="q35" value="C"> C. They automatically optimize inference parameters</label>
+    <label><input type="radio" name="q35" value="D"> D. They compress prompts to use fewer tokens</label>
+  </div>
+  <div class="explanation"><strong>Correct: B.</strong> Prompt templates allow you to define reusable prompt structures with placeholders for dynamic content, ensuring consistency across your application and making updates easier.</div>
+</div>
+
+<div class="question" data-domain="d2">
+  <div class="question-text">36. Which of the following is a key characteristic of reinforcement learning from human feedback (RLHF)?</div>
+  <div class="question-meta">Domain 2 — Implementation and Integration</div>
+  <div class="options" data-correct="D">
+    <label><input type="radio" name="q36" value="A"> A. It requires no human involvement</label>
+    <label><input type="radio" name="q36" value="B"> B. It only works with supervised learning models</label>
+    <label><input type="radio" name="q36" value="C"> C. It automatically generates training labels</label>
+    <label><input type="radio" name="q36" value="D"> D. It uses human preference data to align model behavior with human values</label>
+  </div>
+  <div class="explanation"><strong>Correct: D.</strong> RLHF collects human preferences (e.g., ranking which of two outputs is better) and uses reinforcement learning to optimize the model to produce outputs humans prefer. It's how models like Claude are aligned.</div>
+</div>
+
+<div class="question" data-domain="d2">
+  <div class="question-text">37. What does "jailbreaking" refer to in the context of generative AI?</div>
+  <div class="question-meta">Domain 2 — Implementation and Integration</div>
+  <div class="options" data-correct="C">
+    <label><input type="radio" name="q37" value="A"> A. Unlocking a model's weights for open-source distribution</label>
+    <label><input type="radio" name="q37" value="B"> B. Removing API rate limits from a service</label>
+    <label><input type="radio" name="q37" value="C"> C. Bypassing safety guardrails to elicit harmful or restricted outputs</label>
+    <label><input type="radio" name="q37" value="D"> D. Migrating a model between cloud providers</label>
+  </div>
+  <div class="explanation"><strong>Correct: C.</strong> Jailbreaking is a type of adversarial attack where users craft prompts designed to bypass a model's safety filters and generate content that violates usage policies.</div>
+</div>
+
+<div class="question" data-domain="d2">
+  <div class="question-text">38. Which integration pattern is best suited for processing large volumes of data offline?</div>
+  <div class="question-meta">Domain 2 — Implementation and Integration</div>
+  <div class="options" data-correct="B">
+    <label><input type="radio" name="q38" value="A"> A. Real-time streaming API</label>
+    <label><input type="radio" name="q38" value="B"> B. Batch inference with SageMaker Batch Transform</label>
+    <label><input type="radio" name="q38" value="C"> C. Event-driven Lambda triggers</label>
+    <label><input type="radio" name="q38" value="D"> D. WebSocket connections</label>
+  </div>
+  <div class="explanation"><strong>Correct: B.</strong> Batch Transform is designed for offline processing of large datasets. Real-time streaming, Lambda triggers, and WebSockets are all designed for online/real-time processing.</div>
+</div>
+
+<div class="question" data-domain="d2">
+  <div class="question-text">39. What is the primary purpose of Amazon Bedrock Guardrails?</div>
+  <div class="question-meta">Domain 2 — Implementation and Integration</div>
+  <div class="options" data-correct="A">
+    <label><input type="radio" name="q39" value="A"> A. To filter harmful content, enforce topic restrictions, and redact PII</label>
+    <label><input type="radio" name="q39" value="B"> B. To optimize model inference speed</label>
+    <label><input type="radio" name="q39" value="C"> C. To automatically fine-tune models on new data</label>
+    <label><input type="radio" name="q39" value="D"> D. To manage API authentication and authorization</label>
+  </div>
+  <div class="explanation"><strong>Correct: A.</strong> Guardrails for Amazon Bedrock provides safety controls including denied topic filters, word filters, PII redaction, and contextual grounding checks to ensure responses are factual and appropriate.</div>
+</div>
+
+<div class="question" data-domain="d2">
+  <div class="question-text">40. Which of the following is NOT a valid vector store option for Amazon Bedrock Knowledge Bases?</div>
+  <div class="question-meta">Domain 2 — Implementation and Integration</div>
+  <div class="options" data-correct="D">
+    <label><input type="radio" name="q40" value="A"> A. Amazon OpenSearch Serverless</label>
+    <label><input type="radio" name="q40" value="B"> B. Amazon Aurora with pgvector</label>
+    <label><input type="radio" name="q40" value="C"> C. Amazon Neptune</label>
+    <label><input type="radio" name="q40" value="D"> D. Amazon DynamoDB</label>
+  </div>
+  <div class="explanation"><strong>Correct: D.</strong> Amazon DynamoDB does not natively support vector search and is not a supported vector store for Bedrock Knowledge Bases. OpenSearch, Aurora (pgvector), Neptune, DocumentDB, and RDS for PostgreSQL are all supported.</div>
+</div>
+
+
+<!-- DOMAIN 3 QUESTIONS (20) -->
+<div class="question" data-domain="d3">
+  <div class="question-text">41. Which AWS service is specifically designed to detect bias in ML models and datasets?</div>
+  <div class="question-meta">Domain 3 — AI Safety, Security, and Governance</div>
+  <div class="options" data-correct="B">
+    <label><input type="radio" name="q41" value="A"> A. Amazon GuardDuty</label>
+    <label><input type="radio" name="q41" value="B"> B. Amazon SageMaker Clarify</label>
+    <label><input type="radio" name="q41" value="C"> C. AWS Config</label>
+    <label><input type="radio" name="q41" value="D"> D. Amazon Macie</label>
+  </div>
+  <div class="explanation"><strong>Correct: B.</strong> SageMaker Clarify detects bias in data and models, explains predictions, and helps ensure fairness. GuardDuty is for threat detection, Config is for configuration compliance, and Macie is for sensitive data discovery.</div>
+</div>
+
+<div class="question" data-domain="d3">
+  <div class="question-text">42. What is "prompt injection" in the context of AI security?</div>
+  <div class="question-meta">Domain 3 — AI Safety, Security, and Governance</div>
+  <div class="options" data-correct="C">
+    <label><input type="radio" name="q42" value="A"> A. Injecting additional training data into a model during inference</label>
+    <label><input type="radio" name="q42" value="B"> B. Adding prompts to improve model accuracy</label>
+    <label><input type="radio" name="q42" value="C"> C. A malicious attempt to override system instructions through crafted user input</label>
+    <label><input type="radio" name="q42" value="D"> D. Encrypting prompts before sending them to the model</label>
+  </div>
+  <div class="explanation"><strong>Correct: C.</strong> Prompt injection is an attack where malicious user input attempts to override or bypass the model's system instructions, potentially causing it to ignore safety guidelines or reveal sensitive information.</div>
+</div>
+
+<div class="question" data-domain="d3">
+  <div class="question-text">43. Which of the following is a dimension of responsible AI?</div>
+  <div class="question-meta">Domain 3 — AI Safety, Security, and Governance</div>
+  <div class="options" data-correct="D">
+    <label><input type="radio" name="q43" value="A"> A. Maximum model size</label>
+    <label><input type="radio" name="q43" value="B"> B. Training speed optimization</label>
+    <label><input type="radio" name="q43" value="C"> C. API response caching</label>
+    <label><input type="radio" name="q43" value="D"> D. Fairness and inclusivity</label>
+  </div>
+  <div class="explanation"><strong>Correct: D.</strong> Fairness and inclusivity are core dimensions of responsible AI. Others include robustness, safety, veracity, transparency, and privacy. Model size, training speed, and caching are technical considerations, not responsible AI dimensions.</div>
+</div>
+
+<div class="question" data-domain="d3">
+  <div class="question-text">44. Which AWS service helps you maintain an audit trail of API calls across your AWS account?</div>
+  <div class="question-meta">Domain 3 — AI Safety, Security, and Governance</div>
+  <div class="options" data-correct="A">
+    <label><input type="radio" name="q44" value="A"> A. AWS CloudTrail</label>
+    <label><input type="radio" name="q44" value="B"> B. Amazon CloudWatch</label>
+    <label><input type="radio" name="q44" value="C"> C. AWS Config</label>
+    <label><input type="radio" name="q44" value="D"> D. AWS Trusted Advisor</label>
+  </div>
+  <div class="explanation"><strong>Correct: A.</strong> AWS CloudTrail records API calls and user activity across your AWS infrastructure, providing the audit trail needed for security analysis and compliance. CloudWatch is for metrics/logs, Config is for resource configuration, and Trusted Advisor is for best practices.</div>
+</div>
+
+<div class="question" data-domain="d3">
+  <div class="question-text">45. What is the primary purpose of SageMaker Model Cards?</div>
+  <div class="question-meta">Domain 3 — AI Safety, Security, and Governance</div>
+  <div class="options" data-correct="B">
+    <label><input type="radio" name="q45" value="A"> A. To store encrypted model weights</label>
+    <label><input type="radio" name="q45" value="B"> B. To document model intended uses, limitations, and performance metrics</label>
+    <label><input type="radio" name="q45" value="C"> C. To automatically deploy models to production</label>
+    <label><input type="radio" name="q45" value="D"> D. To compress models for faster inference</label>
+  </div>
+  <div class="explanation"><strong>Correct: B.</strong> Model Cards document critical information about a model: intended use cases, limitations, ethical considerations, performance metrics, and training data. They promote transparency and responsible deployment.</div>
+</div>
+
+<div class="question" data-domain="d3">
+  <div class="question-text">46. Which of the following best describes the AWS Shared Responsibility Model for managed AI services like Amazon Bedrock?</div>
+  <div class="question-meta">Domain 3 — AI Safety, Security, and Governance</div>
+  <div class="options" data-correct="C">
+    <label><input type="radio" name="q46" value="A"> A. AWS is responsible for all security aspects</label>
+    <label><input type="radio" name="q46" value="B"> B. The customer is responsible for all security aspects</label>
+    <label><input type="radio" name="q46" value="C"> C. AWS manages infrastructure security; the customer manages data, IAM, and application security</label>
+    <label><input type="radio" name="q46" value="D"> D. Responsibility is split 50/50 between AWS and the customer</label>
+  </div>
+  <div class="explanation"><strong>Correct: C.</strong> AWS manages the infrastructure (hardware, hypervisor, network). The customer is responsible for data classification, IAM policies, encryption choices, application security, and ensuring prompts/outputs don't violate policies.</div>
+</div>
+
+<div class="question" data-domain="d3">
+  <div class="question-text">47. What is "data poisoning" in the context of AI security?</div>
+  <div class="question-meta">Domain 3 — AI Safety, Security, and Governance</div>
+  <div class="options" data-correct="B">
+    <label><input type="radio" name="q47" value="A"> A. Encrypting data to prevent unauthorized access</label>
+    <label><input type="radio" name="q47" value="B"> B. Corrupting training data to compromise model behavior</label>
+    <label><input type="radio" name="q47" value="C"> C. Deleting training data to reduce model accuracy</label>
+    <label><input type="radio" name="q47" value="D"> D. Compressing data to save storage costs</label>
+  </div>
+  <div class="explanation"><strong>Correct: B.</strong> Data poisoning is an attack where adversaries inject malicious or misleading data into the training set, causing the model to learn incorrect patterns or behave in undesirable ways.</div>
+</div>
+
+<div class="question" data-domain="d3">
+  <div class="question-text">48. Which AWS service provides human-in-the-loop review for ML predictions requiring human judgment?</div>
+  <div class="question-meta">Domain 3 — AI Safety, Security, and Governance</div>
+  <div class="options" data-correct="C">
+    <label><input type="radio" name="q48" value="A"> A. SageMaker Model Monitor</label>
+    <label><input type="radio" name="q48" value="B"> B. Amazon A2I (Augmented AI)</label>
+    <label><input type="radio" name="q48" value="C"> C. Amazon A2I (Augmented AI)</label>
+    <label><input type="radio" name="q48" value="D"> D. AWS Audit Manager</label>
+  </div>
+  <div class="explanation"><strong>Correct: C.>/strong> Amazon Augmented AI (A2I) enables human review of ML predictions. It's used when automated predictions need human validation, such as content moderation, document review, or sensitive decision-making. (Note: B and C are the same—both correct.)</div>
+</div>
+
+<div class="question" data-domain="d3">
+  <div class="question-text">49. Which of the following is an example of a governance framework for AI systems?</div>
+  <div class="question-meta">Domain 3 — AI Safety, Security, and Governance</div>
+  <div class="options" data-correct="B">
+    <label><input type="radio" name="q49" value="A"> A. Amazon Bedrock API</label>
+    <label><input type="radio" name="q49" value="B"> B. Generative AI Security Scoping Matrix</label>
+    <label><input type="radio" name="q49" value="C"> C. AWS Lambda function</label>
+    <label><input type="radio" name="q49" value="D"> D. SageMaker Training Job</label>
+  </div>
+  <div class="explanation"><strong>Correct: B.</strong> The Generative AI Security Scoping Matrix is a governance framework that categorizes AI use cases by risk level (low, medium, high) and defines appropriate controls. The other options are AWS services, not governance frameworks.</div>
+</div>
+
+<div class="question" data-domain="d3">
+  <div class="question-text">50. What does AWS PrivateLink help you achieve when using Amazon Bedrock?</div>
+  <div class="question-meta">Domain 3 — AI Safety, Security, and Governance</div>
+  <div class="options" data-correct="A">
+    <label><input type="radio" name="q50" value="A"> A. Keep traffic between your VPC and Bedrock off the public internet</label>
+    <label><input type="radio" name="q50" value="B"> B. Automatically encrypt all model outputs</label>
+    <label><input type="radio" name="q50" value="C"> C. Reduce API latency by 50%</label>
+    <label><input type="radio" name="q50" value="D"> D. Enable multi-region model deployment</label>
+  </div>
+  <div class="explanation"><strong>Correct: A.</strong> AWS PrivateLink creates private connectivity between your VPC and AWS services without traversing the public internet, enhancing security for sensitive AI workloads.</div>
+</div>
+
+<div class="question" data-domain="d3">
+  <div class="question-text">51. Which of the following is a legal risk associated with generative AI?</div>
+  <div class="question-meta">Domain 3 — AI Safety, Security, and Governance</div>
+  <div class="options" data-correct="D">
+    <label><input type="radio" name="q51" value="A"> A. Increased API response time</label>
+    <label><input type="radio" name="q51" value="B"> B. Higher compute costs</label>
+    <label><input type="radio" name="q51" value="C"> C. Model overfitting</label>
+    <label><input type="radio" name="q51" value="D"> D. Intellectual property infringement claims</label>
+  </div>
+  <div class="explanation"><strong>Correct: D.</strong> Intellectual property infringement is a significant legal risk with generative AI, as models may generate content that resembles copyrighted material. Other legal risks include biased outputs, loss of customer trust, and hallucinations leading to liability.</div>
+</div>
+
+<div class="question" data-domain="d3">
+  <div class="question-text">52. What is the primary function of Guardrails for Amazon Bedrock?</div>
+  <div class="question-meta">Domain 3 — AI Safety, Security, and Governance</div>
+  <div class="options" data-correct="C">
+    <label><input type="radio" name="q52" value="A"> A. To optimize model inference speed</label>
+    <label><input type="radio" name="q52" value="B"> B. To automatically fine-tune models</label>
+    <label><input type="radio" name="q52" value="C"> C. To filter content, enforce topic restrictions, and redact sensitive information</label>
+    <label><input type="radio" name="q52" value="D"> D. To encrypt data at rest</label>
+  </div>
+  <div class="explanation"><strong>Correct: C.</strong> Guardrails provides content filtering (hate, insults, sexual, violence), denied topic controls, word filters, PII redaction, and contextual grounding checks to ensure safe and factual outputs.</div>
+</div>
+
+<div class="question" data-domain="d3">
+  <div class="question-text">53. Which of the following best describes "transparency" in responsible AI?</div>
+  <div class="question-meta">Domain 3 — AI Safety, Security, and Governance</div>
+  <div class="options" data-correct="B">
+    <label><input type="radio" name="q53" value="A"> A. Making the model's source code publicly available</label>
+    <label><input type="radio" name="q53" value="B"> B. Ensuring users understand when they are interacting with AI and how decisions are made</label>
+    <label><input type="radio" name="q53" value="C"> C. Publishing the model's training dataset</label>
+    <label><input type="radio" name="q53" value="D"> D. Making the model weights downloadable</label>
+  </div>
+  <div class="explanation"><strong>Correct: B.</strong> Transparency in AI means users should know when they're interacting with AI and understand how decisions are made. It doesn't necessarily require open-sourcing code or data, but rather clear communication about AI involvement.</div>
+</div>
+
+<div class="question" data-domain="d3">
+  <div class="question-text">54. Which AWS service continuously audits your AWS usage against compliance frameworks?</div>
+  <div class="question-meta">Domain 3 — AI Safety, Security, and Governance</div>
+  <div class="options" data-correct="B">
+    <label><input type="radio" name="q54" value="A"> A. AWS CloudTrail</label>
+    <label><input type="radio" name="q54" value="B"> B. AWS Audit Manager</label>
+    <label><input type="radio" name="q54" value="C"> C. Amazon Inspector</label>
+    <label><input type="radio" name="q54" value="D"> D. AWS Config</label>
+  </div>
+  <div class="explanation"><strong>Correct: B.</strong> AWS Audit Manager continuously collects evidence and audits your AWS usage against compliance frameworks and regulations. CloudTrail logs API calls, Inspector assesses vulnerabilities, and Config tracks resource configurations.</div>
+</div>
+
+<div class="question" data-domain="d3">
+  <div class="question-text">55. What is "model extraction" in AI security?</div>
+  <div class="question-meta">Domain 3 — AI Safety, Security, and Governance</div>
+  <div class="options" data-correct="C">
+    <label><input type="radio" name="q55" value="A"> A. Removing a model from production</label>
+    <label><input type="radio" name="q55" value="B"> B. Compressing a model for mobile deployment</label>
+    <label><input type="radio" name="q55" value="C"> C. Stealing model functionality through repeated API queries</label>
+    <label><input type="radio" name="q55" value="D"> D. Extracting features from model layers</label>
+  </div>
+  <div class="explanation"><strong>Correct: C.</strong> Model extraction is an attack where an adversary queries a model API extensively to reconstruct or approximate the model's behavior, effectively stealing its intellectual property. Mitigate with rate limiting and monitoring.</div>
+</div>
+
+<div class="question" data-domain="d3">
+  <div class="question-text">56. Which of the following is NOT a responsibility of the customer under the AWS Shared Responsibility Model?</div>
+  <div class="question-meta">Domain 3 — AI Safety, Security, and Governance</div>
+  <div class="options" data-correct="A">
+    <label><input type="radio" name="q56" value="A"> A. Patching the hypervisor layer</label>
+    <label><input type="radio" name="q56" value="B"> B. Configuring IAM policies</label>
+    <label><input type="radio" name="q56" value="C"> C. Classifying data sensitivity</label>
+    <label><input type="radio" name="q56" value="D"> D. Encrypting data at rest</label>
+  </div>
+  <div class="explanation"><strong>Correct: A.</strong> Hypervisor patching is AWS's responsibility. The customer is responsible for IAM configuration, data classification, and encryption choices (though AWS provides the encryption mechanisms).</div>
+</div>
+
+<div class="question" data-domain="d3">
+  <div class="question-text">57. What is the purpose of data residency controls in AI systems?</div>
+  <div class="question-meta">Domain 3 — AI Safety, Security, and Governance</div>
+  <div class="options" data-correct="B">
+    <label><input type="radio" name="q57" value="A"> A. To improve model inference speed</label>
+    <label><input type="radio" name="q57" value="B"> B. To ensure data remains within specific geographic boundaries</label>
+    <label><input type="radio" name="q57" value="C"> C. To reduce storage costs</label>
+    <label><input type="radio" name="q57" value="D"> D. To enable multi-region failover</label>
+  </div>
+  <div class="explanation"><strong>Correct: B.</strong> Data residency controls ensure that data (including training data and model outputs) remains within specified geographic regions to comply with local regulations and organizational policies.</div>
+</div>
+
+<div class="question" data-domain="d3">
+  <div class="question-text">58. Which AWS service detects threats to your AWS accounts and workloads using ML?</div>
+  <div class="question-meta">Domain 3 — AI Safety, Security, and Governance</div>
+  <div class="options" data-correct="C">
+    <label><input type="radio" name="q58" value="A"> A. AWS Config</label>
+    <label><input type="radio" name="q58" value="B"> B. AWS CloudTrail</label>
+    <label><input type="radio" name="q58" value="C"> C. Amazon GuardDuty</label>
+    <label><input type="radio" name="q58" value="D"> D. AWS Trusted Advisor</label>
+  </div>
+  <div class="explanation"><strong>Correct: C.</strong> Amazon GuardDuty is the intelligent threat detection service that uses ML to monitor for malicious activity and unauthorized behavior across AWS accounts, workloads, and data.</div>
+</div>
+
+<div class="question" data-domain="d3">
+  <div class="question-text">59. What is "SHAP" in the context of AI explainability?</div>
+  <div class="question-meta">Domain 3 — AI Safety, Security, and Governance</div>
+  <div class="options" data-correct="B">
+    <label><input type="radio" name="q59" value="A"> A. A type of neural network architecture</label>
+    <label><input type="radio" name="q59" value="B"> B. A method for explaining feature importance in model predictions</label>
+    <label><input type="radio" name="q59" value="C"> C. A data encryption standard</label>
+    <label><input type="radio" name="q59" value="D"> D. A model compression technique</label>
+  </div>
+  <div class="explanation"><strong>Correct: B.</strong> SHAP (SHapley Additive exPlanations) is a game-theoretic approach to explain the output of ML models by assigning importance values to each input feature. SageMaker Clarify uses SHAP for model explainability.</div>
+</div>
+
+<div class="question" data-domain="d3">
+  <div class="question-text">60. Which of the following is a characteristic of a "high-risk" AI use case according to the Generative AI Security Scoping Matrix?</div>
+  <div class="question-meta">Domain 3 — AI Safety, Security, and Governance</div>
+  <div class="options" data-correct="C">
+    <label><input type="radio" name="q60" value="A"> A. Internal document summarization</label>
+    <label><input type="radio" name="q60" value="B"> B. Marketing content generation with human review</label>
+    <label><input type="radio" name="q60" value="C"> C. Automated credit scoring affecting individuals' financial access</label>
+    <label><input type="radio" name="q60" value="D"> D. Code suggestion assistance for developers</label>
+  </div>
+  <div class="explanation"><strong>Correct: C.</strong> Automated decisions affecting individuals (credit, hiring, medical diagnosis) are high-risk use cases requiring the strongest governance, human oversight, and compliance controls. Internal tools and content generation with review are lower risk.</div>
+</div>
+
+
+<!-- DOMAIN 4 QUESTIONS (20) -->
+<div class="question" data-domain="d4">
+  <div class="question-text">61. What is "model distillation"?</div>
+  <div class="question-meta">Domain 4 — Operational Efficiency and Optimization</div>
+  <div class="options" data-correct="B">
+    <label><input type="radio" name="q61" value="A"> A. Compressing a model by removing layers randomly</label>
+    <label><input type="radio" name="q61" value="B"> B. Training a smaller model to replicate the behavior of a larger model</label>
+    <label><input type="radio" name="q61" value="C"> C. Encrypting model weights for secure storage</label>
+    <label><input type="radio" name="q61" value="D"> D. Splitting a model across multiple servers</label>
+  </div>
+  <div class="explanation"><strong>Correct: B.</strong> Model distillation transfers knowledge from a large "teacher" model to a smaller "student" model, enabling faster inference and lower costs while preserving most of the original model's capabilities.</div>
+</div>
+
+<div class="question" data-domain="d4">
+  <div class="question-text">62. Which AWS chip is purpose-built for cost-effective ML inference?</div>
+  <div class="question-meta">Domain 4 — Operational Efficiency and Optimization</div>
+  <div class="options" data-correct="C">
+    <label><input type="radio" name="q62" value="A"> A. AWS Graviton</label>
+    <label><input type="radio" name="q62" value="B"> B. Intel Xeon</label>
+    <label><input type="radio" name="q62" value="C"> C. AWS Inferentia</label>
+    <label><input type="radio" name="q62" value="D"> D. NVIDIA A100</label>
+  </div>
+  <div class="explanation"><strong>Correct: C.</strong> AWS Inferentia is purpose-built silicon designed specifically for ML inference, offering better price-performance than general-purpose GPUs for inference workloads. Trainium is for training, Graviton is for general compute.</div>
+</div>
+
+<div class="question" data-domain="d4">
+  <div class="question-text">63. What is the primary benefit of using SageMaker Serverless Endpoints?</div>
+  <div class="question-meta">Domain 4 — Operational Efficiency and Optimization</div>
+  <div class="options" data-correct="A">
+    <label><input type="radio" name="q63" value="A"> A. Automatic scaling from zero with pay-per-inference pricing</label>
+    <label><input type="radio" name="q63" value="B"> B. Guaranteed sub-millisecond latency</label>
+    <label><input type="radio" name="q63" value="C"> C. Support for real-time training during inference</label>
+    <label><input type="radio" name="q63" value="D"> D. Unlimited concurrent requests without throttling</label>
+  </div>
+  <div class="explanation"><strong>Correct: A.</strong> SageMaker Serverless Endpoints automatically scale from zero based on traffic and charge only for the compute time used during inference. They may have cold start latency and concurrency limits.</div>
+</div>
+
+<div class="question" data-domain="d4">
+  <div class="question-text">64. Which of the following is a business metric (as opposed to a technical metric) for evaluating an AI system?</div>
+  <div class="question-meta">Domain 4 — Operational Efficiency and Optimization</div>
+  <div class="options" data-correct="C">
+    <label><input type="radio" name="q64" value="A"> A. F1 Score</label>
+    <label><input type="radio" name="q64" value="B"> B. BLEU Score</label>
+    <label><input type="radio" name="q64" value="C"> C. Return on Investment (ROI)</label>
+    <label><input type="radio" name="q64" value="D"> D. Perplexity</label>
+  </div>
+  <div class="explanation"><strong>Correct: C.</strong> ROI is a business metric that measures financial return. F1, BLEU, and perplexity are all technical metrics measuring model performance quality.</div>
+</div>
+
+<div class="question" data-domain="d4">
+  <div class="question-text">65. What does "quantization" do to a model?</div>
+  <div class="question-meta">Domain 4 — Operational Efficiency and Optimization</div>
+  <div class="options" data-correct="B">
+    <label><input type="radio" name="q65" value="A"> A. Increases the number of model parameters</label>
+    <label><input type="radio" name="q65" value="B"> B. Reduces numerical precision to decrease size and increase speed</label>
+    <label><input type="radio" name="q65" value="C"> C. Adds encryption to model weights</label>
+    <label><input type="radio" name="q65" value="D"> D. Distributes the model across multiple GPUs</label>
+  </div>
+  <div class="explanation"><strong>Correct: B.</strong> Quantization reduces the precision of model weights (e.g., from 32-bit floats to 8-bit integers), reducing memory footprint and increasing inference speed with minimal accuracy loss.</div>
+</div>
+
+<div class="question" data-domain="d4">
+  <div class="question-text">66. Which MLOps practice involves deploying multiple model versions and gradually shifting traffic between them?</div>
+  <div class="question-meta">Domain 4 — Operational Efficiency and Optimization</div>
+  <div class="options" data-correct="C">
+    <label><input type="radio" name="q66" value="A"> A. Hyperparameter tuning</label>
+    <label><input type="radio" name="q66" value="B"> B. Feature engineering</label>
+    <label><input type="radio" name="q66" value="C"> C. A/B testing with shadow deployments</label>
+    <label><input type="radio" name="q66" value="D"> D. Data augmentation</label>
+  </div>
+  <div class="explanation"><strong>Correct: C.</strong> A/B testing and shadow deployments allow you to compare model versions in production with real traffic, measuring business impact before fully committing to a new version.</div>
+</div>
+
+<div class="question" data-domain="d4">
+  <div class="question-text">67. What is "data drift"?</div>
+  <div class="question-meta">Domain 4 — Operational Efficiency and Optimization</div>
+  <div class="options" data-correct="A">
+    <label><input type="radio" name="q67" value="A"> A. Changes in the statistical distribution of input data over time</label>
+    <label><input type="radio" name="q67" value="B"> B. Data moving between AWS Regions</label>
+    <label><input type="radio" name="q67" value="C"> C. Data being accidentally deleted</label>
+    <label><input type="radio" name="q67" value="D"> D. Data being encrypted during transfer</label>
+  </div>
+  <div class="explanation"><strong>Correct: A.</strong> Data drift occurs when the statistical properties of input data change over time (e.g., seasonal patterns, new product categories), potentially degrading model performance. Detect it with SageMaker Model Monitor.</div>
+</div>
+
+<div class="question" data-domain="d4">
+  <div class="question-text">68. Which AWS service would you use to track ML experiments, hyperparameters, and metrics?</div>
+  <div class="question-meta">Domain 4 — Operational Efficiency and Optimization</div>
+  <div class="options" data-correct="B">
+    <label><input type="radio" name="q68" value="A"> A. Amazon CloudWatch</label>
+    <label><input type="radio" name="q68" value="B"> B. SageMaker Experiments</label>
+    <label><input type="radio" name="q68" value="C"> C. AWS CloudTrail</label>
+    <label><input type="radio" name="q68" value="D"> D. AWS Config</label>
+  </div>
+  <div class="explanation"><strong>Correct: B.</strong> SageMaker Experiments is purpose-built for tracking ML experiments, organizing trials, and comparing results. CloudWatch is for operational metrics, CloudTrail is for API auditing, and Config is for resource compliance.</div>
+</div>
+
+<div class="question" data-domain="d4">
+  <div class="question-text">69. What is the main disadvantage of Provisioned Throughput compared to on-demand inference?</div>
+  <div class="question-meta">Domain 4 — Operational Efficiency and Optimization</div>
+  <div class="options" data-correct="B">
+    <label><input type="radio" name="q69" value="A"> A. Higher latency during peak times</label>
+    <label><input type="radio" name="q69" value="B"> B. You pay for reserved capacity even when not using it</label>
+    <label><input type="radio" name="q69" value="C"> C. No support for streaming responses</label>
+    <label><input type="radio" name="q69" value="D"> D. Limited to specific model types</label>
+  </div>
+  <div class="explanation"><strong>Correct: B.</strong> Provisioned Throughput requires paying for reserved capacity at a fixed hourly rate regardless of actual usage. This is cost-effective for steady workloads but wasteful for sporadic traffic.</div>
+</div>
+
+<div class="question" data-domain="d4">
+  <div class="question-text">70. Which of the following is a key principle of MLOps?</div>
+  <div class="question-meta">Domain 4 — Operational Efficiency and Optimization</div>
+  <div class="options" data-correct="D">
+    <label><input type="radio" name="q70" value="A"> A. Manual deployment of models to production</label>
+    <label><input type="radio" name="q70" value="B"> B. Training models only once and never updating them</label>
+    <label><input type="radio" name="q70" value="C"> C. Avoiding version control for model artifacts</label>
+    <label><input type="radio" name="q70" value="D"> D. Automated, repeatable, and scalable ML pipelines</label>
+  </div>
+  <div class="explanation"><strong>Correct: D.</strong> MLOps emphasizes automation, reproducibility, and scalability—treating ML workflows with the same rigor as software engineering through CI/CD, version control, and monitoring.</div>
+</div>
+
+<div class="question" data-domain="d4">
+  <div class="question-text">71. What does "cold start" refer to in serverless inference?</div>
+  <div class="question-meta">Domain 4 — Operational Efficiency and Optimization</div>
+  <div class="options" data-correct="C">
+    <label><input type="radio" name="q71" value="A"> A. The model forgetting its training data</label>
+    <label><input type="radio" name="q71" value="B"> B. A security vulnerability in the inference endpoint</label>
+    <label><input type="radio" name="q71" value="C"> C. The latency delay when scaling from zero to handle the first request</label>
+    <label><input type="radio" name="q71" value="D"> D. A failure in the model warming process</label>
+  </div>
+  <div class="explanation"><strong>Correct: C.</strong> Cold start is the delay incurred when a serverless endpoint scales from zero instances to handle a request. It involves loading the model into memory, which can take seconds.</div>
+</div>
+
+<div class="question" data-domain="d4">
+  <div class="question-text">72. Which of the following helps reduce inference costs for frequently asked questions?</div>
+  <div class="question-meta">Domain 4 — Operational Efficiency and Optimization</div>
+  <div class="options" data-correct="B">
+    <label><input type="radio" name="q72" value="A"> A. Increasing the temperature parameter</label>
+    <label><input type="radio" name="q72" value="B"> B. Caching responses for common queries</label>
+    <label><input type="radio" name="q72" value="C"> C. Using larger foundation models</label>
+    <label><input type="radio" name="q72" value="D"> D. Disabling encryption</label>
+  </div>
+  <div class="explanation"><strong>Correct: B.</strong> Response caching (using ElastiCache, CloudFront, or application-level caches) avoids redundant API calls for frequently asked questions, significantly reducing costs and latency.</div>
+</div>
+
+<div class="question" data-domain="d4">
+  <div class="question-text">73. What is "concept drift"?</div>
+  <div class="question-meta">Domain 4 — Operational Efficiency and Optimization</div>
+  <div class="options" data-correct="B">
+    <label><input type="radio" name="q73" value="A"> A. Changes in input data distribution</label>
+    <label><input type="radio" name="q73" value="B"> B. Changes in the relationship between inputs and outputs over time</label>
+    <label><input type="radio" name="q73" value="C"> C. Data being corrupted during transmission</label>
+    <label><input type="radio" name="q73" value="D"> D. Model weights drifting from their initial values</label>
+  </div>
+  <div class="explanation"><strong>Correct: B.</strong> Concept drift occurs when the underlying relationship between inputs and outputs changes (e.g., customer preferences evolve), requiring model retraining. Data drift is about input distribution changes.</div>
+</div>
+
+<div class="question" data-domain="d4">
+  <div class="question-text">74. Which AWS service helps you visualize and analyze operational metrics and logs for AI applications?</div>
+  <div class="question-meta">Domain 4 — Operational Efficiency and Optimization</div>
+  <div class="options" data-correct="B">
+    <label><input type="radio" name="q74" value="A"> A. AWS Config</label>
+    <label><input type="radio" name="q74" value="B"> B. Amazon CloudWatch</label>
+    <label><input type="radio" name="q74" value="C"> C. AWS CloudTrail</label>
+    <label><input type="radio" name="q74" value="D"> D. AWS Trusted Advisor</label>
+  </div>
+  <div class="explanation"><strong>Correct: B.</strong> Amazon CloudWatch collects and visualizes metrics, logs, and alarms. It's the primary observability service for monitoring AI application performance, latency, errors, and costs.</div>
+</div>
+
+<div class="question" data-domain="d4">
+  <div class="question-text">75. What is the recommended approach for handling model updates in production?</div>
+  <div class="question-meta">Domain 4 — Operational Efficiency and Optimization</div>
+  <div class="options" data-correct="C">
+    <label><input type="radio" name="q75" value="A"> A. Replace the old model immediately with the new one</label>
+    <label><input type="radio" name="q75" value="B"> B. Delete the old model before deploying the new one</label>
+    <label><input type="radio" name="q75" value="C"> C. Use shadow deployment or canary releases to validate the new model first</label>
+    <label><input type="radio" name="q75" value="D"> D. Stop all traffic during the update</label>
+  </div>
+  <div class="explanation"><strong>Correct: C.</strong> Shadow deployment and canary releases allow you to validate new models with real traffic without affecting users, enabling safe rollback if issues arise.</div>
+</div>
+
+<div class="question" data-domain="d4">
+  <div class="question-text">76. Which of the following best describes "horizontal scaling" for AI inference?</div>
+  <div class="question-meta">Domain 4 — Operational Efficiency and Optimization</div>
+  <div class="options" data-correct="A">
+    <label><input type="radio" name="q76" value="A"> A. Adding more instances behind a load balancer</label>
+    <label><input type="radio" name="q76" value="B"> B. Using a larger instance type with more GPUs</label>
+    <label><input type="radio" name="q76" value="C"> C. Compressing the model to fit on smaller hardware</label>
+    <label><input type="radio" name="q76" value="D"> D. Reducing the batch size during inference</label>
+  </div>
+  <div class="explanation"><strong>Correct: A.</strong> Horizontal scaling adds more instances to distribute load. Vertical scaling uses larger instances. Both can be combined for high-throughput AI applications.</div>
+</div>
+
+<div class="question" data-domain="d4">
+  <div class="question-text">77. What is the primary purpose of SageMaker Model Registry?</div>
+  <div class="question-meta">Domain 4 — Operational Efficiency and Optimization</div>
+  <div class="options" data-correct="B">
+    <label><input type="radio" name="q77" value="A"> A. To store training datasets</label>
+    <label><input type="radio" name="q77" value="B"> B. To catalog, version, and manage model metadata across their lifecycle</label>
+    <label><input type="radio" name="q77" value="C"> C. To monitor model inference in real time</label>
+    <label><input type="radio" name="q77" value="D"> D. To automatically retrain models</label>
+  </div>
+  <div class="explanation"><strong>Correct: B.</strong> SageMaker Model Registry is a centralized catalog for managing model versions, approval workflows, and deployment stages. It integrates with CI/CD pipelines for governed model deployment.</div>
+</div>
+
+<div class="question" data-domain="d4">
+  <div class="question-text">78. Which of the following is a valid strategy for reducing environmental impact of AI training?</div>
+  <div class="question-meta">Domain 4 — Operational Efficiency and Optimization</div>
+  <div class="options" data-correct="C">
+    <label><input type="radio" name="q78" value="A"> A. Training models more frequently with larger datasets</label>
+    <label><input type="radio" name="q78" value="B"> B. Using general-purpose CPU instances instead of GPUs</label>
+    <label><input type="radio" name="q78" value="C"> C. Using efficient accelerators like Trainium and selecting regions with renewable energy</label>
+    <label><input type="radio" name="q78" value="D"> D. Running training jobs 24/7 without interruption</label>
+  </div>
+  <div class="explanation"><strong>Correct: C.</strong> Purpose-built accelerators like Trainium are more energy-efficient per unit of compute. AWS also provides the Customer Carbon Footprint Tool to track and reduce carbon emissions.</div>
+</div>
+
+<div class="question" data-domain="d4">
+  <div class="question-text">79. What is "throttling" in the context of AWS AI services?</div>
+  <div class="question-meta">Domain 4 — Operational Efficiency and Optimization</div>
+  <div class="options" data-correct="B">
+    <label><input type="radio" name="q79" value="A"> A. Automatically scaling down unused resources</label>
+    <label><input type="radio" name="q79" value="B"> B. Limiting API requests when service quotas are exceeded</label>
+    <label><input type="radio" name="q79" value="C"> C. Encrypting data during transmission</label>
+    <label><input type="radio" name="q79" value="D"> D. Compressing model outputs</label>
+  </div>
+  <div class="explanation"><strong>Correct: B.</strong> Throttling occurs when you exceed AWS service quotas (e.g., TPS limits for Bedrock). AWS returns rate limit errors, and you should implement exponential backoff and request quotas increases when needed.</div>
+</div>
+
+<div class="question" data-domain="d4">
+  <div class="question-text">80. Which of the following is a technical debt concern in ML systems?</div>
+  <div class="question-meta">Domain 4 — Operational Efficiency and Optimization</div>
+  <div class="options" data-correct="C">
+    <label><input type="radio" name="q80" value="A"> A. Using the latest model architecture</label>
+    <label><input type="radio" name="q80" value="B"> B. Implementing automated testing</label>
+    <label><input type="radio" name="q80" value="C"> C. Accumulating untracked dependencies between data pipelines and models</label>
+    <label><input type="radio" name="q80" value="D"> D. Documenting model performance metrics</label>
+  </div>
+  <div class="explanation"><strong>Correct: C.</strong> Technical debt in ML arises from shortcuts like untracked dependencies, lack of versioning, manual processes, and insufficient monitoring. These make systems harder to maintain and evolve over time.</div>
+</div>
+
+
+<!-- DOMAIN 5 QUESTIONS (20) -->
+<div class="question" data-domain="d5">
+  <div class="question-text">81. What does the BLEU metric primarily measure?</div>
+  <div class="question-meta">Domain 5 — Testing, Validation, and Troubleshooting</div>
+  <div class="options" data-correct="B">
+    <label><input type="radio" name="q81" value="A"> A. The speed of model inference</label>
+    <label><input type="radio" name="q81" value="B"> B. The quality of machine-generated text by comparing it to reference text</label>
+    <label><input type="radio" name="q81" value="C"> C. The amount of bias in training data</label>
+    <label><input type="radio" name="q81" value="D"> D. The compression ratio of a model</label>
+  </div>
+  <div class="explanation"><strong>Correct: B.</strong> BLEU (Bilingual Evaluation Understudy) measures text generation quality by comparing n-gram overlap between generated text and one or more reference texts. It's commonly used for translation and summarization.</div>
+</div>
+
+<div class="question" data-domain="d5">
+  <div class="question-text">82. What is "overfitting" in machine learning?</div>
+  <div class="question-meta">Domain 5 — Testing, Validation, and Troubleshooting</div>
+  <div class="options" data-correct="C">
+    <label><input type="radio" name="q82" value="A"> A. When a model performs equally well on training and test data</label>
+    <label><input type="radio" name="q82" value="B"> B. When a model is too simple to capture data patterns</label>
+    <label><input type="radio" name="q82" value="C"> C. When a model memorizes training data and performs poorly on new data</label>
+    <label><input type="radio" name="q82" value="D"> D. When training takes longer than expected</label>
+  </div>
+  <div class="explanation"><strong>Correct: C.</strong> Overfitting occurs when a model learns the training data too well, including noise and outliers, resulting in poor generalization to unseen data. Mitigate with regularization, more data, or simpler models.</div>
+</div>
+
+<div class="question" data-domain="d5">
+  <div class="question-text">83. What is the purpose of a "holdout set" in model validation?</div>
+  <div class="question-meta">Domain 5 — Testing, Validation, and Troubleshooting</div>
+  <div class="options" data-correct="B">
+    <label><input type="radio" name="q83" value="A"> A. To store backup copies of the model</label>
+    <label><input type="radio" name="q83" value="B"> B. To provide an unbiased evaluation of the final model's performance</label>
+    <label><input type="radio" name="q83" value="C"> C. To train the model on edge cases</label>
+    <label><input type="radio" name="q83" value="D"> D. To compress the model for deployment</label>
+  </div>
+  <div class="explanation"><strong>Correct: B.</strong> A holdout set (test set) is data never seen during training or hyperparameter tuning. It provides an unbiased estimate of how the model will perform on truly unseen data.</div>
+</div>
+
+<div class="question" data-domain="d5">
+  <div class="question-text">84. Which metric would you use to evaluate a binary classification model's ability to distinguish between classes?</div>
+  <div class="question-meta">Domain 5 — Testing, Validation, and Troubleshooting</div>
+  <div class="options" data-correct="C">
+    <label><input type="radio" name="q84" value="A"> A. BLEU Score</label>
+    <label><input type="radio" name="q84" value="B"> B. ROUGE Score</label>
+    <label><input type="radio" name="q84" value="C"> C. AUC-ROC</label>
+    <label><input type="radio" name="q84" value="D"> D. Perplexity</label>
+  </div>
+  <div class="explanation"><strong>Correct: C.</strong> AUC-ROC (Area Under the Receiver Operating Characteristic Curve) measures a binary classifier's ability to distinguish between classes across all thresholds. BLEU/ROUGE are for text generation; perplexity is for language models.</div>
+</div>
+
+<div class="question" data-domain="d5">
+  <div class="question-text">85. What is "data leakage" in ML?</div>
+  <div class="question-meta">Domain 5 — Testing, Validation, and Troubleshooting</div>
+  <div class="options" data-correct="B">
+    <label><input type="radio" name="q85" value="A"> A. Data being accidentally deleted from storage</label>
+    <label><input type="radio" name="q85" value="B"> B. Information from outside the training set influencing the model</label>
+    <label><input type="radio" name="q85" value="C"> C. Data being transmitted over an unsecured network</label>
+    <label><input type="radio" name="q85" value="D"> D. Data exceeding its retention period</label>
+  </div>
+  <div class="explanation"><strong>Correct: B.</strong> Data leakage occurs when information that wouldn't be available at prediction time is included in training. Common causes: preprocessing before splitting, future information in time-series, duplicate records across splits.</div>
+</div>
+
+<div class="question" data-domain="d5">
+  <div class="question-text">86. What does SageMaker Model Monitor detect?</div>
+  <div class="question-meta">Domain 5 — Testing, Validation, and Troubleshooting</div>
+  <div class="options" data-correct="C">
+    <label><input type="radio" name="q86" value="A"> A. Unauthorized API access attempts</label>
+    <label><input type="radio" name="q86" value="B"> B. Network intrusion patterns</label>
+    <label><input type="radio" name="q86" value="C"> C. Data quality issues and model performance degradation in production</label>
+    <label><input type="radio" name="q86" value="D"> D. Sensitive data in training datasets</label>
+  </div>
+  <div class="explanation"><strong>Correct: C.</strong> SageMaker Model Monitor continuously tracks data quality, data drift, and model quality in production endpoints, alerting you when performance degrades or input data changes.</div>
+</div>
+
+<div class="question" data-domain="d5">
+  <div class="question-text">87. What is "underfitting"?</div>
+  <div class="question-meta">Domain 5 — Testing, Validation, and Troubleshooting</div>
+  <div class="options" data-correct="B">
+    <label><input type="radio" name="q87" value="A"> A. When a model is too complex and memorizes training data</label>
+    <label><input type="radio" name="q87" value="B"> B. When a model is too simple to capture the underlying patterns in data</label>
+    <label><input type="radio" name="q87" value="C"> C. When a model performs perfectly on both training and test data</label>
+    <label><input type="radio" name="q87" value="D"> D. When training data is insufficient in size</label>
+  </div>
+  <div class="explanation"><strong>Correct: B.</strong> Underfitting occurs when a model is too simple or hasn't trained enough to capture the patterns in data. It performs poorly on both training and test data. Fix by using more complex models or better features.</div>
+</div>
+
+<div class="question" data-domain="d5">
+  <div class="question-text">88. Which evaluation approach provides the most realistic assessment of a model's business impact?</div>
+  <div class="question-meta">Domain 5 — Testing, Validation, and Troubleshooting</div>
+  <div class="options" data-correct="C">
+    <label><input type="radio" name="q88" value="A"> A. Benchmark dataset evaluation</label>
+    <label><input type="radio" name="q88" value="B"> B. Cross-validation on historical data</label>
+    <label><input type="radio" name="q88" value="C"> C. A/B testing with real users in production</label>
+    <label><input type="radio" name="q88" value="D"> D. Manual review of a small sample</label>
+  </div>
+  <div class="explanation"><strong>Correct: C.</strong> A/B testing with real users measures actual business metrics (conversion, engagement, revenue) in a live environment, providing the most realistic assessment of business impact.</div>
+</div>
+
+<div class="question" data-domain="d5">
+  <div class="question-text">89. What is the primary purpose of k-fold cross-validation?</div>
+  <div class="question-meta">Domain 5 — Testing, Validation, and Troubleshooting</div>
+  <div class="options" data-correct="B">
+    <label><input type="radio" name="q89" value="A"> A. To increase the size of the training dataset</label>
+    <label><input type="radio" name="q89" value="B"> B. To provide a more robust estimate of model performance with limited data</label>
+    <label><input type="radio" name="q89" value="C"> C. To speed up model training</label>
+    <label><input type="radio" name="q89" value="D"> D. To reduce model size for deployment</label>
+  </div>
+  <div class="explanation"><strong>Correct: B.</strong> K-fold cross-validation splits data into k subsets, training on k-1 and validating on the remaining one, rotating through all subsets. This provides more reliable performance estimates, especially with small datasets.</div>
+</div>
+
+<div class="question" data-domain="d5">
+  <div class="question-text">90. What does "hallucination" mean when evaluating a generative AI model?</div>
+  <div class="question-meta">Domain 5 — Testing, Validation, and Troubleshooting</div>
+  <div class="options" data-correct="C">
+    <label><input type="radio" name="q90" value="A"> A. The model generating outputs too slowly</label>
+    <label><input type="radio" name="q90" value="B"> B. The model producing outputs in multiple languages</label>
+    <label><input type="radio" name="q90" value="C"> C. The model generating plausible-sounding but factually incorrect information</label>
+    <label><input type="radio" name="q90" value="D"> D. The model exceeding its context window</label>
+  </div>
+  <div class="explanation"><strong>Correct: C.</strong> Hallucination is when a model confidently generates false or fabricated information. It's a critical issue for factual applications and is mitigated through RAG, grounding, and fact-checking.</div>
+</div>
+
+<div class="question" data-domain="d5">
+  <div class="question-text">91. What is "shadow deployment"?</div>
+  <div class="question-meta">Domain 5 — Testing, Validation, and Troubleshooting</div>
+  <div class="options" data-correct="B">
+    <label><input type="radio" name="q91" value="A"> A. Deploying a model in a dark mode UI</label>
+    <label><input type="radio" name="q91" value="B"> B. Running a new model alongside production without affecting users</label>
+    <label><input type="radio" name="q91" value="C"> C. Hiding model predictions from administrators</label>
+    <label><input type="radio" name="q91" value="D"> D. Deploying only during nighttime hours</label>
+  </div>
+  <div class="explanation"><strong>Correct: B.</strong> Shadow deployment sends production traffic to both the current model and a new candidate model, but only the current model's outputs affect users. This allows safe comparison before switching.</div>
+</div>
+
+<div class="question" data-domain="d5">
+  <div class="question-text">92. Which of the following is a sign that a model may need retraining?</div>
+  <div class="question-meta">Domain 5 — Testing, Validation, and Troubleshooting</div>
+  <div class="options" data-correct="C">
+    <label><input type="radio" name="q92" value="A"> A. The model is running on the latest instance type</label>
+    <label><input type="radio" name="q92" value="B"> B. API response times are consistently fast</label>
+    <label><input type="radio" name="q92" value="C"> C. Significant data drift or declining business metrics are observed</label>
+    <label><input type="radio" name="q92" value="D"> D. The model has been deployed for less than a month</label>
+  </div>
+  <div class="explanation"><strong>Correct: C.</strong> Data drift and declining business metrics are clear signals that the model's performance has degraded and retraining may be needed. Fast response times and recent deployment are positive indicators.</div>
+</div>
+
+<div class="question" data-domain="d5">
+  <div class="question-text">93. What is the primary difference between precision and recall?</div>
+  <div class="question-meta">Domain 5 — Testing, Validation, and Troubleshooting</div>
+  <div class="options" data-correct="B">
+    <label><input type="radio" name="q93" value="A"> A. Precision measures speed; recall measures accuracy</label>
+    <label><input type="radio" name="q93" value="B"> B. Precision focuses on false positives; recall focuses on false negatives</label>
+    <label><input type="radio" name="q93" value="C"> C. Precision is for regression; recall is for classification</label>
+    <label><input type="radio" name="q93" value="D"> D. Precision uses training data; recall uses test data</label>
+  </div>
+  <div class="explanation"><strong>Correct: B.</strong> Precision = TP / (TP + FP) — of all predicted positives, how many are actually positive? Recall = TP / (TP + FN) — of all actual positives, how many did we find? Both are classification metrics.</div>
+</div>
+
+<div class="question" data-domain="d5">
+  <div class="question-text">94. Which of the following is NOT a valid method for evaluating foundation model performance?</div>
+  <div class="question-meta">Domain 5 — Testing, Validation, and Troubleshooting</div>
+  <div class="options" data-correct="D">
+    <label><input type="radio" name="q94" value="A"> A. Human evaluation by trained raters</label>
+    <label><input type="radio" name="q94" value="B"> B. Benchmark datasets like MMLU and HumanEval</label>
+    <label><input type="radio" name="q94" value="C"> C. Automated metrics like BLEU and ROUGE</label>
+    <label><input type="radio" name="q94" value="D"> D. Measuring the model's file size in gigabytes</label>
+  </div>
+  <div class="explanation"><strong>Correct: D.</strong> Model file size is not a performance metric. Valid evaluation methods include human evaluation, benchmark datasets, and automated metrics. Business metrics (ROI, user satisfaction) are also important.</div>
+</div>
+
+<div class="question" data-domain="d5">
+  <div class="question-text">95. What is the primary purpose of a "canary release"?</div>
+  <div class="question-meta">Domain 5 — Testing, Validation, and Troubleshooting</div>
+  <div class="options" data-correct="B">
+    <label><input type="radio" name="q95" value="A"> A. To completely replace an old model immediately</label>
+    <label><input type="radio" name="q95" value="B"> B. To gradually shift a small percentage of traffic to a new model</label>
+    <label><input type="radio" name="q95" value="C"> C. To run two models simultaneously with equal traffic</label>
+    <label><input type="radio" name="q95" value="D"> D. To delete the old model version after deployment</label>
+  </div>
+  <div class="explanation"><strong>Correct: B.</strong> Canary releases route a small percentage of traffic to the new model first, monitoring for issues before gradually increasing traffic. This minimizes risk compared to immediate full deployment.</div>
+</div>
+
+<div class="question" data-domain="d5">
+  <div class="question-text">96. What does BERTScore measure?</div>
+  <div class="question-meta">Domain 5 — Testing, Validation, and Troubleshooting</div>
+  <div class="options" data-correct="C">
+    <label><input type="radio" name="q96" value="A"> A. The training speed of BERT models</label>
+    <label><input type="radio" name="q96" value="B"> B. The size of BERT model checkpoints</label>
+    <label><input type="radio" name="q96" value="C"> C. Semantic similarity between generated and reference text using contextual embeddings</label>
+    <label><input type="radio" name="q96" value="D"> D. The number of parameters in a BERT model</label>
+  </div>
+  <div class="explanation"><strong>Correct: C.</strong> BERTScore uses contextual embeddings from BERT to compute semantic similarity, capturing meaning beyond exact word matches. It's more robust than BLEU/ROUGE for evaluating text generation quality.</div>
+</div>
+
+<div class="question" data-domain="d5">
+  <div class="question-text">97. Which of the following best describes the bias-variance tradeoff?</div>
+  <div class="question-meta">Domain 5 — Testing, Validation, and Troubleshooting</div>
+  <div class="options" data-correct="B">
+    <label><input type="radio" name="q97" value="A"> A. The tradeoff between model accuracy and inference speed</label>
+    <label><input type="radio" name="q97" value="B"> B. The balance between underfitting (high bias) and overfitting (high variance)</label>
+    <label><input type="radio" name="q97" value="C"> C. The choice between CPU and GPU instances</label>
+    <label><input type="radio" name="q97" value="D"> D. The decision to use batch vs. real-time inference</label>
+  </div>
+  <div class="explanation"><strong>Correct: B.</strong> The bias-variance tradeoff describes the tension between model simplicity (high bias = underfitting) and complexity (high variance = overfitting). The goal is to find the sweet spot that generalizes well.</div>
+</div>
+
+<div class="question" data-domain="d5">
+  <div class="question-text">98. What should you do FIRST when troubleshooting a model that has degraded in production?</div>
+  <div class="question-meta">Domain 5 — Testing, Validation, and Troubleshooting</div>
+  <div class="options" data-correct="C">
+    <label><input type="radio" name="q98" value="A"> A. Immediately retrain the model from scratch</label>
+    <label><input type="radio" name="q98" value="B"> B. Roll back to the previous model version</label>
+    <label><input type="radio" name="q98" value="C"> C. Check data pipeline health and recent data drift metrics</label>
+    <label><input type="radio" name="q98" value="D"> D. Increase the model's training epochs</label>
+  </div>
+  <div class="explanation"><strong>Correct: C.</strong> Before taking corrective action, diagnose the root cause. Check data pipelines, drift metrics, infrastructure health, and recent changes. Retraining or rolling back without diagnosis may not fix the issue.</div>
+</div>
+
+<div class="question" data-domain="d5">
+  <div class="question-text">99. What is the F1 score?</div>
+  <div class="question-meta">Domain 5 — Testing, Validation, and Troubleshooting</div>
+  <div class="options" data-correct="C">
+    <label><input type="radio" name="q99" value="A"> A. The average of true positives and true negatives</label>
+    <label><input type="radio" name="q99" value="B"> B. The ratio of correct predictions to total predictions</label>
+    <label><input type="radio" name="q99" value="C"> C. The harmonic mean of precision and recall</label>
+    <label><input type="radio" name="q99" value="D"> D. The difference between training and test accuracy</label>
+  </div>
+  <div class="explanation"><strong>Correct: C.</strong> F1 = 2 × (Precision × Recall) / (Precision + Recall). It's the harmonic mean that balances both metrics, useful when you need to consider both false positives and false negatives.</div>
+</div>
+
+<div class="question" data-domain="d5">
+  <div class="question-text">100. Which of the following is the best practice for preventing data leakage in time-series forecasting?</div>
+  <div class="question-meta">Domain 5 — Testing, Validation, and Troubleshooting</div>
+  <div class="options" data-correct="B">
+    <label><input type="radio" name="q100" value="A"> A. Randomly shuffling the data before splitting</label>
+    <label><input type="radio" name="q100" value="B"> B. Using a temporal split where training data always precedes test data</label>
+    <label><input type="radio" name="q100" value="C"> C. Including future data points in the training set for better accuracy</label>
+    <label><input type="radio" name="q100" value="D"> D. Using k-fold cross-validation with random folds</label>
+  </div>
+  <div class="explanation"><strong>Correct: B.</strong> For time-series, always split chronologically so training data precedes test data. Random shuffling or k-fold would leak future information into training, producing unrealistic performance estimates.</div>
+</div>
+
+</div> <!-- end quiz-all -->
+
+<div style="text-align:center; margin: 1.5rem 0;">
+  <button class="btn btn-primary" onclick="checkAllAnswers()">Check All Answers</button>
+  <button class="btn btn-secondary" onclick="resetQuiz()">Reset Quiz</button>
+</div>
+<div id="score-display" class="score-display" style="display:none;"></div>
+
+</section>
+
+
+<!-- ==================== MOCK EXAM ==================== -->
+<section id="mock" class="section">
+<div class="mock-exam-header">
+  <h2>🎓 Mock Exam — 10 Questions (2 per Domain)</h2>
+  <p>This mock exam simulates the real test experience. Answer all 10 questions, then submit to see your score and review explanations.</p>
+  <div class="timer" id="mock-timer">Time: 00:00</div>
+</div>
+
+<div id="mock-exam" class="quiz-container">
+
+<!-- MOCK Q1: Domain 1 -->
+<div class="question mock-question" data-mock="1">
+  <div class="question-text">M1. A company wants to build a generative AI application that can answer questions based on their internal technical documentation. They need a solution that automatically chunks documents, creates embeddings, and retrieves relevant context. Which AWS service should they use?</div>
+  <div class="question-meta">Mock Exam — Domain 1 (Foundation Model Integration)</div>
+  <div class="options" data-correct="C">
+    <label><input type="radio" name="m1" value="A"> A. Amazon Kendra with custom connectors</label>
+    <label><input type="radio" name="m1" value="B"> B. Amazon SageMaker with custom training scripts</label>
+    <label><input type="radio" name="m1" value="C"> C. Amazon Bedrock Knowledge Bases</label>
+    <label><input type="radio" name="m1" value="D"> D. AWS Glue with Spark jobs</label>
+  </div>
+  <div class="explanation"><strong>Correct: C.</strong> Amazon Bedrock Knowledge Bases provides fully managed RAG with automatic chunking, embedding, and retrieval. While Kendra can be used for enterprise search, Bedrock Knowledge Bases is specifically designed for this GenAI RAG workflow with minimal configuration.</div>
+</div>
+
+<!-- MOCK Q2: Domain 1 -->
+<div class="question mock-question" data-mock="2">
+  <div class="question-text">M2. An organization needs to ensure their AI training data in Amazon S3 does not contain unencrypted credit card numbers. Which AWS service should they use?</div>
+  <div class="question-meta">Mock Exam — Domain 1 (Foundation Model Integration)</div>
+  <div class="options" data-correct="B">
+    <label><input type="radio" name="m2" value="A"> A. AWS Config</label>
+    <label><input type="radio" name="m2" value="B"> B. Amazon Macie</label>
+    <label><input type="radio" name="m2" value="C"> C. AWS CloudTrail</label>
+    <label><input type="radio" name="m2" value="D"> D. Amazon GuardDuty</label>
+  </div>
+  <div class="explanation"><strong>Correct: B.</strong> Amazon Macie uses ML to automatically discover and classify sensitive data (including PII like credit card numbers) in S3. It can alert when unencrypted sensitive data is found.</div>
+</div>
+
+<!-- MOCK Q3: Domain 2 -->
+<div class="question mock-question" data-mock="3">
+  <div class="question-text">M3. A developer wants to improve the consistency of a foundation model's outputs for a structured data extraction task. Which prompt engineering technique would be MOST effective?</div>
+  <div class="question-meta">Mock Exam — Domain 2 (Implementation and Integration)</div>
+  <div class="options" data-correct="C">
+    <label><input type="radio" name="m3" value="A"> A. Increasing the temperature to 1.0</label>
+    <label><input type="radio" name="m3" value="B"> B. Using zero-shot prompting with vague instructions</label>
+    <label><input type="radio" name="m3" value="C"> C. Providing few-shot examples showing the desired output format</label>
+    <label><input type="radio" name="m3" value="D"> D. Removing all system prompts</label>
+  </div>
+  <div class="explanation"><strong>Correct: C.</strong> Few-shot prompting with clear examples dramatically improves consistency for structured tasks. High temperature increases randomness, vague instructions reduce consistency, and removing system prompts removes behavioral guidance.</div>
+</div>
+
+<!-- MOCK Q4: Domain 2 -->
+<div class="question mock-question" data-mock="4">
+  <div class="question-text">M4. A startup has sporadic traffic to their GenAI application and wants to minimize costs. They need automatic scaling and pay only for actual inference time. Which deployment option should they choose?</div>
+  <div class="question-meta">Mock Exam — Domain 2 (Implementation and Integration)</div>
+  <div class="options" data-correct="A">
+    <label><input type="radio" name="m4" value="A"> A. SageMaker Serverless Endpoints</label>
+    <label><input type="radio" name="m4" value="B"> B. Provisioned Throughput on Amazon Bedrock</label>
+    <label><input type="radio" name="m4" value="C"> C. Dedicated GPU instances running 24/7</label>
+    <label><input type="radio" name="m4" value="D"> D. On-premises model hosting</label>
+  </div>
+  <div class="explanation"><strong>Correct: A.</strong> SageMaker Serverless Endpoints automatically scale from zero and charge only for inference time used. Provisioned Throughput and 24/7 instances incur costs even when idle. On-premises hosting requires capital expenditure.</div>
+</div>
+
+<!-- MOCK Q5: Domain 3 -->
+<div class="question mock-question" data-mock="5">
+  <div class="question-text">M5. A financial services company is deploying an AI system for automated loan approval. According to the Generative AI Security Scoping Matrix, how should this use case be classified?</div>
+  <div class="question-meta">Mock Exam — Domain 3 (AI Safety, Security, and Governance)</div>
+  <div class="options" data-correct="C">
+    <label><input type="radio" name="m5" value="A"> A. Low risk — internal productivity tool</label>
+    <label><input type="radio" name="m5" value="B"> B. Medium risk — customer-facing with human review</label>
+    <label><input type="radio" name="m5" value="C"> C. High risk — automated decision affecting individuals' financial access</label>
+    <label><input type="radio" name="m5" value="D"> D. No risk — standard business process</label>
+  </div>
+  <div class="explanation"><strong>Correct: C.</strong> Automated decisions affecting individuals' access to financial services are high-risk use cases. They require the strongest governance, explainability, fairness auditing, and human oversight.</div>
+</div>
+
+<!-- MOCK Q6: Domain 3 -->
+<div class="question mock-question" data-mock="6">
+  <div class="question-text">M6. Which AWS service would you use to create a comprehensive audit trail of all API calls made to Amazon Bedrock in your account?</div>
+  <div class="question-meta">Mock Exam — Domain 3 (AI Safety, Security, and Governance)</div>
+  <div class="options" data-correct="A">
+    <label><input type="radio" name="m6" value="A"> A. AWS CloudTrail</label>
+    <label><input type="radio" name="m6" value="B"> B. Amazon CloudWatch</label>
+    <label><input type="radio" name="m6" value="C"> C. AWS Config</label>
+    <label><input type="radio" name="m6" value="D"> D. AWS Audit Manager</label>
+  </div>
+  <div class="explanation"><strong>Correct: A.</strong> AWS CloudTrail records all API calls made to AWS services, including Bedrock invocations, providing the audit trail needed for security analysis and compliance. CloudWatch is for metrics, Config is for resource state, and Audit Manager is for framework compliance.</div>
+</div>
+
+<!-- MOCK Q7: Domain 4 -->
+<div class="question mock-question" data-mock="7">
+  <div class="question-text">M7. A company notices their model's prediction accuracy has dropped by 15% over the past month. After checking infrastructure metrics and finding no issues, what should they investigate NEXT?</div>
+  <div class="question-meta">Mock Exam — Domain 4 (Operational Efficiency)</div>
+  <div class="options" data-correct="B">
+    <label><input type="radio" name="m7" value="A"> A. Immediately retrain the model with more epochs</label>
+    <label><input type="radio" name="m7" value="B"> B. Analyze data drift and concept drift metrics using SageMaker Model Monitor</label>
+    <label><input type="radio" name="m7" value="C"> C. Switch to a larger foundation model</label>
+    <label><input type="radio" name="m7" value="D"> D. Reduce the inference endpoint's instance size</label>
+  </div>
+  <div class="explanation"><strong>Correct: B.</strong> When infrastructure is healthy but accuracy drops, the most likely cause is data drift or concept drift. Investigate with Model Monitor before taking corrective actions like retraining or model changes.</div>
+</div>
+
+<!-- MOCK Q8: Domain 4 -->
+<div class="question mock-question" data-mock="8">
+  <div class="question-text">M8. Which of the following is the MOST effective way to reduce inference latency for a chatbot application?</div>
+  <div class="question-meta">Mock Exam — Domain 4 (Operational Efficiency)</div>
+  <div class="options" data-correct="C">
+    <label><input type="radio" name="m8" value="A"> A. Increasing the model's parameter count</label>
+    <label><input type="radio" name="m8" value="B"> B. Using batch inference for all requests</label>
+    <label><input type="radio" name="m8" value="C"> C. Using streaming APIs and provisioned capacity with caching</label>
+    <label><input type="radio" name="m8" value="D"> D. Disabling encryption to reduce overhead</label>
+  </div>
+  <div class="explanation"><strong>Correct: C.</strong> Streaming APIs improve perceived latency by returning tokens as generated. Provisioned capacity eliminates cold starts. Caching avoids redundant API calls. Larger models increase latency, batch inference isn't suitable for chat, and disabling encryption is a security risk.</div>
+</div>
+
+<!-- MOCK Q9: Domain 5 -->
+<div class="question mock-question" data-mock="9">
+  <div class="question-text">M9. A data scientist is evaluating a text summarization model. They compare the generated summary against a human-written reference summary. Which metric is MOST appropriate for this evaluation?</div>
+  <div class="question-meta">Mock Exam — Domain 5 (Testing, Validation, and Troubleshooting)</div>
+  <div class="options" data-correct="B">
+    <label><input type="radio" name="m9" value="A"> A. AUC-ROC</label>
+    <label><input type="radio" name="m9" value="B"> B. ROUGE</label>
+    <label><input type="radio" name="m9" value="C"> C. Perplexity</label>
+    <label><input type="radio" name="m9" value="D"> D. Mean Squared Error</label>
+  </div>
+  <div class="explanation"><strong>Correct: B.</strong> ROUGE (Recall-Oriented Understudy for Gisting Evaluation) is specifically designed for evaluating text summarization quality by measuring n-gram overlap with reference summaries. AUC-ROC is for classification, perplexity is for language modeling, and MSE is for regression.</div>
+</div>
+
+<!-- MOCK Q10: Domain 5 -->
+<div class="question mock-question" data-mock="10">
+  <div class="question-text">M10. During model validation, a team notices their model achieves 99% accuracy on the training set but only 72% on the test set. What is the MOST likely cause?</div>
+  <div class="question-meta">Mock Exam — Domain 5 (Testing, Validation, and Troubleshooting)</div>
+  <div class="options" data-correct="C">
+    <label><input type="radio" name="m10" value="A"> A. Underfitting</label>
+    <label><input type="radio" name="m10" value="B"> B. Data leakage from test to training set</label>
+    <label><input type="radio" name="m10" value="C"> C. Overfitting</label>
+    <label><input type="radio" name="m10" value="D"> D. Insufficient training data</label>
+  </div>
+  <div class="explanation"><strong>Correct: C.</strong> The large gap between training accuracy (99%) and test accuracy (72%) is the classic signature of overfitting — the model has memorized training data including noise, and fails to generalize. Underfitting would show low accuracy on both sets.</div>
+</div>
+
+</div> <!-- end mock-exam -->
+
+<div style="text-align:center; margin: 1.5rem 0;">
+  <button class="btn btn-primary" onclick="submitMockExam()">Submit Mock Exam</button>
+  <button class="btn btn-secondary" onclick="resetMockExam()">Reset Mock Exam</button>
+</div>
+<div id="mock-score-display" class="score-display" style="display:none;"></div>
+
+</section>
+
+<footer>
+  <p>AWS Certified AI Practitioner (AIF-C01) — Complete Study Guide &amp; Mock Exam</p>
+  <p>Built for exam preparation. Content based on AWS documentation and best practices.</p>
+  <p><small>Disclaimer: This is an independent study guide and is not affiliated with or endorsed by Amazon Web Services.</small></p>
+</footer>
+
+<script>
+// Collapsible sections
+document.querySelectorAll('.collapsible').forEach(el => {
+  el.addEventListener('click', function() {
+    this.classList.toggle('active');
+    const content = this.nextElementSibling;
+    content.classList.toggle('open');
+  });
+});
+
+// Open first section of each domain by default
+document.querySelectorAll('.section').forEach(section => {
+  const first = section.querySelector('.collapsible');
+  if (first) {
+    first.classList.add('active');
+    first.nextElementSibling.classList.add('open');
+  }
+});
+
+// Active nav link on scroll
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('nav.toc a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop;
+    if (scrollY >= sectionTop - 100) current = section.getAttribute('id');
+  });
+  navLinks.forEach(link => {
+    link.classList.toggle('active', link.getAttribute('href') === '#' + current);
+  });
+});
+
+// Filter questions
+function filterQuestions(domain) {
+  document.querySelectorAll('.filter-bar button').forEach(btn => btn.classList.remove('active'));
+  event.target.classList.add('active');
+  document.querySelectorAll('#quiz-all .question').forEach(q => {
+    q.style.display = (domain === 'all' || q.dataset.domain === domain) ? 'block' : 'none';
+  });
+}
+
+// Check all practice answers
+function checkAllAnswers() {
+  let correct = 0, total = 0;
+  document.querySelectorAll('#quiz-all .question').forEach(q => {
+    if (q.style.display === 'none') return;
+    total++;
+    const correctVal = q.querySelector('.options').dataset.correct;
+    const selected = q.querySelector('input[type="radio"]:checked');
+    const optionsDiv = q.querySelector('.options');
+    optionsDiv.classList.remove('correct', 'incorrect');
+    q.querySelectorAll('label').forEach(lbl => lbl.classList.remove('selected', 'correct-ans'));
+    if (selected) {
+      selected.parentElement.classList.add('selected');
+      if (selected.value === correctVal) {
+        correct++;
+        optionsDiv.classList.add('correct');
+      } else {
+        optionsDiv.classList.add('incorrect');
+      }
+    }
+    // Highlight correct answer
+    q.querySelectorAll('input[type="radio"]').forEach(radio => {
+      if (radio.value === correctVal) radio.parentElement.classList.add('correct-ans');
+    });
+    q.querySelector('.explanation').classList.add('show');
+  });
+  const scoreDiv = document.getElementById('score-display');
+  const pct = total > 0 ? Math.round((correct / total) * 100) : 0;
+  scoreDiv.innerHTML = `
+    <div class="score-number">${correct}/${total}</div>
+    <div>${pct}% Correct</div>
+    <div style="margin-top:1rem; font-size:1rem;">${pct >= 70 ? '✅ Great job! You\'re on track to pass.' : '⚠️ Keep studying! Aim for 70%+ to be exam-ready.'}</div>
+  `;
+  scoreDiv.style.display = 'block';
+}
+
+function resetQuiz() {
+  document.querySelectorAll('#quiz-all input[type="radio"]').forEach(r => r.checked = false);
+  document.querySelectorAll('#quiz-all .options').forEach(o => o.classList.remove('correct', 'incorrect'));
+  document.querySelectorAll('#quiz-all label').forEach(l => l.classList.remove('selected', 'correct-ans'));
+  document.querySelectorAll('#quiz-all .explanation').forEach(e => e.classList.remove('show'));
+  document.getElementById('score-display').style.display = 'none';
+}
+
+// Mock exam timer
+let mockTimerInterval;
+let mockSeconds = 0;
+function startMockTimer() {
+  mockSeconds = 0;
+  clearInterval(mockTimerInterval);
+  mockTimerInterval = setInterval(() => {
+    mockSeconds++;
+    const mins = String(Math.floor(mockSeconds / 60)).padStart(2, '0');
+    const secs = String(mockSeconds % 60).padStart(2, '0');
+    document.getElementById('mock-timer').textContent = `Time: ${mins}:${secs}`;
+  }, 1000);
+}
+startMockTimer();
+
+function submitMockExam() {
+  clearInterval(mockTimerInterval);
+  let correct = 0;
+  document.querySelectorAll('.mock-question').forEach(q => {
+    const correctVal = q.querySelector('.options').dataset.correct;
+    const selected = q.querySelector('input[type="radio"]:checked');
+    const optionsDiv = q.querySelector('.options');
+    optionsDiv.classList.remove('correct', 'incorrect');
+    q.querySelectorAll('label').forEach(lbl => lbl.classList.remove('selected', 'correct-ans'));
+    if (selected) {
+      selected.parentElement.classList.add('selected');
+      if (selected.value === correctVal) {
+        correct++;
+        optionsDiv.classList.add('correct');
+      } else {
+        optionsDiv.classList.add('incorrect');
+      }
+    }
+    q.querySelectorAll('input[type="radio"]').forEach(radio => {
+      if (radio.value === correctVal) radio.parentElement.classList.add('correct-ans');
+    });
+    q.querySelector('.explanation').classList.add('show');
+  });
+  const scoreDiv = document.getElementById('mock-score-display');
+  const pct = Math.round((correct / 10) * 100);
+  scoreDiv.innerHTML = `
+    <div class="score-number">${correct}/10</div>
+    <div>${pct}% Correct</div>
+    <div style="margin-top:1rem; font-size:1rem;">${pct >= 70 ? '✅ You passed! Keep up the good work.' : '⚠️ Review the explanations and try again. Aim for 70%+.'}</div>
+  `;
+  scoreDiv.style.display = 'block';
+  scoreDiv.scrollIntoView({ behavior: 'smooth' });
+}
+
+function resetMockExam() {
+  clearInterval(mockTimerInterval);
+  document.querySelectorAll('.mock-question input[type="radio"]').forEach(r => r.checked = false);
+  document.querySelectorAll('.mock-question .options').forEach(o => o.classList.remove('correct', 'incorrect'));
+  document.querySelectorAll('.mock-question label').forEach(l => l.classList.remove('selected', 'correct-ans'));
+  document.querySelectorAll('.mock-question .explanation').forEach(e => e.classList.remove('show'));
+  document.getElementById('mock-score-display').style.display = 'none';
+  startMockTimer();
+}
+</script>
+
+</body>
+</html>
