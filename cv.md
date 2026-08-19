@@ -18,7 +18,7 @@ Python · TypeScript · Java · Node.js · C# · PHP · AWS · Azure · Docker �
 ### Goldman Sachs — Site Reliability Engineer (SRE)
 *Oct 2024 – Present | São Paulo, Brazil · On-site*
 
-- Built an AI-assisted incident response tool using RAG and LLM orchestration to query live logs and documentation, cutting detection and resolution time for production anomalies [add %/time saved if known]
+- Built an agentic RAG incident response tool driven by an agent loop, a deterministic harness that repeatedly routes to specialized tools and skills (live log queries, documentation retrieval, runbook generation) to autonomously diagnose and resolve production anomalies, cutting detection and resolution time
 - Led the migration of internal Apache servers from RHEL 7 to RHEL 8, documenting the rollout so other clusters could reuse the process
 - Delivered training sessions on GitHub Copilot and AI-assisted workflows for engineering teams
 - Ran AI-assisted post-mortems and runbook creation, and conducted handover calls across London and Asia shifts
