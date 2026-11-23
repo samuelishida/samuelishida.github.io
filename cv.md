@@ -1,4 +1,4 @@
-# Samuel Toyoshi Ishida — Senior Software Engineer | AI Platform Engineer
+# Samuel Toyoshi Ishida — DevSecOps Engineer | Senior Software Engineer
 
 ## Contact
 - **Email:** samuel.toyoshi@gmail.com
@@ -7,7 +7,7 @@
 
 ## Professional Summary
 
-Senior Software Engineer with 10+ years building resilient infrastructure and scalable backend systems, with early exposure to C and Linux before college through the Brazilian Informatics Olympiad and personal projects. Experience spans the full software lifecycle — system design, high-performance APIs in Python, TypeScript, and Java, and cloud modernization across AWS and Azure using Terraform, Docker, and Kubernetes. Currently at act digital, contributing to the LATAM IT Security team for BMW Group TechWorks Brasil on security initiatives and cloud platform modernization; previously at Goldman Sachs, supporting critical global trading platforms and leading internal AI initiatives with RAG and LLM orchestration to improve reliability and developer productivity.
+Senior Software Engineer with 10+ years building resilient infrastructure and scalable backend systems, with early exposure to C and Linux before college through the Brazilian Informatics Olympiad and personal projects. Experience spans the full software lifecycle — system design, high-performance APIs in Python, TypeScript, and Java, and cloud modernization across AWS and Azure using Terraform, Docker, and Kubernetes. Currently at BMW Group TechWorks Brasil, contributing to the LATAM IT Security team on security initiatives and cloud platform modernization; previously at Goldman Sachs, supporting critical global trading platforms and leading internal AI initiatives with RAG and LLM orchestration to improve reliability and developer productivity.
 
 ## Technical Skills
 
@@ -15,10 +15,10 @@ Python · TypeScript · Java · Node.js · C# · PHP · Rust · AWS · Azure · 
 
 ## Professional Experience
 
-### act digital — DevSecOps Engineer
+### [BMW Group TechWorks Brasil](https://www.linkedin.com/company/bmw-group-techworks-brasil/) — DevSecOps Engineer
 *Oct 2026 – Present | São Paulo, Brazil · Hybrid*
 
-- Working in the LATAM IT Security team for BMW Group TechWorks Brasil, contributing to security initiatives and cloud platform modernization
+- Working in the LATAM IT Security team, contributing to security initiatives and cloud platform modernization
 
 ### Goldman Sachs — Site Reliability Engineer (SRE)
 *Oct 2024 – Sep 2026 | São Paulo, Brazil · On-site*
