@@ -4,36 +4,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Samuel Toyoshi Ishida — DevSecOps Engineer | Senior Software Engineer</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
     <style>
+        @font-face {
+            font-family: 'Space Grotesk';
+            src: url('./fonts/space-grotesk-latin.woff2') format('woff2');
+            font-weight: 300 700;
+            font-style: normal;
+            font-display: swap;
+            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+
+        @font-face {
+            font-family: 'Space Grotesk';
+            src: url('./fonts/space-grotesk-latin-ext.woff2') format('woff2');
+            font-weight: 300 700;
+            font-style: normal;
+            font-display: swap;
+            unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+        }
+
+        @font-face {
+            font-family: 'DM Sans';
+            src: url('./fonts/dm-sans-latin.woff2') format('woff2');
+            font-weight: 100 1000;
+            font-style: normal;
+            font-display: swap;
+            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+
+        @font-face {
+            font-family: 'DM Sans';
+            src: url('./fonts/dm-sans-latin-ext.woff2') format('woff2');
+            font-weight: 100 1000;
+            font-style: normal;
+            font-display: swap;
+            unicode-range: U+0100-02AF, U+0304, U+0308, U+0329, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+        }
+
         :root {
-            --bg: #fafaf9;
+            --bg: #f4f4f2;
             --surface: #ffffff;
-            --ink: #0a0a0a;
-            --ink-secondary: #44403c;
-            --ink-tertiary: #78716c;
-            --ink-faint: #a8a29e;
-            --accent: #9f4a34;
-            --accent-light: #fdf2ef;
-            --rule: #e7e5e4;
-            --rule-strong: #d6d3d1;
-            --shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.06);
-            --transition: color 0.2s ease, background 0.2s ease;
+            --ink: #1a1a2e;
+            --ink-secondary: #36364a;
+            --ink-tertiary: #5f5f75;
+            --ink-faint: #9898ac;
+            --teal: hsl(187, 74%, 32%);
+            --teal-soft: hsl(187, 40%, 95%);
+            --teal-border: hsl(187, 40%, 86%);
+            --purple: hsl(270, 70%, 45%);
+            --rule: #e2e2e2;
+            --rule-strong: #c9c9c9;
+            --shadow: 0 1px 3px rgba(26,26,46,0.05), 0 8px 24px rgba(26,26,46,0.07);
         }
 
         html[data-theme="dark"] {
-            --bg: #0c0a09;
-            --surface: #1c1917;
-            --ink: #f5f5f4;
-            --ink-secondary: #d6d3d1;
-            --ink-tertiary: #a8a29e;
-            --ink-faint: #78716c;
-            --accent: #d9775e;
-            --accent-light: #2a1b15;
-            --rule: #292524;
-            --rule-strong: #44403c;
+            --bg: #101019;
+            --surface: #181826;
+            --ink: #ecebf2;
+            --ink-secondary: #c3c2d1;
+            --ink-tertiary: #8e8da2;
+            --ink-faint: #63627a;
+            --teal: hsl(187, 60%, 55%);
+            --teal-soft: hsl(187, 30%, 17%);
+            --teal-border: hsl(187, 30%, 28%);
+            --purple: hsl(270, 75%, 68%);
+            --rule: #26263a;
+            --rule-strong: #3a3a52;
             --shadow: 0 1px 3px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.4);
         }
 
@@ -50,7 +86,6 @@
             font-size: 15px;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            transition: var(--transition);
         }
 
         .page {
@@ -58,55 +93,55 @@
             margin: 0 auto;
             background: var(--surface);
             min-height: 100vh;
-            transition: var(--transition);
         }
 
         header {
-            padding: 3.5rem 3.5rem 2.5rem;
+            padding: 3rem 3.5rem 2.2rem;
             border-bottom: 1px solid var(--rule);
         }
 
-        .header-grid {
-            display: grid;
-            grid-template-columns: 1fr auto;
-            gap: 2rem;
-            align-items: baseline;
-        }
-
-        .header-left h1 {
-            font-family: "DM Serif Display", serif;
-            font-size: 2.6rem;
-            font-weight: 400;
-            color: var(--accent);
+        header h1 {
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--ink);
             letter-spacing: -0.02em;
             line-height: 1.05;
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.35rem;
         }
 
-        .header-left .subtitle {
+        .subtitle {
             font-size: 0.95rem;
             color: var(--ink-secondary);
             font-weight: 500;
             letter-spacing: 0.02em;
         }
 
-        .header-right {
-            text-align: right;
-            display: flex;
-            flex-direction: column;
-            gap: 0.35rem;
+        .header-gradient {
+            height: 2px;
+            background: linear-gradient(to right, var(--teal), var(--purple));
+            border-radius: 1px;
+            margin: 1rem 0;
         }
 
-        .header-right a,
-        .header-right span {
+        .contact-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3rem 0.8rem;
+            align-items: baseline;
+            font-size: 0.85rem;
+            color: var(--ink-tertiary);
+        }
+
+        .contact-row a {
             color: var(--ink-tertiary);
             text-decoration: none;
-            font-size: 0.82rem;
-            font-weight: 400;
             transition: color 0.15s;
         }
 
-        .header-right a:hover { color: var(--accent); }
+        .contact-row a:hover { color: var(--teal); }
+
+        .contact-row .separator { color: var(--ink-faint); }
 
         .cv-body {
             padding: 2.5rem 3.5rem 3.5rem;
@@ -119,15 +154,15 @@
         section:last-child { margin-bottom: 0; }
 
         h2 {
-            font-family: "DM Sans", sans-serif;
-            font-size: 0.7rem;
-            font-weight: 600;
-            letter-spacing: 0.2em;
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
             text-transform: uppercase;
-            color: var(--ink-faint);
+            color: var(--teal);
             margin-bottom: 1.2rem;
-            padding-bottom: 0.6rem;
-            border-bottom: 1px solid var(--rule);
+            padding-bottom: 0.45rem;
+            border-bottom: 1.5px solid var(--rule);
         }
 
         .summary-text {
@@ -141,42 +176,32 @@
         .skills-list {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.15rem 0.6rem;
-            font-size: 0.88rem;
-            color: var(--ink-secondary);
-            line-height: 1.8;
+            gap: 0.45rem;
         }
 
         .skills-list .skill-item {
+            font-size: 0.78rem;
+            font-weight: 500;
+            color: var(--teal);
+            background: var(--teal-soft);
+            border: 1px solid var(--teal-border);
+            padding: 0.3rem 0.7rem;
+            border-radius: 3px;
             white-space: nowrap;
         }
 
-        .skills-list .skill-item::after {
-            content: "·";
-            margin-left: 0.6rem;
-            color: var(--ink-faint);
-        }
-
-        .skills-list .skill-item:last-child::after {
-            content: none;
-        }
-
         .experience-item {
-            margin-bottom: 1.6rem;
-            padding-bottom: 1.6rem;
-            border-bottom: 1px solid var(--rule);
+            margin-bottom: 1.7rem;
             page-break-inside: avoid;
         }
 
         .experience-item:last-child {
-            border-bottom: none;
             margin-bottom: 0;
-            padding-bottom: 0;
         }
 
         .exp-layout {
             display: flex;
-            gap: 1rem;
+            gap: 0.9rem;
             align-items: flex-start;
         }
 
@@ -200,41 +225,43 @@
             min-width: 0;
         }
 
-        .job-company {
-            font-size: 0.85rem;
-            color: var(--ink-secondary);
-            font-weight: 500;
-            margin-top: 0.1rem;
-            margin-bottom: 0.5rem;
-        }
-
         .experience-header {
             display: flex;
             justify-content: space-between;
-            align-items: baseline;
+            align-items: flex-start;
             gap: 1rem;
-            flex-wrap: wrap;
-            margin-bottom: 0.6rem;
+            margin-bottom: 0.55rem;
+        }
+
+        .exp-title-block {
+            min-width: 0;
+        }
+
+        .job-company {
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 1.02rem;
+            font-weight: 600;
+            color: var(--purple);
+            line-height: 1.3;
         }
 
         .experience-header h3 {
             font-family: "DM Sans", sans-serif;
-            font-size: 1.05rem;
+            font-size: 0.9rem;
             font-weight: 600;
-            color: var(--ink);
+            color: var(--ink-secondary);
             line-height: 1.3;
+            margin-top: 0.1rem;
         }
 
         .job-meta {
-            font-size: 0.82rem;
+            font-size: 0.8rem;
             color: var(--ink-tertiary);
             font-weight: 400;
-            white-space: nowrap;
-        }
-
-        .job-meta .company {
-            color: var(--ink-secondary);
-            font-weight: 500;
+            text-align: right;
+            white-space: pre-line;
+            line-height: 1.45;
+            flex-shrink: 0;
         }
 
         .experience-item ul {
@@ -249,27 +276,7 @@
         }
 
         .experience-item li::marker {
-            color: var(--ink-faint);
-        }
-
-        .tag-row {
-            margin-top: 0.7rem;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .tag {
-            font-size: 0.72rem;
-            font-weight: 500;
-            color: var(--ink-tertiary);
-            letter-spacing: 0.03em;
-        }
-
-        .tag::before {
-            content: "#";
-            color: var(--ink-faint);
-            margin-right: 0.1rem;
+            color: var(--teal);
         }
 
         .projects-list {
@@ -292,10 +299,10 @@
         }
 
         .project-header h3 {
-            font-family: "DM Sans", sans-serif;
-            font-size: 1.05rem;
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 1.02rem;
             font-weight: 600;
-            color: var(--ink);
+            color: var(--purple);
         }
 
         .project-period {
@@ -319,7 +326,7 @@
         }
 
         .project-link {
-            color: var(--accent);
+            color: var(--teal);
             text-decoration: none;
             font-size: 0.82rem;
             font-weight: 500;
@@ -348,20 +355,21 @@
         }
 
         .education-item .degree {
-            font-weight: 500;
+            font-weight: 600;
             color: var(--ink);
             font-size: 0.92rem;
         }
 
         .education-item .school {
-            color: var(--ink-tertiary);
+            color: var(--purple);
             font-size: 0.82rem;
+            font-weight: 500;
         }
 
         .education-item .dates {
-            color: var(--ink-faint);
+            color: var(--ink-tertiary);
             font-size: 0.82rem;
-            font-style: italic;
+            font-style: normal;
         }
 
         .cert-list {
@@ -383,8 +391,73 @@
             content: "—";
             position: absolute;
             left: 0;
-            color: var(--ink-faint);
+            color: var(--teal);
             font-weight: 300;
+        }
+
+        .subsection {
+            font-size: 0.68rem;
+            color: var(--ink-faint);
+            margin-top: 2rem;
+            margin-bottom: 0.9rem;
+        }
+
+        .early-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .early-item {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            page-break-inside: avoid;
+        }
+
+        .early-item .exp-logo { width: 30px; height: 30px; }
+
+        .early-item .exp-logo img {
+            width: 30px;
+            height: 30px;
+            border-radius: 5px;
+        }
+
+        .early-body {
+            flex: 1;
+            min-width: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 1rem;
+        }
+
+        .early-main {
+            min-width: 0;
+            display: flex;
+            align-items: baseline;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+        }
+
+        .early-company {
+            font-family: "Space Grotesk", sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--purple);
+        }
+
+        .early-role {
+            font-size: 0.82rem;
+            font-weight: 500;
+            color: var(--ink-secondary);
+        }
+
+        .early-meta {
+            font-size: 0.78rem;
+            color: var(--ink-tertiary);
+            white-space: nowrap;
+            flex-shrink: 0;
         }
 
         .controls {
@@ -411,9 +484,9 @@
         }
 
         .ctrl-btn.active {
-            background: var(--ink);
-            color: var(--surface);
-            border-color: var(--ink);
+            background: var(--teal);
+            color: #ffffff;
+            border-color: var(--teal);
         }
 
         .ctrl-btn:hover:not(.active) {
@@ -430,8 +503,8 @@
             position: fixed;
             bottom: 2rem;
             right: 2rem;
-            background: var(--ink);
-            color: var(--surface);
+            background: var(--teal);
+            color: #ffffff;
             border: none;
             padding: 0.7rem 1.2rem;
             border-radius: 8px;
@@ -469,14 +542,14 @@
         @media (max-width: 700px) {
             body { font-size: 14px; }
             header { padding: 4rem 1.5rem 2rem; }
-            .header-grid { grid-template-columns: 1fr; gap: 1rem; }
-            .header-right { text-align: left; }
-            .header-left h1 { font-size: 2rem; }
+            header h1 { font-size: 2rem; }
             .cv-body { padding: 1.75rem 1.5rem 2.5rem; }
             .experience-header { flex-direction: column; gap: 0.2rem; }
+            .job-meta { text-align: left; }
             .controls { top: 0.75rem; right: 0.75rem; }
             .exp-logo { width: 36px; height: 36px; }
             .exp-logo img { width: 36px; height: 36px; }
+            .early-body { flex-direction: column; align-items: flex-start; gap: 0.15rem; }
         }
 
         @media print {
@@ -486,13 +559,15 @@
             .controls, .print-btn { display: none !important; }
             .page { max-width: 100% !important; box-shadow: none !important; background: #fff !important; }
             header { padding: 1.5rem 0 1.25rem !important; animation: none !important; opacity: 1 !important; }
-            .header-left h1 { font-size: 2rem !important; color: #9f4a34 !important; }
+            header h1 { font-size: 2rem !important; color: #1a1a2e !important; }
             .cv-body { padding: 1.25rem 0 2rem !important; }
             section { opacity: 1 !important; transform: none !important; animation: none !important; margin-bottom: 1.4rem !important; }
-            .experience-item { margin-bottom: 1rem !important; padding-bottom: 1rem !important; page-break-inside: avoid; }
+            .experience-item { margin-bottom: 1rem !important; padding-bottom: 0 !important; page-break-inside: avoid; }
             .project-item { page-break-inside: avoid; }
             .education-item { page-break-inside: avoid; }
-            h2 { margin-bottom: 0.9rem !important; }
+            h2 { margin-bottom: 0.9rem !important; color: hsl(187, 74%, 32%) !important; }
+            .job-company { color: hsl(270, 70%, 45%) !important; }
+            .skills-list .skill-item { color: hsl(187, 74%, 28%) !important; background: hsl(187, 40%, 95%) !important; border-color: hsl(187, 40%, 88%) !important; }
             .experience-item ul { font-size: 0.82rem !important; }
             .summary-text { font-size: 0.85rem !important; }
             a { color: inherit !important; text-decoration: none !important; }
@@ -509,56 +584,19 @@
 
     <div class="page">
         <header>
-            <div class="header-grid">
-                <div class="header-left">
-                    <h1>Samuel Toyoshi Ishida</h1>
-                    <div class="subtitle">DevSecOps Engineer | Senior Software Engineer</div>
-                </div>
-                <div class="header-right">
-                    <a href="mailto:samuel.toyoshi@gmail.com">samuel.toyoshi@gmail.com</a>
-                    <a href="https://linkedin.com/in/samuelishida" target="_blank">linkedin.com/in/samuelishida</a>
-                    <span data-i18n="location">Brazil, São Paulo</span>
-                </div>
+            <h1>Samuel Toyoshi Ishida</h1>
+            <div class="subtitle">DevSecOps Engineer | Senior Software Engineer</div>
+            <div class="header-gradient"></div>
+            <div class="contact-row">
+                <a href="mailto:samuel.toyoshi@gmail.com">samuel.toyoshi@gmail.com</a>
+                <span class="separator">|</span>
+                <a href="https://linkedin.com/in/samuelishida" target="_blank">linkedin.com/in/samuelishida</a>
+                <span class="separator">|</span>
+                <span data-i18n="location">Brazil, São Paulo</span>
             </div>
         </header>
 
         <div class="cv-body">
-            <section>
-                <h2 data-i18n="projects_title">Personal Projects</h2>
-                <div class="projects-list">
-                    <div class="project-item">
-                        <div class="project-header">
-                            <h3>Yvy</h3>
-                        </div>
-                        <p data-i18n="yvy_desc">Environmental observability platform that tracks and overlays deforestation and wildfire data with firms, conservation units (UCs), and indigenous territories. Integrates official data from ICMBio and FUNAI to provide actionable insights for environmental monitoring and compliance in Brazil.</p>
-                        <div class="project-links">
-                            <a href="https://yvy.app.br" class="project-link" target="_blank">yvy.app.br</a>
-                            <a href="https://github.com/samuelishida/yvy" class="project-link" target="_blank">github.com/samuelishida/yvy</a>
-                        </div>
-                        </div>
-
-                    <div class="project-item">
-                        <div class="project-header">
-                            <h3>Hipfire</h3>
-                        </div>
-                        <p data-i18n="hipfire_desc">Official contributor to Hipfire, an open-source, RDNA-native LLM inference engine written in Rust for AMD GPUs — a local alternative to Ollama built on Rust, HIP, and the Redline dispatch layer, with no Python in the inference hot path. Contributed across the Rust runtime, HIP/ROCm kernels, quantization formats (MQ4/MQ5/MQ6), and an OpenAI-compatible serving API.</p>
-                        <div class="project-links">
-                            <a href="https://github.com/warpfront/hipfire" class="project-link" target="_blank">github.com/warpfront/hipfire</a>
-                        </div>
-                        </div>
-
-                    <div class="project-item">
-                        <div class="project-header">
-                            <h3>Celeste 64 Demake</h3>
-                        </div>
-                        <p data-i18n="celeste_desc">Personal demake of Celeste 64 compiled into a Nintendo 64 ROM, built in C++ on libdragon and Tiny3D with a Python asset-bake pipeline. Implements a baked level pipeline from TrenchBroom maps, an interconnected Forsaken City world with chunked rendering and collision meshes, and Celeste-style movement — analog-stick control, jump, air dash, fall respawn, and collectibles — on real N64 hardware.</p>
-                        <div class="project-links">
-                            <a href="https://github.com/samuelishida/Celeste-n64" class="project-link" target="_blank">github.com/samuelishida/Celeste-n64</a>
-                        </div>
-                        </div>
-                </div>
-            </section>
-
             <section>
                 <h2 data-i18n="summary_title">Professional Summary</h2>
                 <p class="summary-text" data-i18n="summary_text">
@@ -614,13 +652,13 @@
                         </div>
                         <div class="exp-body">
                             <div class="experience-header">
-                                <h3>DevSecOps Engineer</h3>
-                                <div class="job-meta">
-                                    <span>Oct 2026 – Present · 2 mos
-São Paulo, Brazil · Hybrid</span>
+                                <div class="exp-title-block">
+                                    <div class="job-company"><span class="company" data-i18n="act">BMW Group TechWorks Brasil · Full-time</span></div>
+                                    <h3 data-i18n="act_title">DevSecOps Engineer</h3>
                                 </div>
+                                <div class="job-meta" data-i18n="act_period">Oct 2026 – Present · 2 mos
+São Paulo, Brazil · Hybrid</div>
                             </div>
-                            <div class="job-company"><span class="company">BMW Group TechWorks Brasil · Full-time</span></div>
                             <ul>
                                 <li data-i18n="act_desc1"></li>
                             </ul>
@@ -635,13 +673,13 @@ São Paulo, Brazil · Hybrid</span>
                         </div>
                         <div class="exp-body">
                             <div class="experience-header">
-                                <h3>Site Reliability Engineer</h3>
-                                <div class="job-meta">
-                                    <span>Oct 2024 – Sep 2026 · 2 yrs
-São Paulo, Brazil · On-site</span>
+                                <div class="exp-title-block">
+                                    <div class="job-company"><span class="company" data-i18n="goldman">Goldman Sachs · Indirect Contract</span></div>
+                                    <h3 data-i18n="sre_title">Site Reliability Engineer</h3>
                                 </div>
+                                <div class="job-meta" data-i18n="sre_period">Oct 2024 – Sep 2026 · 2 yrs
+São Paulo, Brazil · On-site</div>
                             </div>
-                            <div class="job-company"><span class="company">Goldman Sachs · Indirect Contract</span></div>
                             <ul>
                                 <li data-i18n="sre_desc_new"></li>
                                 <li data-i18n="sre_desc5"></li>
@@ -660,13 +698,13 @@ São Paulo, Brazil · On-site</span>
                         </div>
                         <div class="exp-body">
                             <div class="experience-header">
-                                <h3>DevOps</h3>
-                                <div class="job-meta">
-                                    <span>May 2023 – Apr 2024 · 1 yr
-São Paulo, Brazil · Remote</span>
+                                <div class="exp-title-block">
+                                    <div class="job-company"><span class="company" data-i18n="alctel">Alctel Telecom · Full-time</span></div>
+                                    <h3 data-i18n="devops_title">DevOps</h3>
                                 </div>
+                                <div class="job-meta" data-i18n="alctel_period">May 2023 – Apr 2024 · 1 yr
+São Paulo, Brazil · Remote</div>
                             </div>
-                            <div class="job-company"><span class="company">Alctel Telecom · Full-time</span></div>
                             <ul>
                                 <li data-i18n="alctel_desc1"></li>
                                 <li data-i18n="alctel_desc2"></li>
@@ -683,13 +721,13 @@ São Paulo, Brazil · Remote</span>
                         </div>
                         <div class="exp-body">
                             <div class="experience-header">
-                                <h3>DevOps</h3>
-                                <div class="job-meta">
-                                    <span>Jan 2022 – Mar 2023 · 1 yr 3 m
-São Paulo, São Paulo, Brazil (remote)</span>
+                                <div class="exp-title-block">
+                                    <div class="job-company"><span class="company" data-i18n="gft">GFT Group · Full-time</span></div>
+                                    <h3 data-i18n="devops_title">DevOps</h3>
                                 </div>
+                                <div class="job-meta" data-i18n="gft_period">Jan 2022 – Mar 2023 · 1 yr 3 m
+São Paulo, São Paulo, Brazil (remote)</div>
                             </div>
-                            <div class="job-company"><span class="company">GFT Group · Full-time</span></div>
                             <ul>
                                 <li data-i18n="gft_desc1"></li>
                                 <li data-i18n="gft_desc2"></li>
@@ -705,13 +743,13 @@ São Paulo, São Paulo, Brazil (remote)</span>
                         </div>
                         <div class="exp-body">
                             <div class="experience-header">
-                                <h3>Software Engineer</h3>
-                                <div class="job-meta">
-                                    <span>Nov 2019 – Jan 2022 · 2 yrs 3 mos
-Campinas, São Paulo</span>
+                                <div class="exp-title-block">
+                                    <div class="job-company"><span class="company" data-i18n="suma">Suma - Consulting Group · Full-time</span></div>
+                                    <h3 data-i18n="suma_title">Software Engineer</h3>
                                 </div>
+                                <div class="job-meta" data-i18n="suma_period">Nov 2019 – Jan 2022 · 2 yrs 3 mos
+Campinas, São Paulo</div>
                             </div>
-                            <div class="job-company"><span class="company">Suma - Consulting Group · Full-time</span></div>
                             <ul>
                                 <li data-i18n="suma_desc1"></li>
                                 <li data-i18n="suma_desc2"></li>
@@ -729,13 +767,13 @@ Campinas, São Paulo</span>
                         </div>
                         <div class="exp-body">
                             <div class="experience-header">
-                                <h3>Backend Developer</h3>
-                                <div class="job-meta">
-                                    <span>Jul 2019 – Oct 2019 · 4 mos
-Campinas e Região, Brasil</span>
+                                <div class="exp-title-block">
+                                    <div class="job-company"><span class="company" data-i18n="bit">Bit Capital</span></div>
+                                    <h3 data-i18n="bit_title">Backend Developer</h3>
                                 </div>
+                                <div class="job-meta" data-i18n="bit_period">Jul 2019 – Oct 2019 · 4 mos
+Campinas e Região, Brasil</div>
                             </div>
-                            <div class="job-company"><span class="company">Bit Capital</span></div>
                             <ul>
                                 <li data-i18n="bit_desc"></li>
                                 <li data-i18n="bit_desc2"></li>
@@ -751,13 +789,13 @@ Campinas e Região, Brasil</span>
                         </div>
                         <div class="exp-body">
                             <div class="experience-header">
-                                <h3>Backend Developer</h3>
-                                <div class="job-meta">
-                                    <span>Mar 2019 – Jul 2019 · 5 mos
-Campinas e Região, Brasil</span>
+                                <div class="exp-title-block">
+                                    <div class="job-company"><span class="company" data-i18n="boilesen">Boilesen Associates · Part-time</span></div>
+                                    <h3 data-i18n="fullstack_title">Backend Developer</h3>
                                 </div>
+                                <div class="job-meta" data-i18n="boilesen_period">Mar 2019 – Jul 2019 · 5 mos
+Campinas e Região, Brasil</div>
                             </div>
-                            <div class="job-company"><span class="company">Boilesen Associates · Part-time</span></div>
                             <ul>
                                 <li data-i18n="boilesen_desc"></li>
                                 <li data-i18n="boilesen_desc2"></li>
@@ -766,90 +804,95 @@ Campinas e Região, Brasil</span>
                     </div>
                 </div>
 
-                <div class="experience-item">
-                    <div class="exp-layout">
+                <h2 class="subsection" data-i18n="early_title">Earlier Experience</h2>
+                <div class="early-list">
+                    <div class="early-item">
                         <div class="exp-logo">
                             <img src="stoom-logo.png" alt="Stoom" loading="lazy">
                         </div>
-                        <div class="exp-body">
-                            <div class="experience-header">
-                                <h3>Web Development Intern</h3>
-                                <div class="job-meta">
-                                    <span>Jan 2018 – Oct 2018 · 10 mos
-Campinas e Região, Brasil</span>
-                                </div>
+                        <div class="early-body">
+                            <div class="early-main">
+                                <span class="early-company" data-i18n="stoom">Stoom - Soluções em E-commerce · Internship</span>
+                                <span class="early-role" data-i18n="intern_title">Web Development Intern</span>
                             </div>
-                            <div class="job-company"><span class="company">Stoom - Soluções em E-commerce · Internship</span></div>
-                            <ul>
-                                <li data-i18n="stoom_desc"></li>
-                                <li data-i18n="stoom_desc2"></li>
-                                <li data-i18n="stoom_desc3"></li>
-                            </ul>
-                            </div>
+                            <span class="early-meta" data-i18n="stoom_short">Jan 2018 – Oct 2018 · 10 mos</span>
+                        </div>
                     </div>
-                </div>
 
-                <div class="experience-item">
-                    <div class="exp-layout">
+                    <div class="early-item">
                         <div class="exp-logo">
                             <img src="devnup-logo.png" alt="Devnup IT Solutions" loading="lazy">
                         </div>
-                        <div class="exp-body">
-                            <div class="experience-header">
-                                <h3>Web Development Intern</h3>
-                                <div class="job-meta">
-                                    <span>Jul 2017 – Dec 2017 · 6 mos</span>
-                                </div>
+                        <div class="early-body">
+                            <div class="early-main">
+                                <span class="early-company" data-i18n="devnup">Devnup IT Solutions · Internship</span>
+                                <span class="early-role" data-i18n="devnup_title">Web Development Intern</span>
                             </div>
-                            <div class="job-company"><span class="company">Devnup IT Solutions · Internship</span></div>
-                            <ul>
-                                <li data-i18n="devnup_desc1"></li>
-                                <li data-i18n="devnup_desc2"></li>
-                            </ul>
-                            </div>
+                            <span class="early-meta" data-i18n="devnup_short">Jul 2017 – Dec 2017 · 6 mos</span>
+                        </div>
                     </div>
-                </div>
 
-                <div class="experience-item">
-                    <div class="exp-layout">
+                    <div class="early-item">
                         <div class="exp-logo">
                             <img src="phoenix-logo.jpg" alt="Equipe Phoenix de Robótica da UNICAMP" loading="lazy">
                         </div>
-                        <div class="exp-body">
-                            <div class="experience-header">
-                                <h3>Member</h3>
-                                <div class="job-meta">
-                                    <span>Mar 2014 – Sep 2016 · 2 yrs 7 mos · Campinas, Brazil</span>
-                                </div>
+                        <div class="early-body">
+                            <div class="early-main">
+                                <span class="early-company" data-i18n="phoenix">UNICAMP Phoenix Robotics Team</span>
+                                <span class="early-role" data-i18n="phoenix_title">Member</span>
                             </div>
-                            <div class="job-company"><span class="company">UNICAMP Phoenix Robotics Team</span></div>
-                            <ul>
-                                <li data-i18n="phoenix_desc1"></li>
-                                <li data-i18n="phoenix_desc2"></li>
-                            </ul>
-                            </div>
+                            <span class="early-meta" data-i18n="phoenix_short">Mar 2014 – Sep 2016 · 2 yrs 7 mos</span>
+                        </div>
                     </div>
-                </div>
 
-                <div class="experience-item">
-                    <div class="exp-layout">
+                    <div class="early-item">
                         <div class="exp-logo">
                             <img src="unicamp-logo.png" alt="Universidade Estadual de Campinas" loading="lazy">
                         </div>
-                        <div class="exp-body">
-                            <div class="experience-header">
-                                <h3>Teaching Assistant</h3>
-                                <div class="job-meta">
-                                    <span>Mar 2015 – Jul 2015 · 5 mos · Campinas, Brazil</span>
-                                </div>
+                        <div class="early-body">
+                            <div class="early-main">
+                                <span class="early-company" data-i18n="unicamp_ta">Universidade Estadual de Campinas · Internship</span>
+                                <span class="early-role" data-i18n="ta_title">Teaching Assistant</span>
                             </div>
-                            <div class="job-company"><span class="company">Universidade Estadual de Campinas · Internship</span></div>
-                            <ul>
-                                <li data-i18n="ta_desc1"></li>
-                                <li data-i18n="ta_desc2"></li>
-                            </ul>
-                            </div>
+                            <span class="early-meta" data-i18n="ta_short">Mar 2015 – Jul 2015 · 5 mos</span>
+                        </div>
                     </div>
+                </div>
+            </section>
+
+            <section>
+                <h2 data-i18n="projects_title">Personal Projects</h2>
+                <div class="projects-list">
+                    <div class="project-item">
+                        <div class="project-header">
+                            <h3>Yvy</h3>
+                        </div>
+                        <p data-i18n="yvy_desc">Environmental observability platform that tracks and overlays deforestation and wildfire data with firms, conservation units (UCs), and indigenous territories. Integrates official data from ICMBio and FUNAI to provide actionable insights for environmental monitoring and compliance in Brazil.</p>
+                        <div class="project-links">
+                            <a href="https://yvy.app.br" class="project-link" target="_blank">yvy.app.br</a>
+                            <a href="https://github.com/samuelishida/yvy" class="project-link" target="_blank">github.com/samuelishida/yvy</a>
+                        </div>
+                        </div>
+
+                    <div class="project-item">
+                        <div class="project-header">
+                            <h3>Hipfire</h3>
+                        </div>
+                        <p data-i18n="hipfire_desc">Official contributor to Hipfire, an open-source, RDNA-native LLM inference engine written in Rust for AMD GPUs — a local alternative to Ollama built on Rust, HIP, and the Redline dispatch layer, with no Python in the inference hot path. Contributed across the Rust runtime, HIP/ROCm kernels, quantization formats (MQ4/MQ5/MQ6), and an OpenAI-compatible serving API.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/warpfront/hipfire" class="project-link" target="_blank">github.com/warpfront/hipfire</a>
+                        </div>
+                        </div>
+
+                    <div class="project-item">
+                        <div class="project-header">
+                            <h3>Celeste 64 Demake</h3>
+                        </div>
+                        <p data-i18n="celeste_desc">Personal demake of Celeste 64 compiled into a Nintendo 64 ROM, built in C++ on libdragon and Tiny3D with a Python asset-bake pipeline. Implements a baked level pipeline from TrenchBroom maps, an interconnected Forsaken City world with chunked rendering and collision meshes, and Celeste-style movement — analog-stick control, jump, air dash, fall respawn, and collectibles — on real N64 hardware.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/samuelishida/Celeste-n64" class="project-link" target="_blank">github.com/samuelishida/Celeste-n64</a>
+                        </div>
+                        </div>
                 </div>
             </section>
 
@@ -874,20 +917,20 @@ Campinas e Região, Brasil</span>
             </section>
 
             <section>
-                <h2 data-i18n="languages_title">Languages</h2>
-                <ul class="cert-list">
-                    <li data-i18n="lang_pt"></li>
-                    <li data-i18n="lang_en"></li>
-                </ul>
-            </section>
-
-            <section>
-                <h2>Certifications & Highlights</h2>
+                <h2 data-i18n="certs_title">Certifications & Highlights</h2>
                 <ul class="cert-list">
                     <li data-i18n="cert1"></li>
                     <li data-i18n="cert2"></li>
                     <li data-i18n="cert3"></li>
                     <li data-i18n="cert4"></li>
+                </ul>
+            </section>
+
+            <section>
+                <h2 data-i18n="languages_title">Languages</h2>
+                <ul class="cert-list">
+                    <li data-i18n="lang_pt"></li>
+                    <li data-i18n="lang_en"></li>
                 </ul>
             </section>
         </div>
@@ -962,6 +1005,11 @@ Campinas e Região, Brasil</span>
                 "ta_period": "Mar 2015 – Jul 2015 · 5 mos · Campinas, Brazil",
                 "ta_desc1": "Guided and supported students in Algorithms and Data Structures courses.",
                 "ta_desc2": "Helped organize study sessions to facilitate learning of complex subject concepts.",
+                "early_title": "Earlier Experience",
+                "stoom_short": "Jan 2018 – Oct 2018 · 10 mos",
+                "devnup_short": "Jul 2017 – Dec 2017 · 6 mos",
+                "phoenix_short": "Mar 2014 – Sep 2016 · 2 yrs 7 mos",
+                "ta_short": "Mar 2015 – Jul 2015 · 5 mos",
                 "projects_title": "Personal Projects",
                 "yvy_desc": "Built an environmental observability platform tracking deforestation and wildfire data across Brazil. Overlaid data with land ownership, conservation units (protected nature reserves), and indigenous territories for compliance monitoring. Integrated official government data sources — ICMBio and FUNAI — to power actionable environmental insights.",
                 "hipfire_desc": "Official contributor to Hipfire, an open-source, RDNA-native LLM inference engine written in Rust for AMD GPUs — a local alternative to Ollama built on Rust, HIP, and the Redline dispatch layer, with no Python in the inference hot path. Contributed across the Rust runtime, HIP/ROCm kernels, quantization formats (MQ4/MQ5/MQ6), and an OpenAI-compatible serving API.",
@@ -1048,6 +1096,11 @@ Campinas e Região, Brasil</span>
                 "ta_period": "Mar 2015 – Jul 2015 · 5 meses\nCampinas e Região, Brasil",
                 "ta_desc1": "Orientei e apoiei alunos nas disciplinas de Algoritmos e Estruturas de Dados.",
                 "ta_desc2": "Ajudei na organização de sessões de estudo para facilitar o aprendizado de conceitos complexos da matéria.",
+                "early_title": "Experiências Anteriores",
+                "stoom_short": "Jan 2018 – Out 2018 · 10 meses",
+                "devnup_short": "Jul 2017 – Dez 2017 · 6 meses",
+                "phoenix_short": "Mar 2014 – Set 2016 · 2 anos 7 meses",
+                "ta_short": "Mar 2015 – Jul 2015 · 5 meses",
                 "projects_title": "Projetos Pessoais",
                 "yvy_desc": "Construí uma plataforma de observabilidade ambiental que rastreia dados de desmatamento e queimadas em todo o Brasil. Sobrepus dados com propriedade fundiária, unidades de conservação (reservas naturais protegidas) e territórios indígenas para monitoramento de compliance. Integrei fontes oficiais de dados governamentais — ICMBio e FUNAI — para gerar insights ambientais acionáveis.",
                 "hipfire_desc": "Contribuidor oficial do Hipfire, um engine de inferência de LLM open-source nativo para RDNA, escrito em Rust para GPUs AMD — uma alternativa local ao Ollama construída sobre Rust, HIP e a camada de dispatch Redline, sem Python no caminho crítico de inferência. Contribuí no runtime em Rust, nos kernels HIP/ROCm, nos formatos de quantização (MQ4/MQ5/MQ6) e em uma API de serving compatível com OpenAI.",
